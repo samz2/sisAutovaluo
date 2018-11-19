@@ -12,5 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('auth.login');
+})->middleware('checkAuth');;
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// Rutas alternas
+Route::get('{path}', 'HomeController@index')->where('path', '([A-z\d-\/_.]+)?');
