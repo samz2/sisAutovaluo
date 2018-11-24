@@ -66,7 +66,35 @@
 						
 						@switch(Auth::user()->tipo)
 							@case(1)
-								
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Predio
+										<i class="fa fa-angle-left right"></i>
+									</p>
+								</a>
+								<ul class="nav nav-treeview">
+									<li class="nav-item">
+										<router-link to="predio-lista" class="nav-link">
+											<i class="fa fa-list-ol nav-icon"></i>
+											<p>Lista</p>
+										</router-link>
+									</li>
+									<li class="nav-item">
+										<a href="../examples/profile.html" class="nav-link">
+											<i class="fa fa-plus-circle nav-icon"></i>
+											<p>Agregar</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="../examples/profile.html" class="nav-link">
+											<i class="fa fa-pencil-square nav-icon"></i>
+											<p>Editar</p>
+										</a>
+									</li>
+								</ul>
+							</li>
 								@break
 							@case(4)
 								<li class="nav-item has-treeview">
