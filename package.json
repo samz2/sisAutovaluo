@@ -29,6 +29,7 @@
         "vue-progressbar": "^0.7.5",
         "vue-router": "^3.0.1",
         "vue-spinner": "^1.0.3",
-        "vue-tables-2": "^1.4.70"
+        "vue-tables-2": "^1.4.70",
+        "vue2-google-maps": "^0.10.3"
     }
 }
