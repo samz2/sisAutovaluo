@@ -21,3 +21,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Rutas alternas
 Route::get('{path}', 'HomeController@index')->where('path', '([A-z\d-\/_.]+)?');
+
+//rutas para admin/predio
+Route::resource('/getPredioList', 'predioController');
