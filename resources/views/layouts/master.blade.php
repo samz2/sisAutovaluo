@@ -76,7 +76,7 @@
 								</a>
 								<ul class="nav nav-treeview">
 									<li class="nav-item">
-										<router-link to="predio-lista" class="nav-link">
+										<router-link to="/predio-lista" class="nav-link">
 											<i class="fa fa-list-ol nav-icon"></i>
 											<p>Lista</p>
 										</router-link>
