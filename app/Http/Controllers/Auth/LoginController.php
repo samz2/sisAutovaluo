@@ -43,7 +43,7 @@ class LoginController extends Controller
         $login = $request->input($this->username());
         
         // Comprobar si el input coincide con el formato de E-mail
-        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'id';
+        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'user';
         return [
             $field => $login,
             'password' => $request->input('password')
@@ -52,6 +52,6 @@ class LoginController extends Controller
     
     public function username()
     {
-        return 'id';
+        return 'user';
     }
 }

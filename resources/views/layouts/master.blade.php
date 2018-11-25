@@ -24,7 +24,20 @@
 				<!-- Messages Dropdown Menu -->
 				<li class="nav-item dropdown">
 					<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-						{{ Auth::user()->id }} <span class="caret"></span>
+						@switch(Auth::user()->tipo)
+							@case(1)
+								Administrador <span class="caret"></span>	
+								@break
+							@case(2)
+								Notificador <span class="caret"></span>	
+								@break
+							@case(3)
+								Usuario <span class="caret"></span>	
+								@break
+							@default
+								
+						@endswitch
+						{{-- {{ Auth::user()->user }} <span class="caret"></span> --}}
 					</a>
 					<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
 						<a class="dropdown-item" href="{{ route('logout') }}"
@@ -63,17 +76,58 @@
 				<!-- Sidebar Menu -->
 				<nav class="mt-2">
 					<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-						
+
 						@switch(Auth::user()->tipo)
 							@case(1)
-								
-								@break
-							@case(4)
 								<li class="nav-item has-treeview">
 									<a href="#" class="nav-link">
 										<i class="nav-icon fa fa-user-o" aria-hidden="true"></i>
 										<p>
-											Administradora
+											Administrador
+											<i class="fa fa-angle-left right"></i>
+										</p>
+									</a>
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<router-link to="/manager" class="nav-link">
+												<i class="fa fa-edit nav-icon"></i>
+												<p>Usuario Estado</p>
+											</router-link>
+										</li>	
+									</ul>
+								</li>
+								@break
+							@case(2)
+								<li class="nav-item has-treeview">
+									<a href="#" class="nav-link">
+										<i class="nav-icon fa fa-folder" aria-hidden="true"></i>
+										<p>
+											Usuario
+											<i class="fa fa-angle-left right"></i>
+										</p>
+									</a>
+									<ul class="nav nav-treeview">
+										<li class="nav-item">
+											<router-link to="/visualize" class="nav-link">
+												<i class="fa fa-map-o nav-icon" aria-hidden="true"></i>
+												<p>Visualizar</p>
+											</router-link>
+										</li>
+										<li class="nav-item">
+											<router-link to="/deudas" class="nav-link">
+												<i class="fa fa-address-card-o nav-icon" aria-hidden="true"></i>
+												<p>Deudas</p>
+											</router-link>
+										</li>	
+									</ul>
+								</li>
+								@break
+							@case(3)
+								<li class="nav-item has-treeview">
+									<a href="#" class="nav-link">
+										<i class="nav-icon fa fa-user-o" aria-hidden="true"></i>
+										<p>
+											Usuario
 											<i class="fa fa-angle-left right"></i>
 										</p>
 									</a>

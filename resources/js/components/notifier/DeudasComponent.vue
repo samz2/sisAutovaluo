@@ -5,11 +5,6 @@
                 <div class="card card-default">
                     <div class="card-header">Componente de Administrador</div>
                     <div class="card-body">
-                        <h1>asd</h1>
-                        <!-- <GmapMap style="width: 600px; height: 400px;" :zoom="16" :center="center"
-                            ref="map">
-                            <GmapMarker v-for="(marker, index) in markers" :key="index" :position="marker.latLng"/>
-                        </GmapMap> -->
                         <gmap-map ref="gmap" :center="center" :zoom="12" style="width:100%;  height: 100vh;">
                             <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position"
                                 @click="toggleInfoWindow(m,index)">
