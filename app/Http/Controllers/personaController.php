@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\persona;
 use App\User;
+use App\contribuyente;
 
 class personaController extends Controller
 {
@@ -36,22 +37,33 @@ class personaController extends Controller
      */
     public function store(Request $request)
     {
-        $hoy     =$this->hoy();
-        $persona = new Persona();
-        $User    = new User();   
-        $persona->DNI               =$request->persona['dni'];
-        $persona->Nombre            =ucwords($request->persona['nombre']);
-        $persona->Apellidos         =ucwords($request->persona['ape']);
-        $persona->Celular           =$request->persona['cel'];
-        $persona->Direccion         =ucwords($request->persona['dir']);
-        $persona->Tipo              =$request->persona['tipo'];
-        $persona->created_at        =$hoy;
-        $persona->fechaNacimiento   =$request->persona['fecha'];
-        $User->id                   =$request->persona['dni'];
-        $User->user                 =$request->persona['dni'];
-        $User->password             =bcrypt($request->persona['dni']);
-        $User->tipo                 =$request->persona['tipo'];
-        $User->estado               =1;
+        $hoy                        = $this->hoy();
+        $persona                    = new Persona();
+        $User                       = new User();
+        $contribuyente              = new Contribuyente();
+        if($request->persona['tipo']==3)
+        {
+        $contribuyente->codContribuyente = $request->persona['codContribuyente'];
+        $contribuyente->nombre      = ucwords($request->persona['nombre']);
+        $contribuyente->apellidos   = ucwords($request->persona['ape']);
+        $contribuyente->dniRUC      = ucwords($request->persona['dni']);    
+        $contribuyente->domicilio   = ucwords($request->persona['dir']);
+        $contribuyente->create_at   = $hoy;
+        $contribuyente->save();
+        }   
+        $persona->DNI               = $request->persona['dni'];
+        $persona->Nombre            = ucwords($request->persona['nombre']);
+        $persona->Apellidos         = ucwords($request->persona['ape']);
+        $persona->Celular           = $request->persona['cel'];
+        $persona->Direccion         = ucwords($request->persona['dir']);
+        $persona->Tipo              = $request->persona['tipo'];
+        $persona->created_at        = $hoy;
+        $persona->fechaNacimiento   = $request->persona['fecha'];
+        $User->id                   = $request->persona['dni'];
+        $User->user                 = $request->persona['dni'];
+        $User->password             = bcrypt($request->persona['dni']);
+        $User->tipo                 = $request->persona['tipo'];
+        $User->estado               = 1;
         $persona->save();
         $User->save();        
         return $persona;
