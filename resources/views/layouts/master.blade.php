@@ -113,7 +113,7 @@
 									<a href="#" class="nav-link">
 										<i class="nav-icon fa fa-folder" aria-hidden="true"></i>
 										<p>
-											Usuario
+											Usuarios
 											<i class="fa fa-angle-left right"></i>
 										</p>
 									</a>
@@ -127,7 +127,7 @@
 										<li class="nav-item">
 											<router-link to="/deudas" class="nav-link">
 												<i class="fa fa-address-card-o nav-icon" aria-hidden="true"></i>
-												<p>Deudas</p>
+												<p>Listado</p>
 											</router-link>
 										</li>	
 									</ul>
