@@ -40,10 +40,10 @@ class personaController extends Controller
         $persona = new Persona();
         $User    = new User();   
         $persona->DNI               =$request->persona['dni'];
-        $persona->Nombre            =$request->persona['nombre'];
-        $persona->Apellidos         =$request->persona['ape'];
+        $persona->Nombre            =ucwords($request->persona['nombre']);
+        $persona->Apellidos         =ucwords($request->persona['ape']);
         $persona->Celular           =$request->persona['cel'];
-        $persona->Direccion         =$request->persona['dir'];
+        $persona->Direccion         =ucwords($request->persona['dir']);
         $persona->Tipo              =$request->persona['tipo'];
         $persona->created_at        =$hoy;
         $persona->fechaNacimiento   =$request->persona['fecha'];
@@ -54,7 +54,7 @@ class personaController extends Controller
         $User->estado               =1;
         $persona->save();
         $User->save();        
-        return $User;
+        return $persona;
     }
     public function hoy()
     {

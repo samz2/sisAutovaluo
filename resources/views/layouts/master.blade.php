@@ -108,7 +108,6 @@
 									</li>
 								</ul>
 							</li>
-<<<<<<< HEAD
 							<li class="nav-item has-treeview">
 								<a href="#" class="nav-link">
 									<i class="nav-icon fa fa-folder"></i>
@@ -138,7 +137,6 @@
 									</li>
 								</ul>
 							</li>
-=======
 							@case(2)
 								<li class="nav-item has-treeview">
 									<a href="#" class="nav-link">
@@ -163,7 +161,6 @@
 										</li>	
 									</ul>
 								</li>
->>>>>>> origin/master
 								@break
 							@case(3)
 								<li class="nav-item has-treeview">
