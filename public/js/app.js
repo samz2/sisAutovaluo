@@ -94743,6 +94743,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function data() {
@@ -94754,9 +94762,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				cel: null,
 				dir: null,
 				tipo: null,
+				codContribuyente: null,
 				fecha: null
 			}
 		};
+	},
+	mounted: function mounted() {
+		$('#cod').hide();
 	},
 
 	methods: {
@@ -94765,9 +94777,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				persona: this.persona
 			}).then(function (data) {
 				console.log(data);
+				swal({
+					position: 'top-end',
+					type: 'success',
+					title: 'Datos ingresados correctamente',
+					showConfirmButton: false,
+					timer: 2000
+				});
+				setTimeout(function () {
+					location.reload();
+				}, 1500);
 			}).catch(function (error) {
 				console.log(error);
 			});
+		},
+		click: function click() {
+			console.log(this.persona.tipo);
+			if (this.persona.tipo == 3) {
+				$("#cod").show();
+			} else {
+				$("#cod").hide();
+			}
 		}
 	}
 });
@@ -94803,7 +94833,7 @@ var render = function() {
                   _c("div", { staticClass: "row" }, [
                     _c("div", { staticClass: "col-md-2" }, [
                       _c("div", { staticClass: "form-group" }, [
-                        _c("label", [_vm._v("DNI")]),
+                        _c("label", [_vm._v("DNI/RUC")]),
                         _vm._v(" "),
                         _c("input", {
                           directives: [
@@ -94819,7 +94849,7 @@ var render = function() {
                             type: "text",
                             onkeypress:
                               "return event.charCode >= 48 && event.charCode <= 57",
-                            maxlength: "8"
+                            maxlength: "11"
                           },
                           domProps: { value: _vm.persona.dni },
                           on: {
@@ -94973,24 +95003,29 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
+                            attrs: { id: "tipo" },
                             on: {
-                              change: function($event) {
-                                var $$selectedVal = Array.prototype.filter
-                                  .call($event.target.options, function(o) {
-                                    return o.selected
-                                  })
-                                  .map(function(o) {
-                                    var val = "_value" in o ? o._value : o.value
-                                    return val
-                                  })
-                                _vm.$set(
-                                  _vm.persona,
-                                  "tipo",
-                                  $event.target.multiple
-                                    ? $$selectedVal
-                                    : $$selectedVal[0]
-                                )
-                              }
+                              change: [
+                                function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.persona,
+                                    "tipo",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                },
+                                _vm.click
+                              ]
                             }
                           },
                           [
@@ -95036,6 +95071,40 @@ var render = function() {
                               _vm.$set(
                                 _vm.persona,
                                 "fecha",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "row", attrs: { id: "cod" } }, [
+                    _c("div", { staticClass: "col-md-4" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", [_vm._v("Codigo Contribuyente")]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.persona.codContribuyente,
+                              expression: "persona.codContribuyente"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: { type: "text", maxlength: "60" },
+                          domProps: { value: _vm.persona.codContribuyente },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.persona,
+                                "codContribuyente",
                                 $event.target.value
                               )
                             }
