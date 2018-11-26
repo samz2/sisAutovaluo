@@ -24,3 +24,4 @@ Route::get('{path}', 'HomeController@index')->where('path', '([A-z\d-\/_.]+)?');
 
 //rutas para admin/predio
 Route::resource('/getPredioList', 'predioController');
+Route::get('/datosMaterial', 'predioController@getDatosMaterial')->name('predio.datosMaterial');

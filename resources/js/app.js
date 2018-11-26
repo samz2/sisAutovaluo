@@ -19,7 +19,7 @@ import * as VueGoogleMaps from 'vue2-google-maps'
 // Window require
 window.swal = swal;
 
-// Vue use
+// Vue use 
 Vue.use(VueRouter);
 Vue.use(VeeValidate);
 Vue.use(ClientTable);
@@ -31,7 +31,7 @@ Vue.use(VueProgressBar, {
 
 Vue.use(VueGoogleMaps, {
     load: {
-        key: 'AIzaSyBoC50c195wjGs2gxBzz5jInz2yFtizUG4',
+        key: 'AIzaSyCwQkiFEwdVj-a2pGG3KGmC7Irzm6ZBIhM',
         libraries: 'places', // This is required if you use the Autocomplete plugin
         // OR: libraries: 'places,drawing'
         // OR: libraries: 'places,drawing,visualization'
@@ -79,7 +79,9 @@ const routes = [
     // Main Routes
     { path: '/', component: require('./components/ExampleComponent.vue') },
     { path: '*', component: require('./components/ExampleComponent.vue') },
-    { path: '/predio-lista', component: require('./components/admin/predio.lista.vue') },
+    // admin/predio routes
+    { path: '/predio-lista', component: require('./components/admin/predioLista.vue') },
+    { path: '/predio-agregar', component: require('./components/admin/predioAgregar.vue') },
     // Manager Routes
     { path: '/manager', component: require('./components/management/AdministratorComponent.vue') },
     // Deudor Routes

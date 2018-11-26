@@ -95,10 +95,10 @@
 										</router-link>
 									</li>
 									<li class="nav-item">
-										<a href="../examples/profile.html" class="nav-link">
+										<router-link to="/predio-agregar" class="nav-link">
 											<i class="fa fa-plus-circle nav-icon"></i>
 											<p>Agregar</p>
-										</a>
+										</router-link>
 									</li>
 									<li class="nav-item">
 										<a href="../examples/profile.html" class="nav-link">

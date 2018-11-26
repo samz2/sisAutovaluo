@@ -27,6 +27,13 @@ class predioController extends Controller
        return compact('predio');
     }
 
+    public function getDatosMaterial(){
+        $user = \Auth::user();
+        $user = $user->id;
+        $material=Material::all();
+        return compact('material');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
