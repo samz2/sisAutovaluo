@@ -3,6 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Material;
+use App\CondicionPropiedad;
+use App\Conservacion;
+use App\Clasificacion;
+use App\predio;
+use App\Localidad;
+
 
 class predioController extends Controller
 {
@@ -27,11 +34,13 @@ class predioController extends Controller
        return compact('predio');
     }
 
-    public function getDatosMaterial(){
-        $user = \Auth::user();
-        $user = $user->id;
-        $material=Material::all();
-        return compact('material');
+    public function getDatosSelect(){
+        $material = Material::all();
+        $conservacion = Conservacion::all();
+        $condicion = CondicionPropiedad::all();
+        $clasificacion=Clasificacion::all();
+        $localidad=Localidad::all();
+        return compact('material','conservacion','condicion','clasificacion','localidad');
     }
 
     /**
@@ -52,7 +61,23 @@ class predioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $predio=new predio();
+        $predio->CodPredio=$request['predio']['codPredio'];
+        $predio->calle=$request['predio']['calle'];
+        $predio->numero=$request['predio']['numero'];
+        $predio->piso=$request['predio']['piso'];
+        $predio->mz=$request['predio']['mz'];
+        $predio->lote=$request['predio']['lote'];
+        $predio->interior=$request['predio']['interior'];
+        $predio->sector=$request['predio']['sector'];
+        $predio->idCondicion=$request['predio']['condicion'];
+        $predio->idConservacion=$request['predio']['conservacion'];
+        $predio->idMaterial=$request['predio']['material'];
+        $predio->idClasificacion=$request['predio']['clasificacion'];
+        $predio->idLocalidad=$request['predio']['localidad'];
+        $predio->latitud=$request['predio']['latitud'];
+        $predio->longitud=$request['predio']['longitud'];
+        $predio->created_at=getdate('Y-m-d');
     }
 
     /**

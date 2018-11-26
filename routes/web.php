@@ -13,15 +13,20 @@
 
 Route::get('/', function () {
     return view('auth.login');
-})->middleware('checkAuth');;
+})->middleware('checkAuth');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+//rutas administrador
+Route::post('/addUser', 'personaController@store');
+//fin rutas administrador
+
+//rutas para admin/predio-------
+Route::resource('/getPredioList', 'predioController');
+Route::get('/datosSelect', 'predioController@getDatosSelect')->name('predio.datosSelect');
+Route::resource('/predio', 'predioController', ['except' => ['destroy', 'edit', 'show', 'create']]);
+//------------------------------
 
 // Rutas alternas
 Route::get('{path}', 'HomeController@index')->where('path', '([A-z\d-\/_.]+)?');
-
-//rutas para admin/predio
-Route::resource('/getPredioList', 'predioController');
-Route::get('/datosMaterial', 'predioController@getDatosMaterial')->name('predio.datosMaterial');

@@ -82,6 +82,10 @@ const routes = [
     // admin/predio routes
     { path: '/predio-lista', component: require('./components/admin/predioLista.vue') },
     { path: '/predio-agregar', component: require('./components/admin/predioAgregar.vue') },
+    //fin rutas
+    //rutas admin
+    { path: '/addUser', component: require('./components/admin/addUser.vue') },
+    //fin rutas admin
     // Manager Routes
     { path: '/manager', component: require('./components/management/AdministratorComponent.vue') },
     // Deudor Routes

@@ -108,6 +108,36 @@
 									</li>
 								</ul>
 							</li>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Registrar
+										<i class="fa fa-angle-right right"></i>
+									</p>
+								</a>
+								<ul class="nav nav-treeview">
+									<li class="nav-item">
+										<router-link to="/addUser" class="nav-link">
+											<i class="fa fa-plus-circle nav-icon"></i>
+											<p>agregar usuario</p>
+										</router-link>
+									</li>
+									<li class="nav-item">
+										<a href="../examples/profile.html" class="nav-link">
+											<i class="fa fa-address-book nav-icon"></i>
+											<p>Lista de usuarios</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="../examples/profile.html" class="nav-link">
+											<i class="fa fa-pencil-square nav-icon"></i>
+											<p>Editar</p>
+										</a>
+									</li>
+								</ul>
+							</li>
+							@break
 							@case(2)
 								<li class="nav-item has-treeview">
 									<a href="#" class="nav-link">
