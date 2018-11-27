@@ -15,9 +15,9 @@
 	                        <div class="row">
 	                            <div class="col-md-2">
 	                                <div class="form-group">
-	                                    <label>DNI</label>
+	                                    <label>DNI/RUC</label>
 	                                    <input type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' 
-										v-model="persona.dni" class="form-control"   maxlength="8">
+											v-model="persona.dni" class="form-control"   maxlength="11">
 	                                </div>
 	                            </div>
 								<div class="col-md-3">
@@ -50,7 +50,7 @@
 								<div class="col-md-3">
 	                                <div class="form-group">
 	                                    <label>Tipo</label>
-	                                    <select v-model="persona.tipo" class="form-control">
+	                                    <select v-model="persona.tipo" id="tipo" @change="click" class="form-control">
 											<option value="1" selected>Administrador</option>
 											<option value="2">Cobrador</option>
 											<option value="3">Usuario</option>
@@ -64,6 +64,14 @@
 	                                </div>
 	                            </div>
 							</div>
+							<div class="row" id="cod">
+									<div class="col-md-4">
+	                                <div class="form-group" >
+	                                    <label>Codigo Contribuyente</label>
+	                                    <input type="text"  v-model="persona.codContribuyente" class="form-control"  maxlength="60">
+	                                </div>
+									</div>
+								</div>
 							<div class="row text-left">
 								<div class="col-md-2">
 									<input type="submit" value="Agregar" class="btn btn-success">
@@ -90,10 +98,15 @@
 				cel:null,
 				dir:null,
 				tipo:null,
+				codContribuyente:null,
 				fecha:null
 			}
         }
-    },
+	},
+	mounted()
+	{
+		$('#cod').hide();
+	},
     methods: {
         registrar()
 		{
@@ -101,11 +114,35 @@
 				persona:this.persona
 			}).then(data=>{
 				console.log(data);
+				swal({
+                                position: 'top-end',
+                                type: 'success',
+                                title: 'Datos ingresados correctamente',
+                                showConfirmButton: false,
+                                timer: 2000
+                            });
+                            setTimeout(() => {
+                                location.reload();
+                            }, 1500);
 			}).catch(error=>{
 				console.log(error);	
 			})
+		},
+		click()
+		{
+			console.log(this.persona.tipo);
+			if (this.persona.tipo==3) 
+			{
+			$("#cod").show();
+			}
+			else {
+			$("#cod").hide();
+
+			}
 		}
     }
 }
 
 </script>
+
+

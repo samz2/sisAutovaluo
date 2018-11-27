@@ -14,7 +14,8 @@ import VeeValidate, { Validator } from 'vee-validate';
 import VueProgressBar from 'vue-progressbar';
 import VueRouter from 'vue-router';
 import { ServerTable, ClientTable, Event } from 'vue-tables-2';
-import * as VueGoogleMaps from 'vue2-google-maps'
+import * as VueGoogleMaps from 'vue2-google-maps';
+import VoerroTagsInput from '@voerro/vue-tagsinput';
 
 // Window require
 window.swal = swal;
@@ -23,6 +24,7 @@ window.swal = swal;
 Vue.use(VueRouter);
 Vue.use(VeeValidate);
 Vue.use(ClientTable);
+Vue.component('tags-input', VoerroTagsInput);
 Vue.use(VueProgressBar, {
     color: 'rgb(143, 255, 199)',
     failedColor: 'red',

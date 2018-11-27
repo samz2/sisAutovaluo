@@ -84,7 +84,7 @@
 									<i class="nav-icon fa fa-folder"></i>
 									<p>
 										Predio
-										<i class="fa fa-angle-left right"></i>
+										<i class="fa fa-angle-right right"></i>
 									</p>
 								</a>
 								<ul class="nav nav-treeview">
@@ -143,7 +143,7 @@
 									<a href="#" class="nav-link">
 										<i class="nav-icon fa fa-folder" aria-hidden="true"></i>
 										<p>
-											Usuario
+											Usuarios
 											<i class="fa fa-angle-left right"></i>
 										</p>
 									</a>
@@ -157,7 +157,7 @@
 										<li class="nav-item">
 											<router-link to="/deudas" class="nav-link">
 												<i class="fa fa-address-card-o nav-icon" aria-hidden="true"></i>
-												<p>Deudas</p>
+												<p>Listado</p>
 											</router-link>
 										</li>	
 									</ul>
@@ -267,5 +267,6 @@
     </div>
 	
 	<script src="{{ asset('js/app.js') }}"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </body>
 </html>

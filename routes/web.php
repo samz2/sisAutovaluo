@@ -26,6 +26,7 @@ Route::post('/addUser', 'personaController@store');
 Route::resource('/getPredioList', 'predioController');
 Route::get('/datosSelect', 'predioController@getDatosSelect')->name('predio.datosSelect');
 Route::resource('/predio', 'predioController', ['except' => ['destroy', 'edit', 'show', 'create']]);
+Route::get('/getContribuyente/{e}', 'predioController@getContribuyente')->name('predio.getContribuyente');
 //------------------------------
 
 // Rutas alternas

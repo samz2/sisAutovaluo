@@ -43,6 +43,11 @@ class predioController extends Controller
         return compact('material','conservacion','condicion','clasificacion','localidad');
     }
 
+    public function getContribuyente($e){
+        $contribuyente=\DB::select("SELECT dniRUC, concat(nombre,' ',apellidos) as nombres from contribuyente where dniRUC like '$e%'");
+        return compact('contribuyente');
+    }
+
     /**
      * Show the form for creating a new resource.
      *

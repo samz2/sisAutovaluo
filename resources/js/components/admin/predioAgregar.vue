@@ -119,11 +119,22 @@
                             <h3>Contribuyente</h3>
                             <div class="form-group">
                                 <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Contribuyentes" aria-label="Text input with segmented dropdown button">
+                                <input class="form-control" type="text" @keyup="getContribuyente(buscar)" v-model="buscar" placeholder="Contribuyentes" aria-label="Text input with segmented dropdown button">
                                 <div class="input-group-append">
-                                    <button type="button" class="btn btn-outline-primary" @click="buscarContribuyente()">Buscar</button>
+                                    <button type="button" class="btn btn-outline-primary" >Buscar</button>
                                 </div>
                             </div>
+
+<tags-input 
+    element-id="tags"  
+    placeholder="Agregar contribuyente"
+    :limit=3
+    :only-existing-tags ="true"
+    v-model="selectedTags"
+    :existing-tags="lista"
+    :keypress="getContribuyente(74)"
+    :typeahead="true"></tags-input>
+
                             </div>
                         </div>
                     </div>
@@ -164,7 +175,6 @@
                             </div>
                         </div>
                     </div>
-                    
                   </form>
                 </div><!-- /.box-body -->
               </div>
@@ -197,6 +207,17 @@ export default {
         latitud: null,
         longitud: null
       },
+      buscar: null,
+      selectedTags: [],
+        lista: {
+            // 1: 'Web Development',
+            // 2: 'PHP',
+            // 3: 'JavaScript',
+            // 4:'Java',
+        },
+        listaAd: [],
+        // ALTERNATIVELY
+        // selectedTags: null,
       material: [],
       condicion: [],
       conservacion: [],
@@ -237,6 +258,11 @@ export default {
         this.predio.longitud = this.center.lng;
       });
     },
+    setSelectedTags() {
+            this.selectedTags = ['programmatically', 'selected', 'tags'];
+            // ALTERNATIVELY
+            this.selectedTags = 'programmatically,selected,tags';
+        },
     getDatosSelect() {
       axios
         .get("datosSelect")
@@ -246,12 +272,24 @@ export default {
           this.conservacion = data.data.conservacion;
           this.clasificacion = data.data.clasificacion;
           this.localidad = data.data.localidad;
-          console.log(data);
         })
         .catch(error => {
           console.log("Ocurrio un error " + error);
           this.$Progress.fail();
         });
+    },
+    getContribuyente(e){
+        // console.log(e);
+        axios.get(`/getContribuyente/${e}`)
+                .then(data => {
+                    let datos = data.data.contribuyente;
+                    datos.forEach((e, i) => {
+                        this.lista[e.dniRUC] = `${e.nombres}-${e.dniRUC}`;
+                    });  
+                }).catch(error => {
+                    console.log('Ocurrio un error ' + error);
+                    this.$Progress.fail();
+                });
     },
     updateCoordinates(location) {
       console.log("imprimiendo desde update");
@@ -369,3 +407,124 @@ export default {
   }
 };
 </script>
+<style>
+    /* The input */
+.tags-input {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.tags-input input {
+    flex: 1;
+    background: transparent;
+    border: none;
+}
+
+.tags-input input:focus {
+    outline: none;
+}
+
+.tags-input input[type="text"] {
+    color: #495057;
+}
+
+.tags-input-wrapper-default {
+    padding: .5rem .25rem;
+
+    background: #fff;
+
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    border-color: #dbdbdb;
+}
+
+/* The tag badges & the remove icon */
+.tags-input span {
+    margin-right: 0.3rem;
+}
+
+.tags-input-remove {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    width: 0.5rem;
+    height: 0.5rem;
+    overflow: hidden;
+}
+
+.tags-input-remove:before, .tags-input-remove:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    background: #5dc282;
+    
+    height: 2px;
+    margin-top: -1px;
+}
+
+.tags-input-remove:before {
+    transform: rotate(45deg);
+}
+.tags-input-remove:after {
+    transform: rotate(-45deg);
+}
+
+/* Tag badge styles */
+.tags-input-badge {
+    display: inline-block;
+    padding: 0.25em 0.4em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: 0.25rem;
+}
+
+.tags-input-badge-pill {
+    padding-right: 0.6em;
+    padding-left: 0.6em;
+    border-radius: 10rem;
+}
+
+.tags-input-badge-selected-default {
+    color: #212529;
+    background-color: #f0f1f2;
+}
+
+/* Typeahead - badges */
+.typeahead-badges > span {
+    cursor: pointer;
+    margin-right: 0.3rem;
+}
+
+/* Typeahead - dropdown */
+.typeahead-dropdown {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.typeahead-dropdown li {
+    padding: .25rem 1rem;
+    cursor: pointer;
+}
+
+/* Typeahead elements style/theme */
+.tags-input-typeahead-item-default {
+    color: #fff;
+    background-color: #343a40;
+}
+
+.tags-input-typeahead-item-highlighted-default {
+    color: #fff;
+    background-color: #007bff;
+}
+
+</style> 
