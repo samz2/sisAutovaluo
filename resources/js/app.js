@@ -31,7 +31,8 @@ Vue.use(VueProgressBar, {
 
 Vue.use(VueGoogleMaps, {
     load: {
-        key: 'AIzaSyBoC50c195wjGs2gxBzz5jInz2yFtizUG4',
+        // key: 'AIzaSyBoC50c195wjGs2gxBzz5jInz2yFtizUG4',
+        key: 'AIzaSyCwQkiFEwdVj-a2pGG3KGmC7Irzm6ZBIhM',
         libraries: 'places', // This is required if you use the Autocomplete plugin
         // OR: libraries: 'places,drawing'
         // OR: libraries: 'places,drawing,visualization'

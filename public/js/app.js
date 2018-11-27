@@ -45713,9 +45713,9 @@ exports.default = function (input) {
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(419)
+var __vue_script__ = __webpack_require__(422)
 /* template */
-var __vue_template__ = __webpack_require__(420)
+var __vue_template__ = __webpack_require__(423)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45758,7 +45758,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(179);
-module.exports = __webpack_require__(432);
+module.exports = __webpack_require__(435);
 
 
 /***/ }),
@@ -45815,7 +45815,8 @@ Vue.use(__WEBPACK_IMPORTED_MODULE_3_vue_progressbar___default.a, {
 
 Vue.use(__WEBPACK_IMPORTED_MODULE_6_vue2_google_maps__, {
     load: {
-        key: 'AIzaSyBoC50c195wjGs2gxBzz5jInz2yFtizUG4',
+        // key: 'AIzaSyBoC50c195wjGs2gxBzz5jInz2yFtizUG4',
+        key: 'AIzaSyCwQkiFEwdVj-a2pGG3KGmC7Irzm6ZBIhM',
         libraries: 'places' // This is required if you use the Autocomplete plugin
         // OR: libraries: 'places,drawing'
         // OR: libraries: 'places,drawing,visualization'
@@ -45894,12 +45895,12 @@ var routes = [
 // Main Routes
 { path: '/', component: __webpack_require__(22) }, { path: '*', component: __webpack_require__(22) }, { path: '/predio-lista', component: __webpack_require__(416) },
 //rutas admin
-{ path: '/addUser', component: __webpack_require__(443) },
+{ path: '/addUser', component: __webpack_require__(419) },
 //fin rutas admin
 // Manager Routes
 { path: '/manager', component: __webpack_require__(177) },
 // Deudor Routes
-{ path: '/visualize', component: __webpack_require__(421) }, { path: '/deudas', component: __webpack_require__(424) }];
+{ path: '/visualize', component: __webpack_require__(424) }, { path: '/deudas', component: __webpack_require__(427) }];
 
 // Create the route instance
 var router = new __WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]({
@@ -45922,7 +45923,7 @@ Vue.filter('formatDate', function (data) {
 
 Vue.component('example-component', __webpack_require__(22));
 Vue.component('manager', __webpack_require__(177));
-Vue.component('moon-loader', __webpack_require__(427));
+Vue.component('moon-loader', __webpack_require__(430));
 
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -93747,878 +93748,14 @@ if (false) {
 
 /***/ }),
 /* 419 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            center: { lat: -8.362015113641032, lng: -74.57030276914249 },
-            map: null,
-            infoContent: '',
-            infoWindowPos: {
-                lat: 0,
-                lng: 0
-            },
-            infoWinOpen: false,
-            currentMidx: null,
-            //optional: offset infowindow so it visually sits nicely on top of our marker
-            infoOptions: {
-                pixelOffset: {
-                    width: 0,
-                    height: -35
-                }
-            },
-            markers: [{
-                name: "Casa de Antony",
-                description: "descripcion 1",
-                position: { lat: -8.362034144896839, lng: -74.57029082816086 }
-            }, {
-                name: "Casa de John",
-                description: "descripcion 2",
-                position: { lat: -8.392125575238598, lng: -74.55437721388037 }
-            }]
-        };
-    },
-    mounted: function mounted() {
-        var _this = this;
-
-        //set bounds of the map
-        this.$refs.gmap.$mapPromise.then(function (map) {
-            var bounds = new google.maps.LatLngBounds();
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = _this.markers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var m = _step.value;
-
-                    bounds.extend(m.position);
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-
-            map.fitBounds(bounds);
-        });
-    },
-
-    methods: {
-        toggleInfoWindow: function toggleInfoWindow(marker, idx) {
-            this.infoWindowPos = marker.position;
-            this.infoContent = this.getInfoWindowContent(marker);
-
-            //check if its the same marker that was selected if yes toggle
-            if (this.currentMidx == idx) {
-                this.infoWinOpen = !this.infoWinOpen;
-            }
-            //if different marker set infowindow to open and reset current marker index
-            else {
-                    this.infoWinOpen = true;
-                    this.currentMidx = idx;
-                }
-        },
-        getInfoWindowContent: function getInfoWindowContent(marker) {
-            return "\n                <div class=\"card\">\n                    <div class=\"card-image\">\n                        <figure class=\"image is-4by3\">\n                            <img src=\"https://bulma.io/images/placeholders/96x96.png\" alt=\"Placeholder image\">\n                        </figure>\n                    </div>\n                    <div class=\"card-content\">\n                        <div class=\"media\">\n                            <div class=\"media-content\">\n                                <p class=\"title is-4\">" + marker.name + "</p>\n                            </div>\n                        </div>\n                        <div class=\"content\">\n                            " + marker.description + "\n                        </div>\n                    </div>\n                </div>";
-        }
-    }
-});
-
-/***/ }),
-/* 420 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Componente de Administrador")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c("h1", [_vm._v("asd")]),
-              _vm._v(" "),
-              _c(
-                "gmap-map",
-                {
-                  ref: "gmap",
-                  staticStyle: { width: "100%", height: "100vh" },
-                  attrs: { center: _vm.center, zoom: 12 }
-                },
-                [
-                  _vm._l(_vm.markers, function(m, index) {
-                    return _c("gmap-marker", {
-                      key: index,
-                      attrs: { position: m.position },
-                      on: {
-                        click: function($event) {
-                          _vm.toggleInfoWindow(m, index)
-                        }
-                      }
-                    })
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "gmap-info-window",
-                    {
-                      attrs: {
-                        options: _vm.infoOptions,
-                        position: _vm.infoWindowPos,
-                        opened: _vm.infoWinOpen
-                      },
-                      on: {
-                        closeclick: function($event) {
-                          _vm.infoWinOpen = false
-                        }
-                      }
-                    },
-                    [
-                      _c("div", {
-                        domProps: { innerHTML: _vm._s(_vm.infoContent) }
-                      })
-                    ]
-                  )
-                ],
-                2
-              )
-            ],
-            1
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-49012161", module.exports)
-  }
-}
-
-/***/ }),
-/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(3)
 /* script */
-var __vue_script__ = __webpack_require__(422)
+var __vue_script__ = __webpack_require__(420)
 /* template */
-var __vue_template__ = __webpack_require__(423)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/notifier/VisualizeComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-09c12077", Component.options)
-  } else {
-    hotAPI.reload("data-v-09c12077", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 422 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            columns: ['id', 'name', 'age', 'Acciones'],
-            tableData: [{ id: 1, name: 'John', age: 20 }, { id: 2, name: "Jane", age: "24" }, { id: 3, name: "Susan", age: "16" }, { id: 4, name: "Chris", age: "55" }, { id: 5, name: "Dan", age: "40" }],
-            options: {
-                headings: {
-                    id: 'ID',
-                    name: 'Nombre',
-                    age: 'Edad',
-                    Acciones: 'Acciones'
-                },
-                sortable: ['name', 'age'],
-                filterable: ['name', 'age']
-            }
-        };
-    },
-    mounted: function mounted() {
-        console.log('Component mounted.');
-    },
-
-    methods: {
-        getData: function getData() {
-            return [{
-                code: "ZW",
-                name: "Zimbabwe",
-                created_at: "2015-04-24T01:46:50.459583",
-                updated_at: "2015-04-24T01:46:50.459593",
-                uri: "http://api.lobbyfacts.eu/api/1/country/245",
-                id: 245
-            }, {
-                code: "ZM",
-                name: "Zambia",
-                created_at: "2015-04-24T01:46:50.457459",
-                updated_at: "2015-04-24T01:46:50.457468",
-                uri: "http://api.lobbyfacts.eu/api/1/country/244",
-                id: 244
-            }];
-        },
-        getUser: function getUser(id) {
-            console.log(id);
-        }
-    }
-});
-
-/***/ }),
-/* 423 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Componente de Visualizacion")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c("v-client-table", {
-                attrs: {
-                  data: _vm.tableData,
-                  columns: _vm.columns,
-                  options: _vm.options
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "Acciones",
-                    fn: function(props) {
-                      return _c("div", {}, [
-                        _c(
-                          "button",
-                          {
-                            on: {
-                              click: function($event) {
-                                _vm.getUser(props.row.id)
-                              }
-                            }
-                          },
-                          [_vm._v("Editar")]
-                        ),
-                        _vm._v(" "),
-                        _c("button", [_vm._v("Eliminar")])
-                      ])
-                    }
-                  }
-                ])
-              })
-            ],
-            1
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-09c12077", module.exports)
-  }
-}
-
-/***/ }),
-/* 424 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(425)
-/* template */
-var __vue_template__ = __webpack_require__(426)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/notifier/DeudasComponent.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-30b92846", Component.options)
-  } else {
-    hotAPI.reload("data-v-30b92846", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 425 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            center: { lat: -8.362015113641032, lng: -74.57030276914249 },
-            map: null,
-            infoContent: '',
-            infoWindowPos: {
-                lat: 0,
-                lng: 0
-            },
-            infoWinOpen: false,
-            currentMidx: null,
-            //optional: offset infowindow so it visually sits nicely on top of our marker
-            infoOptions: {
-                pixelOffset: {
-                    width: 0,
-                    height: -35
-                }
-            },
-            markers: [{
-                name: "Casa de Antony",
-                description: "descripcion 1",
-                position: { lat: -8.362034144896839, lng: -74.57029082816086 }
-            }, {
-                name: "Casa de John",
-                description: "descripcion 2",
-                position: { lat: -8.392125575238598, lng: -74.55437721388037 }
-            }]
-        };
-    },
-    mounted: function mounted() {
-        var _this = this;
-
-        //set bounds of the map
-        this.$refs.gmap.$mapPromise.then(function (map) {
-            var bounds = new google.maps.LatLngBounds();
-            var _iteratorNormalCompletion = true;
-            var _didIteratorError = false;
-            var _iteratorError = undefined;
-
-            try {
-                for (var _iterator = _this.markers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-                    var m = _step.value;
-
-                    bounds.extend(m.position);
-                }
-            } catch (err) {
-                _didIteratorError = true;
-                _iteratorError = err;
-            } finally {
-                try {
-                    if (!_iteratorNormalCompletion && _iterator.return) {
-                        _iterator.return();
-                    }
-                } finally {
-                    if (_didIteratorError) {
-                        throw _iteratorError;
-                    }
-                }
-            }
-
-            map.fitBounds(bounds);
-        });
-    },
-
-    methods: {
-        toggleInfoWindow: function toggleInfoWindow(marker, idx) {
-            this.infoWindowPos = marker.position;
-            this.infoContent = this.getInfoWindowContent(marker);
-
-            //check if its the same marker that was selected if yes toggle
-            if (this.currentMidx == idx) {
-                this.infoWinOpen = !this.infoWinOpen;
-            }
-            //if different marker set infowindow to open and reset current marker index
-            else {
-                    this.infoWinOpen = true;
-                    this.currentMidx = idx;
-                }
-        },
-        getInfoWindowContent: function getInfoWindowContent(marker) {
-            return "\n                <div class=\"card\">\n                    <div class=\"card-image\">\n                        <figure class=\"image is-4by3\">\n                            <img src=\"https://bulma.io/images/placeholders/96x96.png\" alt=\"Placeholder image\">\n                        </figure>\n                    </div>\n                    <div class=\"card-content\">\n                        <div class=\"media\">\n                            <div class=\"media-content\">\n                                <p class=\"title is-4\">" + marker.name + "</p>\n                            </div>\n                        </div>\n                        <div class=\"content\">\n                            " + marker.description + "\n                        </div>\n                    </div>\n                </div>";
-        }
-    }
-});
-
-/***/ }),
-/* 426 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Componente de Administrador")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c(
-                "gmap-map",
-                {
-                  ref: "gmap",
-                  staticStyle: { width: "100%", height: "100vh" },
-                  attrs: { center: _vm.center, zoom: 12 }
-                },
-                [
-                  _vm._l(_vm.markers, function(m, index) {
-                    return _c("gmap-marker", {
-                      key: index,
-                      attrs: { position: m.position },
-                      on: {
-                        click: function($event) {
-                          _vm.toggleInfoWindow(m, index)
-                        }
-                      }
-                    })
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "gmap-info-window",
-                    {
-                      attrs: {
-                        options: _vm.infoOptions,
-                        position: _vm.infoWindowPos,
-                        opened: _vm.infoWinOpen
-                      },
-                      on: {
-                        closeclick: function($event) {
-                          _vm.infoWinOpen = false
-                        }
-                      }
-                    },
-                    [
-                      _c("div", {
-                        domProps: { innerHTML: _vm._s(_vm.infoContent) }
-                      })
-                    ]
-                  )
-                ],
-                2
-              )
-            ],
-            1
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-30b92846", module.exports)
-  }
-}
-
-/***/ }),
-/* 427 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(428)
-}
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(430)
-/* template */
-var __vue_template__ = __webpack_require__(431)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "node_modules/vue-spinner/src/MoonLoader.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-4fa7fc7a", Component.options)
-  } else {
-    hotAPI.reload("data-v-4fa7fc7a", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 428 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(429);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(20)("74a5d0dc", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fa7fc7a\",\"scoped\":false,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./MoonLoader.vue", function() {
-     var newContent = require("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fa7fc7a\",\"scoped\":false,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./MoonLoader.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 429 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(19)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.v-spinner .v-moon1\n{\n\n    -webkit-animation: v-moonStretchDelay 0.6s 0s infinite linear;\n            animation: v-moonStretchDelay 0.6s 0s infinite linear;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    position: relative;\n}\n.v-spinner .v-moon2\n{\n    -webkit-animation: v-moonStretchDelay 0.6s 0s infinite linear;\n            animation: v-moonStretchDelay 0.6s 0s infinite linear;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    opacity: 0.8;\n    position: absolute;\n}\n.v-spinner .v-moon3\n{\n    opacity: 0.1;\n}\n@-webkit-keyframes v-moonStretchDelay\n{\n100%\n    {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes v-moonStretchDelay\n{\n100%\n    {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 430 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-
-  name: 'MoonLoader',
-
-  props: {
-    loading: {
-      type: Boolean,
-      default: true
-    },
-    color: {
-      type: String,
-      default: '#5dc596'
-    },
-    size: {
-      type: String,
-      default: '60px'
-    },
-    margin: {
-      type: String,
-      default: '2px'
-    },
-    radius: {
-      type: String,
-      default: '100%'
-    }
-  },
-  data: function data() {
-    return {
-      spinnerStyle: {
-        height: this.size,
-        width: this.size,
-        borderRadius: this.radius
-      }
-    };
-  },
-
-  computed: {
-    moonSize: function moonSize() {
-      return parseFloat(this.size) / 7;
-    },
-    spinnerMoonStyle: function spinnerMoonStyle() {
-      return {
-        height: this.moonSize + 'px',
-        width: this.moonSize + 'px',
-        borderRadius: this.radius
-      };
-    },
-    animationStyle2: function animationStyle2() {
-      return {
-        top: parseFloat(this.size) / 2 - this.moonSize / 2 + 'px',
-        backgroundColor: this.color
-      };
-    },
-    animationStyle3: function animationStyle3() {
-      return {
-        border: this.moonSize + 'px solid ' + this.color
-      };
-    }
-  }
-
-});
-
-/***/ }),
-/* 431 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      directives: [
-        {
-          name: "show",
-          rawName: "v-show",
-          value: _vm.loading,
-          expression: "loading"
-        }
-      ],
-      staticClass: "v-spinner"
-    },
-    [
-      _c("div", { staticClass: "v-moon v-moon1", style: _vm.spinnerStyle }, [
-        _c("div", {
-          staticClass: "v-moon v-moon2",
-          style: [_vm.spinnerMoonStyle, _vm.animationStyle2]
-        }),
-        _c("div", {
-          staticClass: "v-moon v-moon3",
-          style: [_vm.spinnerStyle, _vm.animationStyle3]
-        })
-      ])
-    ]
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-4fa7fc7a", module.exports)
-  }
-}
-
-/***/ }),
-/* 432 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 433 */,
-/* 434 */,
-/* 435 */,
-/* 436 */,
-/* 437 */,
-/* 438 */,
-/* 439 */,
-/* 440 */,
-/* 441 */,
-/* 442 */,
-/* 443 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(3)
-/* script */
-var __vue_script__ = __webpack_require__(444)
-/* template */
-var __vue_template__ = __webpack_require__(445)
+var __vue_template__ = __webpack_require__(421)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -94657,7 +93794,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 444 */
+/* 420 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -94803,7 +93940,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 445 */
+/* 421 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -95157,6 +94294,860 @@ if (false) {
     require("vue-hot-reload-api")      .rerender("data-v-35977711", module.exports)
   }
 }
+
+/***/ }),
+/* 422 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            center: { lat: -8.362015113641032, lng: -74.57030276914249 },
+            map: null,
+            infoContent: '',
+            infoWindowPos: {
+                lat: 0,
+                lng: 0
+            },
+            infoWinOpen: false,
+            currentMidx: null,
+            //optional: offset infowindow so it visually sits nicely on top of our marker
+            infoOptions: {
+                pixelOffset: {
+                    width: 0,
+                    height: -35
+                }
+            },
+            markers: [{
+                name: "Casa de Antony",
+                description: "descripcion 1",
+                position: { lat: -8.362034144896839, lng: -74.57029082816086 }
+            }, {
+                name: "Casa de John",
+                description: "descripcion 2",
+                position: { lat: -8.392125575238598, lng: -74.55437721388037 }
+            }]
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        //set bounds of the map
+        this.$refs.gmap.$mapPromise.then(function (map) {
+            var bounds = new google.maps.LatLngBounds();
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = _this.markers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var m = _step.value;
+
+                    bounds.extend(m.position);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            map.fitBounds(bounds);
+        });
+    },
+
+    methods: {
+        toggleInfoWindow: function toggleInfoWindow(marker, idx) {
+            this.infoWindowPos = marker.position;
+            this.infoContent = this.getInfoWindowContent(marker);
+
+            //check if its the same marker that was selected if yes toggle
+            if (this.currentMidx == idx) {
+                this.infoWinOpen = !this.infoWinOpen;
+            }
+            //if different marker set infowindow to open and reset current marker index
+            else {
+                    this.infoWinOpen = true;
+                    this.currentMidx = idx;
+                }
+        },
+        getInfoWindowContent: function getInfoWindowContent(marker) {
+            return "\n                <div class=\"card\">\n                    <div class=\"card-image\">\n                        <figure class=\"image is-4by3\">\n                            <img src=\"https://bulma.io/images/placeholders/96x96.png\" alt=\"Placeholder image\">\n                        </figure>\n                    </div>\n                    <div class=\"card-content\">\n                        <div class=\"media\">\n                            <div class=\"media-content\">\n                                <p class=\"title is-4\">" + marker.name + "</p>\n                            </div>\n                        </div>\n                        <div class=\"content\">\n                            " + marker.description + "\n                        </div>\n                    </div>\n                </div>";
+        }
+    }
+});
+
+/***/ }),
+/* 423 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Componente de Administrador")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("h1", [_vm._v("asd")]),
+              _vm._v(" "),
+              _c(
+                "gmap-map",
+                {
+                  ref: "gmap",
+                  staticStyle: { width: "100%", height: "100vh" },
+                  attrs: { center: _vm.center, zoom: 12 }
+                },
+                [
+                  _vm._l(_vm.markers, function(m, index) {
+                    return _c("gmap-marker", {
+                      key: index,
+                      attrs: { position: m.position },
+                      on: {
+                        click: function($event) {
+                          _vm.toggleInfoWindow(m, index)
+                        }
+                      }
+                    })
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "gmap-info-window",
+                    {
+                      attrs: {
+                        options: _vm.infoOptions,
+                        position: _vm.infoWindowPos,
+                        opened: _vm.infoWinOpen
+                      },
+                      on: {
+                        closeclick: function($event) {
+                          _vm.infoWinOpen = false
+                        }
+                      }
+                    },
+                    [
+                      _c("div", {
+                        domProps: { innerHTML: _vm._s(_vm.infoContent) }
+                      })
+                    ]
+                  )
+                ],
+                2
+              )
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-49012161", module.exports)
+  }
+}
+
+/***/ }),
+/* 424 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(425)
+/* template */
+var __vue_template__ = __webpack_require__(426)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/notifier/VisualizeComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-09c12077", Component.options)
+  } else {
+    hotAPI.reload("data-v-09c12077", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 425 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            columns: ['id', 'name', 'age', 'Acciones'],
+            tableData: [{ id: 1, name: 'John', age: 20 }, { id: 2, name: "Jane", age: "24" }, { id: 3, name: "Susan", age: "16" }, { id: 4, name: "Chris", age: "55" }, { id: 5, name: "Dan", age: "40" }],
+            options: {
+                headings: {
+                    id: 'ID',
+                    name: 'Nombre',
+                    age: 'Edad',
+                    Acciones: 'Acciones'
+                },
+                sortable: ['name', 'age'],
+                filterable: ['name', 'age']
+            }
+        };
+    },
+    mounted: function mounted() {
+        console.log('Component mounted.');
+    },
+
+    methods: {
+        getData: function getData() {
+            return [{
+                code: "ZW",
+                name: "Zimbabwe",
+                created_at: "2015-04-24T01:46:50.459583",
+                updated_at: "2015-04-24T01:46:50.459593",
+                uri: "http://api.lobbyfacts.eu/api/1/country/245",
+                id: 245
+            }, {
+                code: "ZM",
+                name: "Zambia",
+                created_at: "2015-04-24T01:46:50.457459",
+                updated_at: "2015-04-24T01:46:50.457468",
+                uri: "http://api.lobbyfacts.eu/api/1/country/244",
+                id: 244
+            }];
+        },
+        getUser: function getUser(id) {
+            console.log(id);
+        }
+    }
+});
+
+/***/ }),
+/* 426 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Componente de Visualizacion")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("v-client-table", {
+                attrs: {
+                  data: _vm.tableData,
+                  columns: _vm.columns,
+                  options: _vm.options
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "Acciones",
+                    fn: function(props) {
+                      return _c("div", {}, [
+                        _c(
+                          "button",
+                          {
+                            on: {
+                              click: function($event) {
+                                _vm.getUser(props.row.id)
+                              }
+                            }
+                          },
+                          [_vm._v("Editar")]
+                        ),
+                        _vm._v(" "),
+                        _c("button", [_vm._v("Eliminar")])
+                      ])
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-09c12077", module.exports)
+  }
+}
+
+/***/ }),
+/* 427 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(428)
+/* template */
+var __vue_template__ = __webpack_require__(429)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/notifier/DeudasComponent.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-30b92846", Component.options)
+  } else {
+    hotAPI.reload("data-v-30b92846", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 428 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            center: { lat: -8.362015113641032, lng: -74.57030276914249 },
+            map: null,
+            infoContent: '',
+            infoWindowPos: {
+                lat: 0,
+                lng: 0
+            },
+            infoWinOpen: false,
+            currentMidx: null,
+            //optional: offset infowindow so it visually sits nicely on top of our marker
+            infoOptions: {
+                pixelOffset: {
+                    width: 0,
+                    height: -35
+                }
+            },
+            markers: [{
+                name: "Casa de Antony",
+                description: "descripcion 1",
+                position: { lat: -8.362034144896839, lng: -74.57029082816086 }
+            }, {
+                name: "Casa de John",
+                description: "descripcion 2",
+                position: { lat: -8.392125575238598, lng: -74.55437721388037 }
+            }]
+        };
+    },
+    mounted: function mounted() {
+        var _this = this;
+
+        //set bounds of the map
+        this.$refs.gmap.$mapPromise.then(function (map) {
+            var bounds = new google.maps.LatLngBounds();
+            var _iteratorNormalCompletion = true;
+            var _didIteratorError = false;
+            var _iteratorError = undefined;
+
+            try {
+                for (var _iterator = _this.markers[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+                    var m = _step.value;
+
+                    bounds.extend(m.position);
+                }
+            } catch (err) {
+                _didIteratorError = true;
+                _iteratorError = err;
+            } finally {
+                try {
+                    if (!_iteratorNormalCompletion && _iterator.return) {
+                        _iterator.return();
+                    }
+                } finally {
+                    if (_didIteratorError) {
+                        throw _iteratorError;
+                    }
+                }
+            }
+
+            map.fitBounds(bounds);
+        });
+    },
+
+    methods: {
+        toggleInfoWindow: function toggleInfoWindow(marker, idx) {
+            this.infoWindowPos = marker.position;
+            this.infoContent = this.getInfoWindowContent(marker);
+
+            //check if its the same marker that was selected if yes toggle
+            if (this.currentMidx == idx) {
+                this.infoWinOpen = !this.infoWinOpen;
+            }
+            //if different marker set infowindow to open and reset current marker index
+            else {
+                    this.infoWinOpen = true;
+                    this.currentMidx = idx;
+                }
+        },
+        getInfoWindowContent: function getInfoWindowContent(marker) {
+            return "\n                <div class=\"card\">\n                    <div class=\"card-image\">\n                        <figure class=\"image is-4by3\">\n                            <img src=\"https://bulma.io/images/placeholders/96x96.png\" alt=\"Placeholder image\">\n                        </figure>\n                    </div>\n                    <div class=\"card-content\">\n                        <div class=\"media\">\n                            <div class=\"media-content\">\n                                <p class=\"title is-4\">" + marker.name + "</p>\n                            </div>\n                        </div>\n                        <div class=\"content\">\n                            " + marker.description + "\n                        </div>\n                    </div>\n                </div>";
+        }
+    }
+});
+
+/***/ }),
+/* 429 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [
+            _vm._v("Componente de Administrador")
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c(
+                "gmap-map",
+                {
+                  ref: "gmap",
+                  staticStyle: { width: "100%", height: "100vh" },
+                  attrs: { center: _vm.center, zoom: 12 }
+                },
+                [
+                  _vm._l(_vm.markers, function(m, index) {
+                    return _c("gmap-marker", {
+                      key: index,
+                      attrs: { position: m.position },
+                      on: {
+                        click: function($event) {
+                          _vm.toggleInfoWindow(m, index)
+                        }
+                      }
+                    })
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "gmap-info-window",
+                    {
+                      attrs: {
+                        options: _vm.infoOptions,
+                        position: _vm.infoWindowPos,
+                        opened: _vm.infoWinOpen
+                      },
+                      on: {
+                        closeclick: function($event) {
+                          _vm.infoWinOpen = false
+                        }
+                      }
+                    },
+                    [
+                      _c("div", {
+                        domProps: { innerHTML: _vm._s(_vm.infoContent) }
+                      })
+                    ]
+                  )
+                ],
+                2
+              )
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-30b92846", module.exports)
+  }
+}
+
+/***/ }),
+/* 430 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(431)
+}
+var normalizeComponent = __webpack_require__(3)
+/* script */
+var __vue_script__ = __webpack_require__(433)
+/* template */
+var __vue_template__ = __webpack_require__(434)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "node_modules/vue-spinner/src/MoonLoader.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-4fa7fc7a", Component.options)
+  } else {
+    hotAPI.reload("data-v-4fa7fc7a", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 431 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(432);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(20)("74a5d0dc", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fa7fc7a\",\"scoped\":false,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./MoonLoader.vue", function() {
+     var newContent = require("!!../../css-loader/index.js!../../vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-4fa7fc7a\",\"scoped\":false,\"hasInlineConfig\":true}!../../vue-loader/lib/selector.js?type=styles&index=0!./MoonLoader.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(19)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.v-spinner .v-moon1\n{\n\n    -webkit-animation: v-moonStretchDelay 0.6s 0s infinite linear;\n            animation: v-moonStretchDelay 0.6s 0s infinite linear;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    position: relative;\n}\n.v-spinner .v-moon2\n{\n    -webkit-animation: v-moonStretchDelay 0.6s 0s infinite linear;\n            animation: v-moonStretchDelay 0.6s 0s infinite linear;\n    -webkit-animation-fill-mode: forwards;\n            animation-fill-mode: forwards;\n    opacity: 0.8;\n    position: absolute;\n}\n.v-spinner .v-moon3\n{\n    opacity: 0.1;\n}\n@-webkit-keyframes v-moonStretchDelay\n{\n100%\n    {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n@keyframes v-moonStretchDelay\n{\n100%\n    {\n        -webkit-transform: rotate(360deg);\n                transform: rotate(360deg);\n}\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 433 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+
+  name: 'MoonLoader',
+
+  props: {
+    loading: {
+      type: Boolean,
+      default: true
+    },
+    color: {
+      type: String,
+      default: '#5dc596'
+    },
+    size: {
+      type: String,
+      default: '60px'
+    },
+    margin: {
+      type: String,
+      default: '2px'
+    },
+    radius: {
+      type: String,
+      default: '100%'
+    }
+  },
+  data: function data() {
+    return {
+      spinnerStyle: {
+        height: this.size,
+        width: this.size,
+        borderRadius: this.radius
+      }
+    };
+  },
+
+  computed: {
+    moonSize: function moonSize() {
+      return parseFloat(this.size) / 7;
+    },
+    spinnerMoonStyle: function spinnerMoonStyle() {
+      return {
+        height: this.moonSize + 'px',
+        width: this.moonSize + 'px',
+        borderRadius: this.radius
+      };
+    },
+    animationStyle2: function animationStyle2() {
+      return {
+        top: parseFloat(this.size) / 2 - this.moonSize / 2 + 'px',
+        backgroundColor: this.color
+      };
+    },
+    animationStyle3: function animationStyle3() {
+      return {
+        border: this.moonSize + 'px solid ' + this.color
+      };
+    }
+  }
+
+});
+
+/***/ }),
+/* 434 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      directives: [
+        {
+          name: "show",
+          rawName: "v-show",
+          value: _vm.loading,
+          expression: "loading"
+        }
+      ],
+      staticClass: "v-spinner"
+    },
+    [
+      _c("div", { staticClass: "v-moon v-moon1", style: _vm.spinnerStyle }, [
+        _c("div", {
+          staticClass: "v-moon v-moon2",
+          style: [_vm.spinnerMoonStyle, _vm.animationStyle2]
+        }),
+        _c("div", {
+          staticClass: "v-moon v-moon3",
+          style: [_vm.spinnerStyle, _vm.animationStyle3]
+        })
+      ])
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-4fa7fc7a", module.exports)
+  }
+}
+
+/***/ }),
+/* 435 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
