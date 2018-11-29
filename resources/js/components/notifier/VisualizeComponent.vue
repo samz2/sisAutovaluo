@@ -66,6 +66,6 @@ export default {
         getUser(id) {
             console.log(id);
         }
-    }
+    },
 }
 </script>
