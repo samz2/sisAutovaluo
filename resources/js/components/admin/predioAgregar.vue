@@ -17,21 +17,21 @@
                         <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                             <label>Codigo Predio</label>
-                            <input type="codigo" class="form-control" placeholder="Codigo de Predio" v-model="predio.codPredio" required>
+                            <input type="text" class="form-control" placeholder="Codigo de Predio" v-model="predio.codPredio" required>
                             </div>
                         </div>
                     
                         <div class="col-lg-5 col-md-5">
                             <div class="form-group">
                             <label>Calle</label>
-                            <input type="Calle" class="form-control" placeholder="Calle" v-model="predio.calle" required>
+                            <input type="text" class="form-control" placeholder="Calle" v-model="predio.calle" required>
                             </div>
                         </div>
 
                         <div class="col-lg-4 col-md-4">
                             <div class="form-group">
                             <label>Numero</label>
-                            <input type="Numero" class="form-control" placeholder="Numero" v-model="predio.numero" >
+                            <input type="text" class="form-control" placeholder="Numero" v-model="predio.numero" >
                             </div>
                         </div>
                     </div>
@@ -40,28 +40,30 @@
                         <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                             <label>Manzana</label>
-                            <input type="Manzana" class="form-control" placeholder="Manzana" v-model="predio.mz" >
+                            <input type="text" class="form-control" placeholder="Manzana" v-model="predio.mz" >
                             </div>
                         </div>
                     
                         <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                             <label>Lote</label>
-                            <input type="Lote" class="form-control" placeholder="Lote" v-model="predio.lote">
+                            <input type="text" class="form-control" placeholder="Lote" v-model="predio.lote">
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                             <label>Interior</label>
-                            <input type="Interior" class="form-control" placeholder="Interior" v-model="predio.interior">
+                            <input type="text" class="form-control" placeholder="Interior" v-model="predio.interior">
                             </div>
                         </div>
 
                         <div class="col-lg-3 col-md-3">
                             <div class="form-group">
                             <label>Sector</label>
-                            <input type="Sector" class="form-control" placeholder="Sector" v-model="predio.sector">
+                            <select class="form-control" name="material" id="material" v-model="predio.sector" required>
+                                <option v-for="sc in sector" :value="sc.id_sector" :key="sc.id_sector" >{{sc.descripcion}}</option>
+                            </select>
                             </div>
                         </div>
                     </div>
@@ -115,26 +117,39 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-8 col-md-8">
-                            <h3>Contribuyente</h3>
+                        <div class="col-lg-4 col-md-4">
                             <div class="form-group">
-                                <div class="input-group">
-                                <input class="form-control" type="text" @keyup="getContribuyente(buscar)" v-model="buscar" placeholder="Contribuyentes" aria-label="Text input with segmented dropdown button">
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-outline-primary" >Buscar</button>
-                                </div>
+                            <label>Valor Predio</label>
+                            <input type="text" class="form-control" placeholder="Valor Predio" v-model="predio.valor">
                             </div>
-
-<tags-input 
-    element-id="tags"  
-    placeholder="Agregar contribuyente"
-    :limit=3
-    :only-existing-tags ="true"
-    v-model="selectedTags"
-    :existing-tags="lista"
-    :keypress="getContribuyente(74)"
-    :typeahead="true"></tags-input>
-
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="form-group">
+                            <label>Año</label>
+                            <input type="text" class="form-control" placeholder="Año" v-model="predio.anio">
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4">
+                            <div class="form-group">
+                            <label>Porcentaje de Propiedad</label>
+                            <input type="text" class="form-control" placeholder="Porcentaje de Propiedad" v-model="predio.percentProp">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10">
+                            <h3>Contribuyente <small>(Buscar por DNI)</small></h3>
+                            <div class="form-group">
+                                <tags-input 
+                                    element-id="tags"  
+                                    placeholder="Agregar contribuyente"
+                                    input-class="form-control"
+                                    :limit=3
+                                    :only-existing-tags ="true"
+                                    v-model="selectedTags"
+                                    :existing-tags="lista"
+                                    :typeahead="true">
+                                </tags-input>
                             </div>
                         </div>
                     </div>
@@ -205,7 +220,10 @@ export default {
         clasificacion: null,
         localidad: null,
         latitud: null,
-        longitud: null
+        longitud: null,
+        percentProp:null,
+        valor:null,
+        anio:null
       },
       buscar: null,
       selectedTags: [],
@@ -220,6 +238,7 @@ export default {
         // selectedTags: null,
       material: [],
       condicion: [],
+      sector:[],
       conservacion: [],
       clasificacion: [],
       localidad: [],
@@ -244,8 +263,14 @@ export default {
     this.geolocate();
     this.markers[0].position = this.center;
     this.getDatosSelect();
+    $("input[placeholder='Agregar contribuyente']").keyup(function(a=this.getContribuyente()){
+        return this.value;
+    });
+    
   },
-  created() {},
+  created() {
+      
+  },
   methods: {
     geolocate: function() {
       navigator.geolocation.getCurrentPosition(position => {
@@ -272,6 +297,7 @@ export default {
           this.conservacion = data.data.conservacion;
           this.clasificacion = data.data.clasificacion;
           this.localidad = data.data.localidad;
+          this.sector = data.data.sector;
         })
         .catch(error => {
           console.log("Ocurrio un error " + error);
@@ -279,7 +305,7 @@ export default {
         });
     },
     getContribuyente(e){
-        // console.log(e);
+        
         axios.get(`/getContribuyente/${e}`)
                 .then(data => {
                     let datos = data.data.contribuyente;
@@ -323,11 +349,11 @@ export default {
       //     if (res) {
       axios
         .post(`predio`, {
-          graduadoIn: this.graduadoIn,
-          entidadAdd: this.entidadAdd
+          predio: this.predio,
+          contribuyentes: this.selectedTags
         })
         .then(data => {
-          if (data.data == "ambos correcto") {
+          if (data.data == "OK") {
             swal({
               position: "top-end",
               type: "success",
@@ -342,7 +368,7 @@ export default {
             swal({
               position: "top-end",
               type: "error",
-              title: "No se pudo actualizar",
+              title: "No se pudo Ingresar datos",
               showConfirmButton: false,
               timer: 2000
             });

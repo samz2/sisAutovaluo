@@ -9,7 +9,9 @@ use App\Conservacion;
 use App\Clasificacion;
 use App\predio;
 use App\Localidad;
-
+use App\PredioContribuyente;
+use App\PredioHistoria;
+use App\Sector;
 
 class predioController extends Controller
 {
@@ -40,7 +42,8 @@ class predioController extends Controller
         $condicion = CondicionPropiedad::all();
         $clasificacion=Clasificacion::all();
         $localidad=Localidad::all();
-        return compact('material','conservacion','condicion','clasificacion','localidad');
+        $sector=Sector::all();
+        return compact('material','conservacion','condicion','clasificacion','localidad','sector');
     }
 
     public function getContribuyente($e){
@@ -82,7 +85,40 @@ class predioController extends Controller
         $predio->idLocalidad=$request['predio']['localidad'];
         $predio->latitud=$request['predio']['latitud'];
         $predio->longitud=$request['predio']['longitud'];
-        $predio->created_at=getdate('Y-m-d');
+        $predio->created_at=date('Y-m-d');
+        $predio->updated_at=date('Y-m-d');
+
+        $predio->save();
+
+        foreach ($request['contribuyentes'] as $key => $value) {
+
+            $prediocontribuyente=PredioContribuyente::updateOrCreate(
+                ['id'=>null],
+                [
+                    'codPredio'         =>  $request['predio']['codPredio'],
+                    'codContribuyente'  =>  $value,
+                    'created_at'        =>  date('Y-m-d'),
+                    'updated_at'         =>  date('Y-m-d')
+                ]
+            );
+
+            $prediohistoria=new PredioHistoria();
+            $prediohistoria->id=null;
+            $prediohistoria->codPredioContribuyente=$prediocontribuyente->id;
+            $prediohistoria->valorPredio=$request['predio']['valor'];
+            $prediohistoria->anio=$request['predio']['anio'];
+            $prediohistoria->percentPropiedad=$request['predio']['percentProp'];
+            $prediohistoria->created_at=date('Y-m-d');
+            $prediohistoria->updated_at=date('Y-m-d');
+            $prediohistoria->save();
+
+        }
+
+        if($predio && $prediocontribuyente && $prediohistoria){
+            return "OK";
+        }else{
+            return "FAIL";
+        }
     }
 
     /**

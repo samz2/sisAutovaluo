@@ -6,7 +6,7 @@
                     <div class="card-header">Lista de Predios</div>
 
                     <div class="card-body">
-                        <div class="content table-responsive table-full-width">
+                        <div class="content table-responsive table-sm">
                                 <v-client-table :data="predio" :columns="columns" :options="options">
                                     <div slot="Acciones" slot-scope="props">
                                         <!-- <a  target="_blank" slot="Acciones" slot-scope="props" :href="props.row.Acciones" class="pe-7s-pen">ASD</a>
@@ -47,20 +47,20 @@ export default {
                 }
             ],
             columns: [
-                'CodPredio',
-                'Calle', 
-                'Numero',
-                'Piso',
-                'Mz',
-                'Lote',
-                'Interior',
-                'Sector',
-                'Condicion',
-                'Conservacion',
-                'Material',
-                'Clasificacion',
-                'Localidad',
-                'Longitud'
+                'codPredio',
+                'calle', 
+                'numero',
+                'piso',
+                'mz',
+                'lote',
+                'interior',
+                'sector',
+                'condicion',
+                'conservacion',
+                'material',
+                'clasificacion',
+                // 'latitud',
+                // 'longitud'
                 ],
             options: {
                 headings: {

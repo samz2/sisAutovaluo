@@ -93713,6 +93713,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: String,
             default: 'tags-input-wrapper-default'
         }
+
     },
 
     data: function data() {
@@ -93727,7 +93728,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             searchResults: [],
             searchSelection: 0
+
         };
+    },
+    mounted: function mounted() {
+
+        $('.input-number').keypress(function () {
+            this.value = (this.value + '').replace(/[^0-9]/g, '');
+        });
     },
     created: function created() {
         this.tagsFromValue();
@@ -93741,7 +93749,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         tags: function tags() {
             // Updating the hidden input
             this.hiddenInput = this.tags.join(',');
-
+            //console.log(this.tags);
             // Update the bound v-model value
             this.$emit('input', this.tags);
         },
@@ -93752,6 +93760,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         escapeRegExp: function escapeRegExp(string) {
+            //console.log(string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         },
         tagFromInput: function tagFromInput() {
@@ -93775,14 +93784,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     slug = existingTag ? slug : text;
                     text = existingTag ? existingTag : text;
-
                     this.addTag(slug, text);
                 }
             }
         },
         tagFromSearchOnClick: function tagFromSearchOnClick(tag) {
             this.tagFromSearch(tag);
-
+            //console.log(tag);
             this.$refs['taginput'].blur();
         },
         tagFromSearch: function tagFromSearch(tag) {
@@ -93827,10 +93835,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$emit('tags-updated');
         },
         searchTag: function searchTag() {
+            var _this = this;
+
             if (this.typeahead === true) {
                 if (this.oldInput != this.input || !this.searchResults.length && this.typeaheadActivationThreshold == 0) {
+                    //------------------- Funcion para agregar etiquetas dinamicamente al input  
+                    if (this.input != '') {
+                        axios.get('/getContribuyente/' + this.input).then(function (data) {
+                            //console.log(data);
+                            var datos = data.data.contribuyente;
+                            datos.forEach(function (e, i) {
+                                _this.existingTags[e.dniRUC] = e.nombres + '-' + e.dniRUC;
+                            });
+                        }).catch(function (error) {
+                            console.log('Ocurrio un error ' + error);
+                            _this.$Progress.fail();
+                        });
+                    }
+                    //---------------------------------------------------------------------------------------------
                     this.searchResults = [];
                     this.searchSelection = 0;
+
                     var input = this.input.trim();
 
                     if (input.length && input.length >= this.typeaheadActivationThreshold || this.typeaheadActivationThreshold == 0) {
@@ -93864,11 +93889,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.searchTag();
         },
         hideTypeahead: function hideTypeahead() {
-            var _this = this;
+            var _this2 = this;
 
             if (!this.input.length) {
                 this.$nextTick(function () {
-                    _this.ignoreSearchResults();
+                    _this2.ignoreSearchResults();
                 });
             }
         },
@@ -93951,7 +93976,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         * Check if the tag with the provided slug is already selected
         */
         tagSelected: function tagSelected(slug) {
-            var _this2 = this;
+            var _this3 = this;
 
             if (this.allowDuplicates) {
                 return false;
@@ -93963,7 +93988,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var searchSlug = this.makeSlug(slug);
             var found = this.tags.find(function (value) {
-                return searchSlug == _this2.makeSlug(value);
+                //console.log(value);
+                return searchSlug == _this3.makeSlug(value);
             });
 
             return !!found;
@@ -93979,7 +94005,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (this.addTagsOnComma) {
                     // The comma shouldn't actually be inserted
                     e.preventDefault();
-
+                    //console.log(this.addTagsOnComma);
                     // Add the inputed tag
                     this.tagFromInput();
                 }
@@ -94383,7 +94409,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 latitud: null,
                 longitud: null
             }],
-            columns: ['CodPredio', 'Calle', 'Numero', 'Piso', 'Mz', 'Lote', 'Interior', 'Sector', 'Condicion', 'Conservacion', 'Material', 'Clasificacion', 'Localidad', 'Longitud'],
+            columns: ['codPredio', 'calle', 'numero', 'piso', 'mz', 'lote', 'interior', 'sector', 'condicion', 'conservacion', 'material', 'clasificacion'],
             options: {
                 headings: {
                     CodPredio: 'Cod',
@@ -94441,7 +94467,7 @@ var render = function() {
           _c("div", { staticClass: "card-body" }, [
             _c(
               "div",
-              { staticClass: "content table-responsive table-full-width" },
+              { staticClass: "content table-responsive table-sm" },
               [
                 _c("v-client-table", {
                   attrs: {
@@ -94591,7 +94617,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    /* The input */\n.tags-input {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.tags-input input {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    background: transparent;\n    border: none;\n}\n.tags-input input:focus {\n    outline: none;\n}\n.tags-input input[type=\"text\"] {\n    color: #495057;\n}\n.tags-input-wrapper-default {\n    padding: .5rem .25rem;\n\n    background: #fff;\n\n    border: 1px solid transparent;\n    border-radius: .25rem;\n    border-color: #dbdbdb;\n}\n\n/* The tag badges & the remove icon */\n.tags-input span {\n    margin-right: 0.3rem;\n}\n.tags-input-remove {\n    cursor: pointer;\n    position: relative;\n    display: inline-block;\n    width: 0.5rem;\n    height: 0.5rem;\n    overflow: hidden;\n}\n.tags-input-remove:before, .tags-input-remove:after {\n    content: '';\n    position: absolute;\n    width: 100%;\n    top: 50%;\n    left: 0;\n    background: #5dc282;\n    \n    height: 2px;\n    margin-top: -1px;\n}\n.tags-input-remove:before {\n    -webkit-transform: rotate(45deg);\n            transform: rotate(45deg);\n}\n.tags-input-remove:after {\n    -webkit-transform: rotate(-45deg);\n            transform: rotate(-45deg);\n}\n\n/* Tag badge styles */\n.tags-input-badge {\n    display: inline-block;\n    padding: 0.25em 0.4em;\n    font-size: 75%;\n    font-weight: 700;\n    line-height: 1;\n    text-align: center;\n    white-space: nowrap;\n    vertical-align: baseline;\n    border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\n    padding-right: 0.6em;\n    padding-left: 0.6em;\n    border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\n    color: #212529;\n    background-color: #f0f1f2;\n}\n\n/* Typeahead - badges */\n.typeahead-badges > span {\n    cursor: pointer;\n    margin-right: 0.3rem;\n}\n\n/* Typeahead - dropdown */\n.typeahead-dropdown {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    position: absolute;\n    width: 100%;\n}\n.typeahead-dropdown li {\n    padding: .25rem 1rem;\n    cursor: pointer;\n}\n\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\n    color: #fff;\n    background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\n    color: #fff;\n    background-color: #007bff;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    /* The input */\n.tags-input {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.tags-input input {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    background: transparent;\n    border: none;\n}\n.tags-input input:focus {\n    outline: none;\n}\n.tags-input input[type=\"text\"] {\n    color: #495057;\n}\n.tags-input-wrapper-default {\n    padding: .5rem .25rem;\n\n    background: #fff;\n\n    border: 1px solid transparent;\n    border-radius: .25rem;\n    border-color: #dbdbdb;\n}\n\n/* The tag badges & the remove icon */\n.tags-input span {\n    margin-right: 0.3rem;\n}\n.tags-input-remove {\n    cursor: pointer;\n    position: relative;\n    display: inline-block;\n    width: 0.5rem;\n    height: 0.5rem;\n    overflow: hidden;\n}\n.tags-input-remove:before, .tags-input-remove:after {\n    content: '';\n    position: absolute;\n    width: 100%;\n    top: 50%;\n    left: 0;\n    background: #5dc282;\n    \n    height: 2px;\n    margin-top: -1px;\n}\n.tags-input-remove:before {\n    -webkit-transform: rotate(45deg);\n            transform: rotate(45deg);\n}\n.tags-input-remove:after {\n    -webkit-transform: rotate(-45deg);\n            transform: rotate(-45deg);\n}\n\n/* Tag badge styles */\n.tags-input-badge {\n    display: inline-block;\n    padding: 0.25em 0.4em;\n    font-size: 75%;\n    font-weight: 700;\n    line-height: 1;\n    text-align: center;\n    white-space: nowrap;\n    vertical-align: baseline;\n    border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\n    padding-right: 0.6em;\n    padding-left: 0.6em;\n    border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\n    color: #212529;\n    background-color: #f0f1f2;\n}\n\n/* Typeahead - badges */\n.typeahead-badges > span {\n    cursor: pointer;\n    margin-right: 0.3rem;\n}\n\n/* Typeahead - dropdown */\n.typeahead-dropdown {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    position: absolute;\n    width: 100%;\n}\n.typeahead-dropdown li {\n    padding: .25rem 1rem;\n    cursor: pointer;\n}\n\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\n    color: #fff;\n    background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\n    color: #fff;\n    background-color: #007bff;\n}\n\n", ""]);
 
 // exports
 
@@ -94602,6 +94628,21 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -94809,7 +94850,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         clasificacion: null,
         localidad: null,
         latitud: null,
-        longitud: null
+        longitud: null,
+        percentProp: null,
+        valor: null,
+        anio: null
       },
       buscar: null,
       selectedTags: [],
@@ -94824,6 +94868,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       // selectedTags: null,
       material: [],
       condicion: [],
+      sector: [],
       conservacion: [],
       clasificacion: [],
       localidad: [],
@@ -94846,6 +94891,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     this.geolocate();
     this.markers[0].position = this.center;
     this.getDatosSelect();
+    $("input[placeholder='Agregar contribuyente']").keyup(function () {
+      var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getContribuyente();
+
+      return this.value;
+    });
   },
   created: function created() {},
 
@@ -94877,6 +94927,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         _this2.conservacion = data.data.conservacion;
         _this2.clasificacion = data.data.clasificacion;
         _this2.localidad = data.data.localidad;
+        _this2.sector = data.data.sector;
       }).catch(function (error) {
         console.log("Ocurrio un error " + error);
         _this2.$Progress.fail();
@@ -94885,7 +94936,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     getContribuyente: function getContribuyente(e) {
       var _this3 = this;
 
-      // console.log(e);
       axios.get("/getContribuyente/" + e).then(function (data) {
         var datos = data.data.contribuyente;
         datos.forEach(function (e, i) {
@@ -94928,10 +94978,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       // this.$validator.validateAll().then(res => {
       //     if (res) {
       axios.post("predio", {
-        graduadoIn: this.graduadoIn,
-        entidadAdd: this.entidadAdd
+        predio: this.predio,
+        contribuyentes: this.selectedTags
       }).then(function (data) {
-        if (data.data == "ambos correcto") {
+        if (data.data == "OK") {
           swal({
             position: "top-end",
             type: "success",
@@ -94946,7 +94996,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           swal({
             position: "top-end",
             type: "error",
-            title: "No se pudo actualizar",
+            title: "No se pudo Ingresar datos",
             showConfirmButton: false,
             timer: 2000
           });
@@ -95053,7 +95103,7 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             attrs: {
-                              type: "codigo",
+                              type: "text",
                               placeholder: "Codigo de Predio",
                               required: ""
                             },
@@ -95089,7 +95139,7 @@ var render = function() {
                             ],
                             staticClass: "form-control",
                             attrs: {
-                              type: "Calle",
+                              type: "text",
                               placeholder: "Calle",
                               required: ""
                             },
@@ -95124,7 +95174,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { type: "Numero", placeholder: "Numero" },
+                            attrs: { type: "text", placeholder: "Numero" },
                             domProps: { value: _vm.predio.numero },
                             on: {
                               input: function($event) {
@@ -95158,7 +95208,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { type: "Manzana", placeholder: "Manzana" },
+                            attrs: { type: "text", placeholder: "Manzana" },
                             domProps: { value: _vm.predio.mz },
                             on: {
                               input: function($event) {
@@ -95186,7 +95236,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { type: "Lote", placeholder: "Lote" },
+                            attrs: { type: "text", placeholder: "Lote" },
                             domProps: { value: _vm.predio.lote },
                             on: {
                               input: function($event) {
@@ -95218,10 +95268,7 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: {
-                              type: "Interior",
-                              placeholder: "Interior"
-                            },
+                            attrs: { type: "text", placeholder: "Interior" },
                             domProps: { value: _vm.predio.interior },
                             on: {
                               input: function($event) {
@@ -95243,31 +95290,55 @@ var render = function() {
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Sector")]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.predio.sector,
-                                expression: "predio.sector"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { type: "Sector", placeholder: "Sector" },
-                            domProps: { value: _vm.predio.sector },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.predio.sector,
+                                  expression: "predio.sector"
                                 }
-                                _vm.$set(
-                                  _vm.predio,
-                                  "sector",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                name: "material",
+                                id: "material",
+                                required: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.predio,
+                                    "sector",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
                               }
-                            }
-                          })
+                            },
+                            _vm._l(_vm.sector, function(sc) {
+                              return _c(
+                                "option",
+                                {
+                                  key: sc.id_sector,
+                                  domProps: { value: sc.id_sector }
+                                },
+                                [_vm._v(_vm._s(sc.descripcion))]
+                              )
+                            })
+                          )
                         ])
                       ])
                     ]),
@@ -95541,55 +95612,125 @@ var render = function() {
                     ]),
                     _vm._v(" "),
                     _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-lg-8 col-md-8" }, [
-                        _c("h3", [_vm._v("Contribuyente")]),
+                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Valor Predio")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.valor,
+                                expression: "predio.valor"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Valor Predio"
+                            },
+                            domProps: { value: _vm.predio.valor },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.predio,
+                                  "valor",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Año")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.anio,
+                                expression: "predio.anio"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: { type: "text", placeholder: "Año" },
+                            domProps: { value: _vm.predio.anio },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.predio,
+                                  "anio",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Porcentaje de Propiedad")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.percentProp,
+                                expression: "predio.percentProp"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Porcentaje de Propiedad"
+                            },
+                            domProps: { value: _vm.predio.percentProp },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.predio,
+                                  "percentProp",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-10 col-md-10" }, [
+                        _vm._m(1),
                         _vm._v(" "),
                         _c(
                           "div",
                           { staticClass: "form-group" },
                           [
-                            _c("div", { staticClass: "input-group" }, [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.buscar,
-                                    expression: "buscar"
-                                  }
-                                ],
-                                staticClass: "form-control",
-                                attrs: {
-                                  type: "text",
-                                  placeholder: "Contribuyentes",
-                                  "aria-label":
-                                    "Text input with segmented dropdown button"
-                                },
-                                domProps: { value: _vm.buscar },
-                                on: {
-                                  keyup: function($event) {
-                                    _vm.getContribuyente(_vm.buscar)
-                                  },
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.buscar = $event.target.value
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
-                              _vm._m(1)
-                            ]),
-                            _vm._v(" "),
                             _c("tags-input", {
                               attrs: {
                                 "element-id": "tags",
                                 placeholder: "Agregar contribuyente",
+                                "input-class": "form-control",
                                 limit: 3,
                                 "only-existing-tags": true,
                                 "existing-tags": _vm.lista,
-                                keypress: _vm.getContribuyente(74),
                                 typeahead: true
                               },
                               model: {
@@ -95779,12 +95920,9 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-append" }, [
-      _c(
-        "button",
-        { staticClass: "btn btn-outline-primary", attrs: { type: "button" } },
-        [_vm._v("Buscar")]
-      )
+    return _c("h3", [
+      _vm._v("Contribuyente "),
+      _c("small", [_vm._v("(Buscar por DNI)")])
     ])
   },
   function() {
