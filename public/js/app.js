@@ -93713,7 +93713,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: String,
             default: 'tags-input-wrapper-default'
         }
-
     },
 
     data: function data() {
@@ -93728,14 +93727,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             searchResults: [],
             searchSelection: 0
-
         };
-    },
-    mounted: function mounted() {
-
-        $('.input-number').keypress(function () {
-            this.value = (this.value + '').replace(/[^0-9]/g, '');
-        });
     },
     created: function created() {
         this.tagsFromValue();
@@ -93749,7 +93741,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         tags: function tags() {
             // Updating the hidden input
             this.hiddenInput = this.tags.join(',');
-            //console.log(this.tags);
+
             // Update the bound v-model value
             this.$emit('input', this.tags);
         },
@@ -93760,7 +93752,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         escapeRegExp: function escapeRegExp(string) {
-            //console.log(string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         },
         tagFromInput: function tagFromInput() {
@@ -93784,13 +93775,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     slug = existingTag ? slug : text;
                     text = existingTag ? existingTag : text;
+
                     this.addTag(slug, text);
                 }
             }
         },
         tagFromSearchOnClick: function tagFromSearchOnClick(tag) {
             this.tagFromSearch(tag);
-            //console.log(tag);
+
             this.$refs['taginput'].blur();
         },
         tagFromSearch: function tagFromSearch(tag) {
@@ -93855,7 +93847,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     //---------------------------------------------------------------------------------------------
                     this.searchResults = [];
                     this.searchSelection = 0;
-
                     var input = this.input.trim();
 
                     if (input.length && input.length >= this.typeaheadActivationThreshold || this.typeaheadActivationThreshold == 0) {
@@ -93988,7 +93979,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var searchSlug = this.makeSlug(slug);
             var found = this.tags.find(function (value) {
-                //console.log(value);
                 return searchSlug == _this3.makeSlug(value);
             });
 
@@ -94005,7 +93995,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (this.addTagsOnComma) {
                     // The comma shouldn't actually be inserted
                     e.preventDefault();
-                    //console.log(this.addTagsOnComma);
+
                     // Add the inputed tag
                     this.tagFromInput();
                 }
