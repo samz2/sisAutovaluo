@@ -96,18 +96,18 @@ class predioController extends Controller
                 ['id'=>null],
                 [
                     'codPredio'         =>  $request['predio']['codPredio'],
-                    'codContribuyente'  =>  $value,
+                    'codContribuyente'  =>  $value[0],
                     'created_at'        =>  date('Y-m-d'),
-                    'updated_at'         =>  date('Y-m-d')
+                    'updated_at'        =>  date('Y-m-d')
                 ]
             );
 
             $prediohistoria=new PredioHistoria();
             $prediohistoria->id=null;
             $prediohistoria->codPredioContribuyente=$prediocontribuyente->id;
-            $prediohistoria->valorPredio=$request['predio']['valor'];
-            $prediohistoria->anio=$request['predio']['anio'];
-            $prediohistoria->percentPropiedad=$request['predio']['percentProp'];
+            $prediohistoria->valorPredio=$request['rows'][$key]['valor'];
+            $prediohistoria->anio=$request['rows'][$key]['anio'];
+            $prediohistoria->percentPropiedad=$request['rows'][$key]['percent'];
             $prediohistoria->created_at=date('Y-m-d');
             $prediohistoria->updated_at=date('Y-m-d');
             $prediohistoria->save();

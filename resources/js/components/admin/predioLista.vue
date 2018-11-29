@@ -79,8 +79,8 @@ export default {
                     Localidad:'Localidad',
                     Longitud:'Longitud',
                         },
-                sortable: ['Cod', 'Calle','Numero','Piso'],
-                filterable: ['Cod', 'Calle','Numero','Piso']
+                sortable: ['CodPredio', 'calle','numero','piso'],
+                filterable: ['CodPredio', 'calle','numero','piso']
                     }
         }
     },

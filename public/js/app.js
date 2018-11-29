@@ -94427,8 +94427,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     Localidad: 'Localidad',
                     Longitud: 'Longitud'
                 },
-                sortable: ['Cod', 'Calle', 'Numero', 'Piso'],
-                filterable: ['Cod', 'Calle', 'Numero', 'Piso']
+                sortable: ['CodPredio', 'calle', 'numero', 'piso'],
+                filterable: ['CodPredio', 'calle', 'numero', 'piso']
             }
         };
     },
@@ -94617,7 +94617,7 @@ exports = module.exports = __webpack_require__(9)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n    /* The input */\n.tags-input {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    -webkit-box-align: center;\n        -ms-flex-align: center;\n            align-items: center;\n}\n.tags-input input {\n    -webkit-box-flex: 1;\n        -ms-flex: 1;\n            flex: 1;\n    background: transparent;\n    border: none;\n}\n.tags-input input:focus {\n    outline: none;\n}\n.tags-input input[type=\"text\"] {\n    color: #495057;\n}\n.tags-input-wrapper-default {\n    padding: .5rem .25rem;\n\n    background: #fff;\n\n    border: 1px solid transparent;\n    border-radius: .25rem;\n    border-color: #dbdbdb;\n}\n\n/* The tag badges & the remove icon */\n.tags-input span {\n    margin-right: 0.3rem;\n}\n.tags-input-remove {\n    cursor: pointer;\n    position: relative;\n    display: inline-block;\n    width: 0.5rem;\n    height: 0.5rem;\n    overflow: hidden;\n}\n.tags-input-remove:before, .tags-input-remove:after {\n    content: '';\n    position: absolute;\n    width: 100%;\n    top: 50%;\n    left: 0;\n    background: #5dc282;\n    \n    height: 2px;\n    margin-top: -1px;\n}\n.tags-input-remove:before {\n    -webkit-transform: rotate(45deg);\n            transform: rotate(45deg);\n}\n.tags-input-remove:after {\n    -webkit-transform: rotate(-45deg);\n            transform: rotate(-45deg);\n}\n\n/* Tag badge styles */\n.tags-input-badge {\n    display: inline-block;\n    padding: 0.25em 0.4em;\n    font-size: 75%;\n    font-weight: 700;\n    line-height: 1;\n    text-align: center;\n    white-space: nowrap;\n    vertical-align: baseline;\n    border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\n    padding-right: 0.6em;\n    padding-left: 0.6em;\n    border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\n    color: #212529;\n    background-color: #f0f1f2;\n}\n\n/* Typeahead - badges */\n.typeahead-badges > span {\n    cursor: pointer;\n    margin-right: 0.3rem;\n}\n\n/* Typeahead - dropdown */\n.typeahead-dropdown {\n    list-style-type: none;\n    padding: 0;\n    margin: 0;\n    position: absolute;\n    width: 100%;\n}\n.typeahead-dropdown li {\n    padding: .25rem 1rem;\n    cursor: pointer;\n}\n\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\n    color: #fff;\n    background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\n    color: #fff;\n    background-color: #007bff;\n}\n\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* The input */\n.tags-input {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\n}\n.tags-input input {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  background: transparent;\r\n  border: none;\n}\n.tags-input input:focus {\r\n  outline: none;\n}\n.tags-input input[type=\"text\"] {\r\n  color: #495057;\n}\n.tags-input-wrapper-default {\r\n  padding: 0.5rem 0.25rem;\r\n\r\n  background: #fff;\r\n\r\n  border: 1px solid transparent;\r\n  border-radius: 0.25rem;\r\n  border-color: #dbdbdb;\n}\r\n\r\n/* The tag badges & the remove icon */\n.tags-input span {\r\n  margin-right: 0.3rem;\n}\n.tags-input-remove {\r\n  cursor: pointer;\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 0.5rem;\r\n  height: 0.5rem;\r\n  overflow: hidden;\n}\n.tags-input-remove:before,\r\n.tags-input-remove:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 100%;\r\n  top: 50%;\r\n  left: 0;\r\n  background: #5dc282;\r\n\r\n  height: 2px;\r\n  margin-top: -1px;\n}\n.tags-input-remove:before {\r\n  -webkit-transform: rotate(45deg);\r\n          transform: rotate(45deg);\n}\n.tags-input-remove:after {\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\n}\r\n\r\n/* Tag badge styles */\n.tags-input-badge {\r\n  display: inline-block;\r\n  padding: 0.25em 0.4em;\r\n  font-size: 75%;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n  text-align: center;\r\n  white-space: nowrap;\r\n  vertical-align: baseline;\r\n  border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\r\n  padding-right: 0.6em;\r\n  padding-left: 0.6em;\r\n  border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\r\n  color: #212529;\r\n  background-color: #f0f1f2;\n}\r\n\r\n/* Typeahead - badges */\n.typeahead-badges > span {\r\n  cursor: pointer;\r\n  margin-right: 0.3rem;\n}\r\n\r\n/* Typeahead - dropdown */\n.typeahead-dropdown {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  position: absolute;\r\n  width: 100%;\n}\n.typeahead-dropdown li {\r\n  padding: 0.25rem 1rem;\r\n  cursor: pointer;\n}\r\n\r\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\r\n  color: #fff;\r\n  background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\r\n  color: #fff;\r\n  background-color: #007bff;\n}\r\n", ""]);
 
 // exports
 
@@ -94628,6 +94628,150 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -94850,10 +94994,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         clasificacion: null,
         localidad: null,
         latitud: null,
-        longitud: null,
-        percentProp: null,
-        valor: null,
-        anio: null
+        longitud: null
       },
       buscar: null,
       selectedTags: [],
@@ -94872,6 +95013,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       conservacion: [],
       clasificacion: [],
       localidad: [],
+      rows: [],
       center: { lat: 0, lng: 0 },
       markers: [{
         name: "Posicionar en ubicación",
@@ -94900,6 +95042,24 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   created: function created() {},
 
   methods: {
+    addRow: function addRow() {
+      var elem = document.createElement("tr");
+      this.rows.push({
+        valor: "",
+        anio: "",
+        percent: ""
+        // file: {
+        //     name: 'Choose File'
+        // }
+      });
+    },
+    removeElement: function removeElement(index) {
+      this.rows.splice(index, 1);
+    },
+    setFilename: function setFilename(event, row) {
+      var file = event.target.files[0];
+      row.file = file;
+    },
     geolocate: function geolocate() {
       var _this = this;
 
@@ -94914,9 +95074,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       });
     },
     setSelectedTags: function setSelectedTags() {
-      this.selectedTags = ['programmatically', 'selected', 'tags'];
+      this.selectedTags = ["programmatically", "selected", "tags"];
       // ALTERNATIVELY
-      this.selectedTags = 'programmatically,selected,tags';
+      this.selectedTags = "programmatically,selected,tags";
     },
     getDatosSelect: function getDatosSelect() {
       var _this2 = this;
@@ -94942,7 +95102,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
           _this3.lista[e.dniRUC] = e.nombres + "-" + e.dniRUC;
         });
       }).catch(function (error) {
-        console.log('Ocurrio un error ' + error);
+        console.log("Ocurrio un error " + error);
         _this3.$Progress.fail();
       });
     },
@@ -94979,7 +95139,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       //     if (res) {
       axios.post("predio", {
         predio: this.predio,
-        contribuyentes: this.selectedTags
+        contribuyentes: this.selectedTags,
+        rows: this.rows
       }).then(function (data) {
         if (data.data == "OK") {
           swal({
@@ -95024,13 +95185,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     buscarContribuyente: function buscarContribuyente() {
       swal({
-        title: 'Busca contribuyente',
-        input: 'text',
+        title: "Busca contribuyente",
+        input: "text",
         inputAttributes: {
-          autocapitalize: 'off'
+          autocapitalize: "off"
         },
         showCancelButton: true,
-        confirmButtonText: 'Look up',
+        confirmButtonText: "Look up",
         showLoaderOnConfirm: true,
         preConfirm: function preConfirm(login) {
           return fetch("//api.github.com/users/" + login).then(function (response) {
@@ -95105,7 +95266,8 @@ var render = function() {
                             attrs: {
                               type: "text",
                               placeholder: "Codigo de Predio",
-                              required: ""
+                              required: "",
+                              maxlength: "10"
                             },
                             domProps: { value: _vm.predio.codPredio },
                             on: {
@@ -95124,7 +95286,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-5 col-md-5" }, [
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Calle")]),
                           _vm._v(" "),
@@ -95160,7 +95322,7 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
                         _c("div", { staticClass: "form-group" }, [
                           _c("label", [_vm._v("Numero")]),
                           _vm._v(" "),
@@ -95174,7 +95336,11 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { type: "text", placeholder: "Numero" },
+                            attrs: {
+                              type: "text",
+                              placeholder: "Numero",
+                              maxlength: "6"
+                            },
                             domProps: { value: _vm.predio.numero },
                             on: {
                               input: function($event) {
@@ -95184,6 +95350,42 @@ var render = function() {
                                 _vm.$set(
                                   _vm.predio,
                                   "numero",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Piso")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.piso,
+                                expression: "predio.piso"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Piso",
+                              required: ""
+                            },
+                            domProps: { value: _vm.predio.piso },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.predio,
+                                  "piso",
                                   $event.target.value
                                 )
                               }
@@ -95208,7 +95410,11 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { type: "text", placeholder: "Manzana" },
+                            attrs: {
+                              type: "text",
+                              placeholder: "Manzana",
+                              maxlength: "1"
+                            },
                             domProps: { value: _vm.predio.mz },
                             on: {
                               input: function($event) {
@@ -95236,7 +95442,11 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { type: "text", placeholder: "Lote" },
+                            attrs: {
+                              type: "text",
+                              placeholder: "Lote",
+                              maxlength: "5"
+                            },
                             domProps: { value: _vm.predio.lote },
                             on: {
                               input: function($event) {
@@ -95268,7 +95478,11 @@ var render = function() {
                               }
                             ],
                             staticClass: "form-control",
-                            attrs: { type: "text", placeholder: "Interior" },
+                            attrs: {
+                              type: "text",
+                              placeholder: "Interior",
+                              maxlength: "3"
+                            },
                             domProps: { value: _vm.predio.interior },
                             on: {
                               input: function($event) {
@@ -95611,139 +95825,172 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Valor Predio")]),
+                    _vm._m(1),
+                    _vm._v(" "),
+                    _vm._l(_vm.rows, function(row, index) {
+                      return _c("div", { key: index }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-lg-8 col-md-8" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group" },
+                              [
+                                _c("tags-input", {
+                                  attrs: {
+                                    "element-id": "tags",
+                                    placeholder: "Agregar contribuyente",
+                                    "input-class": "form-control",
+                                    limit: 1,
+                                    "only-existing-tags": true,
+                                    "existing-tags": _vm.lista,
+                                    typeahead: true
+                                  },
+                                  model: {
+                                    value: _vm.selectedTags[index],
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.selectedTags, index, $$v)
+                                    },
+                                    expression: "selectedTags[index]"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
+                          _c("div", { staticClass: "col-lg-2 col-md-2" }, [
+                            _c(
+                              "a",
                               {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.predio.valor,
-                                expression: "predio.valor"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Valor Predio"
-                            },
-                            domProps: { value: _vm.predio.valor },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                                staticClass: "btn btn-info",
+                                staticStyle: { cursor: "pointer" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.removeElement(index)
+                                  }
                                 }
-                                _vm.$set(
-                                  _vm.predio,
-                                  "valor",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Año")]),
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-trash-o",
+                                  attrs: { "aria-hidden": "true" }
+                                })
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-lg-3" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { attrs: { for: "" } }, [
+                                _vm._v("Valor Predio")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: row.valor,
+                                    expression: "row.valor"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text" },
+                                domProps: { value: row.valor },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(row, "valor", $event.target.value)
+                                  }
+                                }
+                              })
+                            ])
+                          ]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.predio.anio,
-                                expression: "predio.anio"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: { type: "text", placeholder: "Año" },
-                            domProps: { value: _vm.predio.anio },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c("div", { staticClass: "col-lg-3" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { attrs: { for: "" } }, [
+                                _vm._v("Año")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: row.anio,
+                                    expression: "row.anio"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text", maxlength: "" },
+                                domProps: { value: row.anio },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(row, "anio", $event.target.value)
+                                  }
                                 }
-                                _vm.$set(
-                                  _vm.predio,
-                                  "anio",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          })
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
-                        _c("div", { staticClass: "form-group" }, [
-                          _c("label", [_vm._v("Porcentaje de Propiedad")]),
+                              })
+                            ])
+                          ]),
                           _vm._v(" "),
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.predio.percentProp,
-                                expression: "predio.percentProp"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            attrs: {
-                              type: "text",
-                              placeholder: "Porcentaje de Propiedad"
-                            },
-                            domProps: { value: _vm.predio.percentProp },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                          _c("div", { staticClass: "col-lg-3" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { attrs: { for: "" } }, [
+                                _vm._v("Porcentaje de Propiedad")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: row.percent,
+                                    expression: "row.percent"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text", maxlength: "3" },
+                                domProps: { value: row.percent },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      row,
+                                      "percent",
+                                      $event.target.value
+                                    )
+                                  }
                                 }
-                                _vm.$set(
-                                  _vm.predio,
-                                  "percentProp",
-                                  $event.target.value
-                                )
-                              }
-                            }
-                          })
+                              })
+                            ])
+                          ])
                         ])
                       ])
-                    ]),
+                    }),
                     _vm._v(" "),
                     _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-lg-10 col-md-10" }, [
-                        _vm._m(1),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group" },
-                          [
-                            _c("tags-input", {
-                              attrs: {
-                                "element-id": "tags",
-                                placeholder: "Agregar contribuyente",
-                                "input-class": "form-control",
-                                limit: 3,
-                                "only-existing-tags": true,
-                                "existing-tags": _vm.lista,
-                                typeahead: true
-                              },
-                              model: {
-                                value: _vm.selectedTags,
-                                callback: function($$v) {
-                                  _vm.selectedTags = $$v
-                                },
-                                expression: "selectedTags"
-                              }
-                            })
-                          ],
-                          1
-                        )
+                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "button btn-primary form-control",
+                              attrs: { type: "button" },
+                              on: { click: _vm.addRow }
+                            },
+                            [_vm._v("Agregar Contribuyente")]
+                          )
+                        ])
                       ])
                     ]),
                     _vm._v(" "),
@@ -95897,7 +96144,8 @@ var render = function() {
                         ])
                       ])
                     ])
-                  ]
+                  ],
+                  2
                 )
               ])
             ])
@@ -95920,9 +96168,15 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("h3", [
-      _vm._v("Contribuyente "),
-      _c("small", [_vm._v("(Buscar por DNI)")])
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-10 col-md-10" }, [
+        _c("h3", [
+          _vm._v("Contribuyente\n                      "),
+          _c("small", [_vm._v("(Buscar por DNI)")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" })
+      ])
     ])
   },
   function() {
