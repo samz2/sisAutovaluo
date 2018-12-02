@@ -84,6 +84,7 @@ const routes = [
     // admin/predio routes
     { path: '/predio-lista', component: require('./components/admin/predioLista.vue') },
     { path: '/predio-agregar', component: require('./components/admin/predioAgregar.vue') },
+    { path: '/predio-editar', component: require('./components/admin/predioEdit.vue') },
     //fin rutas
     //rutas admin
     { path: '/addUser', component: require('./components/admin/addUser.vue') },

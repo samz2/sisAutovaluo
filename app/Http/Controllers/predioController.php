@@ -51,6 +51,26 @@ class predioController extends Controller
         return compact('contribuyente');
     }
 
+    public function getContribuyentesPredio($id){
+        $contribuyentes=\DB::select("SELECT c.nombre, c.apellidos, c.codContribuyente,
+                             c.dniRUC, c.domicilio, p.longitud, p.latitud, p.codPredio from contribuyente c 
+                             INNER JOIN prediocontribuyente pc ON c.dniRUC=pc.codContribuyente INNER JOIN 
+                             predio p ON p.codPredio=pc.codPredio WHERE pc.codPredio='$id'");
+        return compact('contribuyentes');
+    }
+
+    public function getPredioContribuyentes($id){
+        $datos=\DB::select("SELECT c.nombre, c.apellidos, c.dniRUC, p.codPredio, p.calle, p.numero, p.piso, p.mz, p.lote,
+        p.interior, p.sector, p.idCondicion as condicion, p.idConservacion as conservacion, p.idMaterial as material, 
+        p.idClasificacion as clasificacion, p.idLocalidad as localidad, p.longitud, p.latitud, max(ph.id) as idPH, 
+        ph.codPredioContribuyente, ph.valorPredio, ph.anio, ph.percentPropiedad, pc.id as idPC from contribuyente c 
+        INNER JOIN prediocontribuyente pc ON c.dniRUC=pc.codContribuyente INNER JOIN 
+        predio p ON p.codPredio=pc.codPredio INNER JOIN prediohistoria ph ON pc.id=ph.codPredioContribuyente 
+        WHERE pc.codPredio=$id GROUP BY ph.codPredioContribuyente");
+        
+        return compact('datos');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -69,31 +89,58 @@ class predioController extends Controller
      */
     public function store(Request $request)
     {
-        $predio=new predio();
-        $predio->CodPredio=$request['predio']['codPredio'];
-        $predio->calle=$request['predio']['calle'];
-        $predio->numero=$request['predio']['numero'];
-        $predio->piso=$request['predio']['piso'];
-        $predio->mz=$request['predio']['mz'];
-        $predio->lote=$request['predio']['lote'];
-        $predio->interior=$request['predio']['interior'];
-        $predio->sector=$request['predio']['sector'];
-        $predio->idCondicion=$request['predio']['condicion'];
-        $predio->idConservacion=$request['predio']['conservacion'];
-        $predio->idMaterial=$request['predio']['material'];
-        $predio->idClasificacion=$request['predio']['clasificacion'];
-        $predio->idLocalidad=$request['predio']['localidad'];
-        $predio->latitud=$request['predio']['latitud'];
-        $predio->longitud=$request['predio']['longitud'];
-        $predio->created_at=date('Y-m-d');
-        $predio->updated_at=date('Y-m-d');
+        // $predio=new predio();
+        // $predio->CodPredio=$request['predio']['codPredio'];
+        // $predio->calle=$request['predio']['calle'];
+        // $predio->numero=$request['predio']['numero'];
+        // $predio->piso=$request['predio']['piso'];
+        // $predio->mz=$request['predio']['mz'];
+        // $predio->lote=$request['predio']['lote'];
+        // $predio->interior=$request['predio']['interior'];
+        // $predio->sector=$request['predio']['sector'];
+        // $predio->idCondicion=$request['predio']['condicion'];
+        // $predio->idConservacion=$request['predio']['conservacion'];
+        // $predio->idMaterial=$request['predio']['material'];
+        // $predio->idClasificacion=$request['predio']['clasificacion'];
+        // $predio->idLocalidad=$request['predio']['localidad'];
+        // $predio->latitud=$request['predio']['latitud'];
+        // $predio->longitud=$request['predio']['longitud'];
+        // $predio->created_at=date('Y-m-d');
+        // $predio->updated_at=date('Y-m-d');
+        // $predio->save();
+        $predio=predio::updateOrCreate(
+            ['CodPredio'    =>  $request['predio']['codPredio'] ],
+            [
+                'calle'     =>  $request['predio']['calle'],
+                'numero'    =>  $request['predio']['numero'],
+                'piso'      =>  $request['predio']['piso'],
+                'mz'        =>  $request['predio']['mz'],
+                'lote'      =>  $request['predio']['lote'],
+                'interior'  =>  $request['predio']['interior'],
+                'sector'    =>  $request['predio']['sector'],
+                'idCondicion'=> $request['predio']['condicion'],
+                'idConservacion'=>$request['predio']['conservacion'],
+                'idMaterial'=>  $request['predio']['material'],
+                'idClasificacion'=>$request['predio']['clasificacion'],
+                'idLocalidad'=> $request['predio']['localidad'],
+                'latitud'   =>  $request['predio']['latitud'],
+                'longitud'  =>  $request['predio']['longitud'],
+                'created_at'=>  date('Y-m-d'),
+                'updated_at'=>  date('Y-m-d')
+            ]
+        );
 
-        $predio->save();
+        // foreach ($request['contribuyentes'] as $key => $value) {
+        //     \DB::table('prediocontribuyente')->where('id', '=', $request['rows'][$key]['idPC'])->delete();
+        //     \DB::table('prediohistoria')->where('id', '=', $request['rows'][$key]['idPH'])->delete();
+        // }
+        \DB::table('prediocontribuyente')->where('CodPredio', '=', $request['predio']['codPredio'])->delete();
+        //\DB::table('prediohistoria')->where('id', '=', $request['rows'][$key]['idPH'])->delete();
 
         foreach ($request['contribuyentes'] as $key => $value) {
 
             $prediocontribuyente=PredioContribuyente::updateOrCreate(
-                ['id'=>null],
+                ['id'   =>  $request['rows'][$key]['idPC'] ],
                 [
                     'codPredio'         =>  $request['predio']['codPredio'],
                     'codContribuyente'  =>  $value[0],
@@ -101,16 +148,28 @@ class predioController extends Controller
                     'updated_at'        =>  date('Y-m-d')
                 ]
             );
+            $prediohistoria=PredioHistoria::updateOrCreate(
+                //['id'=>$request['rows'][$key]['idPH'] ],
+                //['id'=>null],
+                [
+                    'codPredioContribuyente'    =>  $prediocontribuyente->id,
+                    'valorPredio'               =>  $request['rows'][$key]['valor'],
+                    'anio'                      =>  $request['rows'][$key]['anio'],
+                    'percentPropiedad'          =>  $request['rows'][$key]['percent'],
+                    'created_at'                =>  date('Y-m-d'),
+                    'updated_at'                =>  date('Y-m-d')
+                ]
+            );
 
-            $prediohistoria=new PredioHistoria();
-            $prediohistoria->id=null;
-            $prediohistoria->codPredioContribuyente=$prediocontribuyente->id;
-            $prediohistoria->valorPredio=$request['rows'][$key]['valor'];
-            $prediohistoria->anio=$request['rows'][$key]['anio'];
-            $prediohistoria->percentPropiedad=$request['rows'][$key]['percent'];
-            $prediohistoria->created_at=date('Y-m-d');
-            $prediohistoria->updated_at=date('Y-m-d');
-            $prediohistoria->save();
+            // $prediohistoria=new PredioHistoria();
+            // $prediohistoria->id=$request['rows'][$key]['idPH'];
+            // $prediohistoria->codPredioContribuyente=$prediocontribuyente->id;
+            // $prediohistoria->valorPredio=$request['rows'][$key]['valor'];
+            // $prediohistoria->anio=$request['rows'][$key]['anio'];
+            // $prediohistoria->percentPropiedad=$request['rows'][$key]['percent'];
+            // $prediohistoria->created_at=date('Y-m-d');
+            // $prediohistoria->updated_at=date('Y-m-d');
+            // $prediohistoria->save();
 
         }
 
