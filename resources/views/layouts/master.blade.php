@@ -155,7 +155,7 @@
 											</router-link>
 										</li>
 										<li class="nav-item">
-											<router-link to="/deudas" class="nav-link">
+											<router-link to="/listado" class="nav-link">
 												<i class="fa fa-address-card-o nav-icon" aria-hidden="true"></i>
 												<p>Listado</p>
 											</router-link>

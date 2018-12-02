@@ -92,7 +92,7 @@ const routes = [
     { path: '/manager', component: require('./components/management/AdministratorComponent.vue') },
     // Deudor Routes
     { path: '/visualize', component: require('./components/notifier/VisualizeComponent.vue') },
-    { path: '/deudas', component: require('./components/notifier/DeudasComponent.vue') },
+    { path: '/listado', component: require('./components/notifier/DeudasComponent.vue') },
 ];
 
 // Create the route instance

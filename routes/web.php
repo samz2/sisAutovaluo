@@ -29,5 +29,12 @@ Route::resource('/predio', 'predioController', ['except' => ['destroy', 'edit', 
 Route::get('/getContribuyente/{e}', 'predioController@getContribuyente')->name('predio.getContribuyente');
 //------------------------------
 
+// Rutas Notificador
+Route::resource('/estado', 'EstadoCuentaController', [
+    'except' => ['update', 'destroy', 'edit']
+])->middleware('auth');
+Route::get('/obtener-estado', 'EstadoCuentaController@getEstado')->middleware('auth');
+Route::get('/obtener-personal/{id}', 'EstadoCuentaController@getPersonal')->middleware('auth');
+
 // Rutas alternas
 Route::get('{path}', 'HomeController@index')->where('path', '([A-z\d-\/_.]+)?');
