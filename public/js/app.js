@@ -5273,7 +5273,7 @@ var _bindEvents = __webpack_require__(19);
 
 var _bindEvents2 = _interopRequireDefault(_bindEvents);
 
-var _bindProps = __webpack_require__(8);
+var _bindProps = __webpack_require__(10);
 
 var _mapElementMixin = __webpack_require__(174);
 
@@ -5393,312 +5393,6 @@ module.exports = g;
 /* 6 */
 /***/ (function(module, exports) {
 
-// shim for using process in browser
-var process = module.exports = {};
-
-// cached from whatever global is present so that test runners that stub it
-// don't break things.  But we need to wrap it in a try catch in case it is
-// wrapped in strict mode code which doesn't define any globals.  It's inside a
-// function because try/catches deoptimize in certain engines.
-
-var cachedSetTimeout;
-var cachedClearTimeout;
-
-function defaultSetTimout() {
-    throw new Error('setTimeout has not been defined');
-}
-function defaultClearTimeout () {
-    throw new Error('clearTimeout has not been defined');
-}
-(function () {
-    try {
-        if (typeof setTimeout === 'function') {
-            cachedSetTimeout = setTimeout;
-        } else {
-            cachedSetTimeout = defaultSetTimout;
-        }
-    } catch (e) {
-        cachedSetTimeout = defaultSetTimout;
-    }
-    try {
-        if (typeof clearTimeout === 'function') {
-            cachedClearTimeout = clearTimeout;
-        } else {
-            cachedClearTimeout = defaultClearTimeout;
-        }
-    } catch (e) {
-        cachedClearTimeout = defaultClearTimeout;
-    }
-} ())
-function runTimeout(fun) {
-    if (cachedSetTimeout === setTimeout) {
-        //normal enviroments in sane situations
-        return setTimeout(fun, 0);
-    }
-    // if setTimeout wasn't available but was latter defined
-    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
-        cachedSetTimeout = setTimeout;
-        return setTimeout(fun, 0);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedSetTimeout(fun, 0);
-    } catch(e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
-            return cachedSetTimeout.call(null, fun, 0);
-        } catch(e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
-            return cachedSetTimeout.call(this, fun, 0);
-        }
-    }
-
-
-}
-function runClearTimeout(marker) {
-    if (cachedClearTimeout === clearTimeout) {
-        //normal enviroments in sane situations
-        return clearTimeout(marker);
-    }
-    // if clearTimeout wasn't available but was latter defined
-    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
-        cachedClearTimeout = clearTimeout;
-        return clearTimeout(marker);
-    }
-    try {
-        // when when somebody has screwed with setTimeout but no I.E. maddness
-        return cachedClearTimeout(marker);
-    } catch (e){
-        try {
-            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
-            return cachedClearTimeout.call(null, marker);
-        } catch (e){
-            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
-            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
-            return cachedClearTimeout.call(this, marker);
-        }
-    }
-
-
-
-}
-var queue = [];
-var draining = false;
-var currentQueue;
-var queueIndex = -1;
-
-function cleanUpNextTick() {
-    if (!draining || !currentQueue) {
-        return;
-    }
-    draining = false;
-    if (currentQueue.length) {
-        queue = currentQueue.concat(queue);
-    } else {
-        queueIndex = -1;
-    }
-    if (queue.length) {
-        drainQueue();
-    }
-}
-
-function drainQueue() {
-    if (draining) {
-        return;
-    }
-    var timeout = runTimeout(cleanUpNextTick);
-    draining = true;
-
-    var len = queue.length;
-    while(len) {
-        currentQueue = queue;
-        queue = [];
-        while (++queueIndex < len) {
-            if (currentQueue) {
-                currentQueue[queueIndex].run();
-            }
-        }
-        queueIndex = -1;
-        len = queue.length;
-    }
-    currentQueue = null;
-    draining = false;
-    runClearTimeout(timeout);
-}
-
-process.nextTick = function (fun) {
-    var args = new Array(arguments.length - 1);
-    if (arguments.length > 1) {
-        for (var i = 1; i < arguments.length; i++) {
-            args[i - 1] = arguments[i];
-        }
-    }
-    queue.push(new Item(fun, args));
-    if (queue.length === 1 && !draining) {
-        runTimeout(drainQueue);
-    }
-};
-
-// v8 likes predictible objects
-function Item(fun, array) {
-    this.fun = fun;
-    this.array = array;
-}
-Item.prototype.run = function () {
-    this.fun.apply(null, this.array);
-};
-process.title = 'browser';
-process.browser = true;
-process.env = {};
-process.argv = [];
-process.version = ''; // empty string to avoid regexp issues
-process.versions = {};
-
-function noop() {}
-
-process.on = noop;
-process.addListener = noop;
-process.once = noop;
-process.off = noop;
-process.removeListener = noop;
-process.removeAllListeners = noop;
-process.emit = noop;
-process.prependListener = noop;
-process.prependOnceListener = noop;
-
-process.listeners = function (name) { return [] }
-
-process.binding = function (name) {
-    throw new Error('process.binding is not supported');
-};
-
-process.cwd = function () { return '/' };
-process.chdir = function (dir) {
-    throw new Error('process.chdir is not supported');
-};
-process.umask = function() { return 0; };
-
-
-/***/ }),
-/* 7 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _vue = __webpack_require__(14);
-
-var _vue2 = _interopRequireDefault(_vue);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var bus = new _vue2.default();
-
-exports.default = bus;
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.getPropsValues = getPropsValues;
-exports.bindProps = bindProps;
-
-var _WatchPrimitiveProperties = __webpack_require__(20);
-
-var _WatchPrimitiveProperties2 = _interopRequireDefault(_WatchPrimitiveProperties);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function getPropsValues(vueInst, props) {
-  return Object.keys(props).reduce(function (acc, prop) {
-    if (vueInst[prop] !== undefined) {
-      acc[prop] = vueInst[prop];
-    }
-    return acc;
-  }, {});
-}
-
-/**
-  * Binds the properties defined in props to the google maps instance.
-  * If the prop is an Object type, and we wish to track the properties
-  * of the object (e.g. the lat and lng of a LatLng), then we do a deep
-  * watch. For deep watch, we also prevent the _changed event from being
-  * emitted if the data source was external.
-  */
-function bindProps(vueInst, googleMapsInst, props) {
-  var _loop = function (attribute) {
-    var _props$attribute = props[attribute],
-        twoWay = _props$attribute.twoWay,
-        type = _props$attribute.type,
-        trackProperties = _props$attribute.trackProperties,
-        noBind = _props$attribute.noBind;
-
-
-    if (noBind) return 'continue';
-
-    var setMethodName = 'set' + capitalizeFirstLetter(attribute);
-    var getMethodName = 'get' + capitalizeFirstLetter(attribute);
-    var eventName = attribute.toLowerCase() + '_changed';
-    var initialValue = vueInst[attribute];
-
-    if (typeof googleMapsInst[setMethodName] === 'undefined') {
-      throw new Error(setMethodName + ' is not a method of (the Maps object corresponding to) ' + vueInst.$options._componentTag);
-    }
-
-    // We need to avoid an endless
-    // propChanged -> event emitted -> propChanged -> event emitted loop
-    // although this may really be the user's responsibility
-    if (type !== Object || !trackProperties) {
-      // Track the object deeply
-      vueInst.$watch(attribute, function () {
-        var attributeValue = vueInst[attribute];
-
-        googleMapsInst[setMethodName](attributeValue);
-      }, {
-        immediate: typeof initialValue !== 'undefined',
-        deep: type === Object
-      });
-    } else {
-      (0, _WatchPrimitiveProperties2.default)(vueInst, trackProperties.map(function (prop) {
-        return attribute + '.' + prop;
-      }), function () {
-        googleMapsInst[setMethodName](vueInst[attribute]);
-      }, vueInst[attribute] !== undefined);
-    }
-
-    if (twoWay && (vueInst.$gmapOptions.autobindAllEvents || vueInst.$listeners[eventName])) {
-      googleMapsInst.addListener(eventName, function () {
-        // eslint-disable-line no-unused-vars
-        vueInst.$emit(eventName, googleMapsInst[getMethodName]());
-      });
-    }
-  };
-
-  for (var attribute in props) {
-    var _ret = _loop(attribute);
-
-    if (_ret === 'continue') continue;
-  }
-}
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
 /*
 	MIT License http://www.opensource.org/licenses/mit-license.php
 	Author Tobias Koppers @sokra
@@ -5778,7 +5472,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 10 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -6006,6 +5700,312 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+// shim for using process in browser
+var process = module.exports = {};
+
+// cached from whatever global is present so that test runners that stub it
+// don't break things.  But we need to wrap it in a try catch in case it is
+// wrapped in strict mode code which doesn't define any globals.  It's inside a
+// function because try/catches deoptimize in certain engines.
+
+var cachedSetTimeout;
+var cachedClearTimeout;
+
+function defaultSetTimout() {
+    throw new Error('setTimeout has not been defined');
+}
+function defaultClearTimeout () {
+    throw new Error('clearTimeout has not been defined');
+}
+(function () {
+    try {
+        if (typeof setTimeout === 'function') {
+            cachedSetTimeout = setTimeout;
+        } else {
+            cachedSetTimeout = defaultSetTimout;
+        }
+    } catch (e) {
+        cachedSetTimeout = defaultSetTimout;
+    }
+    try {
+        if (typeof clearTimeout === 'function') {
+            cachedClearTimeout = clearTimeout;
+        } else {
+            cachedClearTimeout = defaultClearTimeout;
+        }
+    } catch (e) {
+        cachedClearTimeout = defaultClearTimeout;
+    }
+} ())
+function runTimeout(fun) {
+    if (cachedSetTimeout === setTimeout) {
+        //normal enviroments in sane situations
+        return setTimeout(fun, 0);
+    }
+    // if setTimeout wasn't available but was latter defined
+    if ((cachedSetTimeout === defaultSetTimout || !cachedSetTimeout) && setTimeout) {
+        cachedSetTimeout = setTimeout;
+        return setTimeout(fun, 0);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedSetTimeout(fun, 0);
+    } catch(e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't trust the global object when called normally
+            return cachedSetTimeout.call(null, fun, 0);
+        } catch(e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error
+            return cachedSetTimeout.call(this, fun, 0);
+        }
+    }
+
+
+}
+function runClearTimeout(marker) {
+    if (cachedClearTimeout === clearTimeout) {
+        //normal enviroments in sane situations
+        return clearTimeout(marker);
+    }
+    // if clearTimeout wasn't available but was latter defined
+    if ((cachedClearTimeout === defaultClearTimeout || !cachedClearTimeout) && clearTimeout) {
+        cachedClearTimeout = clearTimeout;
+        return clearTimeout(marker);
+    }
+    try {
+        // when when somebody has screwed with setTimeout but no I.E. maddness
+        return cachedClearTimeout(marker);
+    } catch (e){
+        try {
+            // When we are in I.E. but the script has been evaled so I.E. doesn't  trust the global object when called normally
+            return cachedClearTimeout.call(null, marker);
+        } catch (e){
+            // same as above but when it's a version of I.E. that must have the global object for 'this', hopfully our context correct otherwise it will throw a global error.
+            // Some versions of I.E. have different rules for clearTimeout vs setTimeout
+            return cachedClearTimeout.call(this, marker);
+        }
+    }
+
+
+
+}
+var queue = [];
+var draining = false;
+var currentQueue;
+var queueIndex = -1;
+
+function cleanUpNextTick() {
+    if (!draining || !currentQueue) {
+        return;
+    }
+    draining = false;
+    if (currentQueue.length) {
+        queue = currentQueue.concat(queue);
+    } else {
+        queueIndex = -1;
+    }
+    if (queue.length) {
+        drainQueue();
+    }
+}
+
+function drainQueue() {
+    if (draining) {
+        return;
+    }
+    var timeout = runTimeout(cleanUpNextTick);
+    draining = true;
+
+    var len = queue.length;
+    while(len) {
+        currentQueue = queue;
+        queue = [];
+        while (++queueIndex < len) {
+            if (currentQueue) {
+                currentQueue[queueIndex].run();
+            }
+        }
+        queueIndex = -1;
+        len = queue.length;
+    }
+    currentQueue = null;
+    draining = false;
+    runClearTimeout(timeout);
+}
+
+process.nextTick = function (fun) {
+    var args = new Array(arguments.length - 1);
+    if (arguments.length > 1) {
+        for (var i = 1; i < arguments.length; i++) {
+            args[i - 1] = arguments[i];
+        }
+    }
+    queue.push(new Item(fun, args));
+    if (queue.length === 1 && !draining) {
+        runTimeout(drainQueue);
+    }
+};
+
+// v8 likes predictible objects
+function Item(fun, array) {
+    this.fun = fun;
+    this.array = array;
+}
+Item.prototype.run = function () {
+    this.fun.apply(null, this.array);
+};
+process.title = 'browser';
+process.browser = true;
+process.env = {};
+process.argv = [];
+process.version = ''; // empty string to avoid regexp issues
+process.versions = {};
+
+function noop() {}
+
+process.on = noop;
+process.addListener = noop;
+process.once = noop;
+process.off = noop;
+process.removeListener = noop;
+process.removeAllListeners = noop;
+process.emit = noop;
+process.prependListener = noop;
+process.prependOnceListener = noop;
+
+process.listeners = function (name) { return [] }
+
+process.binding = function (name) {
+    throw new Error('process.binding is not supported');
+};
+
+process.cwd = function () { return '/' };
+process.chdir = function (dir) {
+    throw new Error('process.chdir is not supported');
+};
+process.umask = function() { return 0; };
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _vue = __webpack_require__(14);
+
+var _vue2 = _interopRequireDefault(_vue);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var bus = new _vue2.default();
+
+exports.default = bus;
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getPropsValues = getPropsValues;
+exports.bindProps = bindProps;
+
+var _WatchPrimitiveProperties = __webpack_require__(20);
+
+var _WatchPrimitiveProperties2 = _interopRequireDefault(_WatchPrimitiveProperties);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function getPropsValues(vueInst, props) {
+  return Object.keys(props).reduce(function (acc, prop) {
+    if (vueInst[prop] !== undefined) {
+      acc[prop] = vueInst[prop];
+    }
+    return acc;
+  }, {});
+}
+
+/**
+  * Binds the properties defined in props to the google maps instance.
+  * If the prop is an Object type, and we wish to track the properties
+  * of the object (e.g. the lat and lng of a LatLng), then we do a deep
+  * watch. For deep watch, we also prevent the _changed event from being
+  * emitted if the data source was external.
+  */
+function bindProps(vueInst, googleMapsInst, props) {
+  var _loop = function (attribute) {
+    var _props$attribute = props[attribute],
+        twoWay = _props$attribute.twoWay,
+        type = _props$attribute.type,
+        trackProperties = _props$attribute.trackProperties,
+        noBind = _props$attribute.noBind;
+
+
+    if (noBind) return 'continue';
+
+    var setMethodName = 'set' + capitalizeFirstLetter(attribute);
+    var getMethodName = 'get' + capitalizeFirstLetter(attribute);
+    var eventName = attribute.toLowerCase() + '_changed';
+    var initialValue = vueInst[attribute];
+
+    if (typeof googleMapsInst[setMethodName] === 'undefined') {
+      throw new Error(setMethodName + ' is not a method of (the Maps object corresponding to) ' + vueInst.$options._componentTag);
+    }
+
+    // We need to avoid an endless
+    // propChanged -> event emitted -> propChanged -> event emitted loop
+    // although this may really be the user's responsibility
+    if (type !== Object || !trackProperties) {
+      // Track the object deeply
+      vueInst.$watch(attribute, function () {
+        var attributeValue = vueInst[attribute];
+
+        googleMapsInst[setMethodName](attributeValue);
+      }, {
+        immediate: typeof initialValue !== 'undefined',
+        deep: type === Object
+      });
+    } else {
+      (0, _WatchPrimitiveProperties2.default)(vueInst, trackProperties.map(function (prop) {
+        return attribute + '.' + prop;
+      }), function () {
+        googleMapsInst[setMethodName](vueInst[attribute]);
+      }, vueInst[attribute] !== undefined);
+    }
+
+    if (twoWay && (vueInst.$gmapOptions.autobindAllEvents || vueInst.$listeners[eventName])) {
+      googleMapsInst.addListener(eventName, function () {
+        // eslint-disable-line no-unused-vars
+        vueInst.$emit(eventName, googleMapsInst[getMethodName]());
+      });
+    }
+  };
+
+  for (var attribute in props) {
+    var _ret = _loop(attribute);
+
+    if (_ret === 'continue') continue;
+  }
+}
+
+/***/ }),
 /* 11 */
 /***/ (function(module, exports) {
 
@@ -6162,7 +6162,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
 /* 14 */
@@ -17285,7 +17285,7 @@ utils.escapeRe = function escapeRe(str) {
 
 module.exports = utils;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
 /* 16 */
@@ -17516,7 +17516,7 @@ var substr = 'ab'.substr(-1) === 'b'
     }
 ;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
 /* 17 */
@@ -45713,9 +45713,9 @@ exports.default = function (input) {
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(433)
+var __vue_script__ = __webpack_require__(438)
 /* template */
-var __vue_template__ = __webpack_require__(434)
+var __vue_template__ = __webpack_require__(439)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45758,7 +45758,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(179);
-module.exports = __webpack_require__(446);
+module.exports = __webpack_require__(451);
 
 
 /***/ }),
@@ -45897,15 +45897,15 @@ var routes = [
 // Main Routes
 { path: '/', component: __webpack_require__(22) }, { path: '*', component: __webpack_require__(22) },
 // admin/predio routes
-{ path: '/predio-lista', component: __webpack_require__(422) }, { path: '/predio-agregar', component: __webpack_require__(425) },
+{ path: '/predio-lista', component: __webpack_require__(422) }, { path: '/predio-agregar', component: __webpack_require__(425) }, { path: '/predio-editar', component: __webpack_require__(430) },
 //fin rutas
 //rutas admin
-{ path: '/addUser', component: __webpack_require__(430) },
+{ path: '/addUser', component: __webpack_require__(435) },
 //fin rutas admin
 // Manager Routes
 { path: '/manager', component: __webpack_require__(177) },
 // Deudor Routes
-{ path: '/visualize', component: __webpack_require__(435) }, { path: '/deudas', component: __webpack_require__(438) }];
+{ path: '/visualize', component: __webpack_require__(440) }, { path: '/deudas', component: __webpack_require__(443) }];
 
 // Create the route instance
 var router = new __WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]({
@@ -45928,7 +45928,7 @@ Vue.filter('formatDate', function (data) {
 
 Vue.component('example-component', __webpack_require__(22));
 Vue.component('manager', __webpack_require__(177));
-Vue.component('moon-loader', __webpack_require__(441));
+Vue.component('moon-loader', __webpack_require__(446));
 
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -68207,7 +68207,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(5), __webpack_require__(8)))
 
 /***/ }),
 /* 204 */
@@ -82496,7 +82496,7 @@ if (inBrowser && window.Vue) {
 "use strict";
 
 
-var _bus = __webpack_require__(7);
+var _bus = __webpack_require__(9);
 
 var _bus2 = _interopRequireDefault(_bus);
 
@@ -87180,7 +87180,7 @@ function isSeparator(str, i) {
 	return i > 0 && (char === '/' || (isWin && char === '\\'));
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(6)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8)))
 
 /***/ }),
 /* 273 */
@@ -88409,7 +88409,7 @@ module.exports = function () {
 "use strict";
 
 
-var _bus = __webpack_require__(7);
+var _bus = __webpack_require__(9);
 
 var _bus2 = _interopRequireDefault(_bus);
 
@@ -89326,7 +89326,7 @@ module.exports = {
 "use strict";
 
 
-var _bus = __webpack_require__(7);
+var _bus = __webpack_require__(9);
 
 var _bus2 = _interopRequireDefault(_bus);
 
@@ -91038,7 +91038,7 @@ module.exports = function () {
 "use strict";
 
 
-var _bus = __webpack_require__(7);
+var _bus = __webpack_require__(9);
 
 var _bus2 = _interopRequireDefault(_bus);
 
@@ -91393,7 +91393,7 @@ module.exports = function (response) {
 "use strict";
 
 
-var _bus = __webpack_require__(7);
+var _bus = __webpack_require__(9);
 
 var _bus2 = _interopRequireDefault(_bus);
 
@@ -92483,7 +92483,7 @@ var content = __webpack_require__(396);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("325be528", content, false, {});
+var update = __webpack_require__(7)("325be528", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -92502,7 +92502,7 @@ if(false) {
 /* 396 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(6)(false);
 // imports
 
 
@@ -92583,7 +92583,7 @@ var _bindEvents = __webpack_require__(19);
 
 var _bindEvents2 = _interopRequireDefault(_bindEvents);
 
-var _bindProps = __webpack_require__(8);
+var _bindProps = __webpack_require__(10);
 
 var _mountableMixin = __webpack_require__(21);
 
@@ -92850,7 +92850,7 @@ var content = __webpack_require__(403);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("09541a99", content, false, {});
+var update = __webpack_require__(7)("09541a99", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -92869,7 +92869,7 @@ if(false) {
 /* 403 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(6)(false);
 // imports
 
 
@@ -92914,7 +92914,7 @@ var _bindEvents = __webpack_require__(19);
 
 var _bindEvents2 = _interopRequireDefault(_bindEvents);
 
-var _bindProps = __webpack_require__(8);
+var _bindProps = __webpack_require__(10);
 
 var _mountableMixin = __webpack_require__(21);
 
@@ -93154,7 +93154,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _bindProps = __webpack_require__(8);
+var _bindProps = __webpack_require__(10);
 
 var _simulateArrowDown = __webpack_require__(176);
 
@@ -93362,7 +93362,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _bindProps = __webpack_require__(8);
+var _bindProps = __webpack_require__(10);
 
 var _simulateArrowDown = __webpack_require__(176);
 
@@ -93535,7 +93535,7 @@ var content = __webpack_require__(417);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("a2a5f43a", content, false, {});
+var update = __webpack_require__(7)("a2a5f43a", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -93554,7 +93554,7 @@ if(false) {
 /* 417 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(6)(false);
 // imports
 
 
@@ -94407,9 +94407,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 clasificacion: null,
                 localidad: null,
                 latitud: null,
-                longitud: null
+                longitud: null,
+                popover: null
             }],
-            columns: ['codPredio', 'calle', 'numero', 'piso', 'mz', 'lote', 'interior', 'sector', 'condicion', 'conservacion', 'material', 'clasificacion'],
+            columns: ['codPredio', 'calle',
+            // 'numero',
+            // 'piso',
+            'mz', 'lote',
+            // 'interior',
+            'sector', 'condicion', 'conservacion', 'material', 'clasificacion', 'popover'
+            // 'latitud',
+            // 'longitud'
+            ],
             options: {
                 headings: {
                     CodPredio: 'Cod',
@@ -94424,25 +94433,92 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     Conservacion: 'Conservacion',
                     Material: 'Material',
                     Clasificacion: 'Clasificacion',
-                    Localidad: 'Localidad',
-                    Longitud: 'Longitud'
+                    popover: 'Contribuyentes'
+                    // Localidad:'Localidad',
+                    // Longitud:'Longitud',
                 },
-                sortable: ['CodPredio', 'calle', 'numero', 'piso'],
-                filterable: ['CodPredio', 'calle', 'numero', 'piso']
-            }
+                sortable: ['CodPredio', 'calle'],
+                filterable: ['CodPredio', 'calle']
+            },
+            center: { lat: 0, lng: 0 },
+            markers: [{
+                name: "Posicionar en ubicación",
+                position: { lat: null, lng: null }
+            }],
+            map: null,
+            infoContent: "",
+            infoWindowPos: { lat: 0, lng: 0 },
+            infoWinOpen: false,
+            currentMidx: null,
+            //optional: offset infowindow so it visually sits nicely on top of our marker
+            infoOptions: { pixelOffset: { width: 0, height: -35 } }
         };
+    },
+    mounted: function mounted() {
+        this.geolocate();
+        this.markers[0].position = this.center;
     },
     created: function created() {
         this.llenarTabla();
     },
 
     methods: {
-        llenarTabla: function llenarTabla() {
+        geolocate: function geolocate() {
             var _this = this;
 
+            navigator.geolocation.getCurrentPosition(function (position) {
+                _this.center = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude
+                };
+                _this.markers[0].position = _this.center;
+                _this.predio.latitud = _this.center.lat;
+                _this.predio.longitud = _this.center.lng;
+            });
+        },
+        toggleInfoWindow: function toggleInfoWindow(marker, idx) {
+            this.infoWindowPos = marker.position;
+            this.infoContent = this.getInfoWindowContent(marker);
+
+            //check if its the same marker that was selected if yes toggle
+            if (this.currentMidx == idx) {
+                this.infoWinOpen = !this.infoWinOpen;
+            }
+            //if different marker set infowindow to open and reset current marker index
+            else {
+                    this.infoWinOpen = true;
+                    this.currentMidx = idx;
+                }
+        },
+        getInfoWindowContent: function getInfoWindowContent(marker) {
+            return '' + marker.name;
+        },
+        llenarTabla: function llenarTabla() {
+            var _this2 = this;
+
             axios.get("getPredioList").then(function (data) {
-                _this.predio = data.data.predio;
-                console.log(data);
+                _this2.predio = data.data.predio;
+                //console.log(data);
+            }).catch();
+        },
+        viewContribuyente: function viewContribuyente(id) {
+            axios.get('contribuyentes/' + id).then(function (data) {
+                console.log(data.data.contribuyentes[0]);
+                var string = '';
+                data.data.contribuyentes.forEach(function (element) {
+                    string += '<li><a href="#" class="text-muted"><strong>' + element.dniRUC + '</strong> ' + element.nombre + ' ' + element.apellidos + ' -' + element.domicilio + '</a></li>';
+                });
+                var html = '<ul class="list-unstyled text-small">' + string + '</ul>';
+                swal({
+                    title: 'Contribuyentes',
+                    text: 'html',
+                    html: html
+                    // imageUrl: 'https://unsplash.it/400/200',
+                    // imageWidth: 400,
+                    // imageHeight: 200,
+                    // imageAlt: 'Custom image',
+                    // animation: false
+                });
             }).catch();
         }
     }
@@ -94467,7 +94543,10 @@ var render = function() {
           _c("div", { staticClass: "card-body" }, [
             _c(
               "div",
-              { staticClass: "content table-responsive table-sm" },
+              {
+                staticClass:
+                  "content table-responsive table-sm col-lg-12 col-md-12"
+              },
               [
                 _c("v-client-table", {
                   attrs: {
@@ -94477,36 +94556,26 @@ var render = function() {
                   },
                   scopedSlots: _vm._u([
                     {
-                      key: "Acciones",
+                      key: "popover",
                       fn: function(props) {
                         return _c("div", {}, [
-                          _c("button", {
-                            staticClass: "pe-7s-pen",
-                            attrs: {
-                              "data-toggle": "tooltip",
-                              "data-placement": "left",
-                              title: "Editar Graduado"
-                            },
-                            on: {
-                              click: function($event) {
-                                _vm.editGraduado(props.row.DNI)
+                          _c(
+                            "button",
+                            {
+                              staticClass: "pe-7s-look",
+                              attrs: {
+                                "data-toggle": "tooltip",
+                                "data-placement": "left",
+                                title: "Ver"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.viewContribuyente(props.row.codPredio)
+                                }
                               }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("button", {
-                            staticClass: "pe-7s-look",
-                            attrs: {
-                              "data-toggle": "tooltip",
-                              "data-placement": "left",
-                              title: "Ver Hoja de Vida"
                             },
-                            on: {
-                              click: function($event) {
-                                _vm.viewGraduado(props.row.DNI)
-                              }
-                            }
-                          })
+                            [_vm._v("Ver")]
+                          )
                         ])
                       }
                     }
@@ -94593,7 +94662,7 @@ var content = __webpack_require__(427);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("4af4f96d", content, false, {});
+var update = __webpack_require__(7)("4af4f96d", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -94612,12 +94681,12 @@ if(false) {
 /* 427 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(6)(false);
 // imports
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* The input */\n.tags-input {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\n}\n.tags-input input {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  background: transparent;\r\n  border: none;\n}\n.tags-input input:focus {\r\n  outline: none;\n}\n.tags-input input[type=\"text\"] {\r\n  color: #495057;\n}\n.tags-input-wrapper-default {\r\n  padding: 0.5rem 0.25rem;\r\n\r\n  background: #fff;\r\n\r\n  border: 1px solid transparent;\r\n  border-radius: 0.25rem;\r\n  border-color: #dbdbdb;\n}\r\n\r\n/* The tag badges & the remove icon */\n.tags-input span {\r\n  margin-right: 0.3rem;\n}\n.tags-input-remove {\r\n  cursor: pointer;\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 0.5rem;\r\n  height: 0.5rem;\r\n  overflow: hidden;\n}\n.tags-input-remove:before,\r\n.tags-input-remove:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 100%;\r\n  top: 50%;\r\n  left: 0;\r\n  background: #5dc282;\r\n\r\n  height: 2px;\r\n  margin-top: -1px;\n}\n.tags-input-remove:before {\r\n  -webkit-transform: rotate(45deg);\r\n          transform: rotate(45deg);\n}\n.tags-input-remove:after {\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\n}\r\n\r\n/* Tag badge styles */\n.tags-input-badge {\r\n  display: inline-block;\r\n  padding: 0.25em 0.4em;\r\n  font-size: 75%;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n  text-align: center;\r\n  white-space: nowrap;\r\n  vertical-align: baseline;\r\n  border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\r\n  padding-right: 0.6em;\r\n  padding-left: 0.6em;\r\n  border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\r\n  color: #212529;\r\n  background-color: #f0f1f2;\n}\r\n\r\n/* Typeahead - badges */\n.typeahead-badges > span {\r\n  cursor: pointer;\r\n  margin-right: 0.3rem;\n}\r\n\r\n/* Typeahead - dropdown */\n.typeahead-dropdown {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  position: absolute;\r\n  width: 100%;\n}\n.typeahead-dropdown li {\r\n  padding: 0.25rem 1rem;\r\n  cursor: pointer;\n}\r\n\r\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\r\n  color: #fff;\r\n  background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\r\n  color: #fff;\r\n  background-color: #007bff;\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* The input */\n.tags-input {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\n}\n.tags-input input {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  background: transparent;\r\n  border: none;\n}\n.tags-input input:focus {\r\n  outline: none;\n}\n.tags-input input[type=\"text\"] {\r\n  color: #495057;\n}\n.tags-input-wrapper-default {\r\n  padding: 0.5rem 0.25rem;\r\n\r\n  background: #fff;\r\n\r\n  border: 1px solid transparent;\r\n  border-radius: 0.25rem;\r\n  border-color: #dbdbdb;\n}\r\n\r\n/* The tag badges & the remove icon */\n.tags-input span {\r\n  margin-right: 0.3rem;\n}\n.tags-input-remove {\r\n  cursor: pointer;\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 0.5rem;\r\n  height: 0.5rem;\r\n  overflow: hidden;\n}\n.tags-input-remove:before,\r\n.tags-input-remove:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 100%;\r\n  top: 50%;\r\n  left: 0;\r\n  background: #5dc282;\r\n\r\n  height: 2px;\r\n  margin-top: -1px;\n}\n.tags-input-remove:before {\r\n  -webkit-transform: rotate(45deg);\r\n          transform: rotate(45deg);\n}\n.tags-input-remove:after {\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\n}\r\n\r\n/* Tag badge styles */\n.tags-input-badge {\r\n  display: inline-block;\r\n  padding: 0.25em 0.4em;\r\n  font-size: 75%;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n  text-align: center;\r\n  white-space: nowrap;\r\n  vertical-align: baseline;\r\n  border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\r\n  padding-right: 0.6em;\r\n  padding-left: 0.6em;\r\n  border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\r\n  color: #212529;\r\n  background-color: #f0f1f2;\n}\r\n\r\n/* Typeahead - badges */\n.typeahead-badges > span {\r\n  cursor: pointer;\r\n  margin-right: 0.3rem;\n}\r\n\r\n/* Typeahead - dropdown */\n.typeahead-dropdown {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  position: absolute;\r\n  width: 100%;\n}\n.typeahead-dropdown li {\r\n  padding: 0.25rem 1rem;\r\n  cursor: pointer;\n}\r\n\r\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\r\n  color: #fff;\r\n  background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\r\n  color: #fff;\r\n  background-color: #007bff;\n}\r\n", ""]);
 
 // exports
 
@@ -95047,7 +95116,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       this.rows.push({
         valor: "",
         anio: "",
-        percent: ""
+        percent: "",
+        idPC: "",
+        idPH: ""
         // file: {
         //     name: 'Choose File'
         // }
@@ -95055,6 +95126,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     removeElement: function removeElement(index) {
       this.rows.splice(index, 1);
+      this.selectedTags.splice(index, 1);
+      console.log(this.selectedTags);
     },
     setFilename: function setFilename(event, row) {
       var file = event.target.files[0];
@@ -95217,6 +95290,23 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     }
   }
 });
+//        en: node_modules/@voerro/vue-tagsinput/src/VoerroTagsInput.vue
+//        en la funcion searchTag() de methods pegar este codigo dentro del segundo if 
+// //------------------- Funcion para agregar etiquetas dinamicamente al input  
+//                         if(this.input!=''){
+//                             axios.get(`/getContribuyente/${this.input}`)
+//                             .then(data => {
+//                                 //console.log(data);
+//                                 let datos = data.data.contribuyente;
+//                                 datos.forEach((e, i) => {
+//                                     this.existingTags[e.dniRUC] = `${e.nombres}-${e.dniRUC}`;
+//                                 });  
+//                             }).catch(error => {
+//                                 console.log('Ocurrio un error ' + error);
+//                                 this.$Progress.fail();
+//                             });
+//                         }
+// //---------------------------------------------------------------------------------------------
 
 /***/ }),
 /* 429 */
@@ -95838,7 +95928,7 @@ var render = function() {
                                 _c("tags-input", {
                                   attrs: {
                                     "element-id": "tags",
-                                    placeholder: "Agregar contribuyente",
+                                    placeholder: "DNI",
                                     "input-class": "form-control",
                                     limit: 1,
                                     "only-existing-tags": true,
@@ -96210,11 +96300,1864 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(431)
+}
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(431)
+var __vue_script__ = __webpack_require__(433)
 /* template */
-var __vue_template__ = __webpack_require__(432)
+var __vue_template__ = __webpack_require__(434)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/predioEdit.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-c6413388", Component.options)
+  } else {
+    hotAPI.reload("data-v-c6413388", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 431 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(432);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(7)("0f28ceff", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c6413388\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./predioEdit.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-c6413388\",\"scoped\":false,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./predioEdit.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 432 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(6)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* The input */\n.tags-input {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\n}\n.tags-input input {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  background: transparent;\r\n  border: none;\n}\n.tags-input input:focus {\r\n  outline: none;\n}\n.tags-input input[type=\"text\"] {\r\n  color: #495057;\n}\n.tags-input-wrapper-default {\r\n  padding: 0.5rem 0.25rem;\r\n\r\n  background: #fff;\r\n\r\n  border: 1px solid transparent;\r\n  border-radius: 0.25rem;\r\n  border-color: #dbdbdb;\n}\r\n\r\n/* The tag badges & the remove icon */\n.tags-input span {\r\n  margin-right: 0.3rem;\n}\n.tags-input-remove {\r\n  cursor: pointer;\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 0.5rem;\r\n  height: 0.5rem;\r\n  overflow: hidden;\n}\n.tags-input-remove:before,\r\n.tags-input-remove:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 100%;\r\n  top: 50%;\r\n  left: 0;\r\n  background: #5dc282;\r\n\r\n  height: 2px;\r\n  margin-top: -1px;\n}\n.tags-input-remove:before {\r\n  -webkit-transform: rotate(45deg);\r\n          transform: rotate(45deg);\n}\n.tags-input-remove:after {\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\n}\r\n\r\n/* Tag badge styles */\n.tags-input-badge {\r\n  display: inline-block;\r\n  padding: 0.25em 0.4em;\r\n  font-size: 75%;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n  text-align: center;\r\n  white-space: nowrap;\r\n  vertical-align: baseline;\r\n  border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\r\n  padding-right: 0.6em;\r\n  padding-left: 0.6em;\r\n  border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\r\n  color: #212529;\r\n  background-color: #f0f1f2;\n}\r\n\r\n/* Typeahead - badges */\n.typeahead-badges > span {\r\n  cursor: pointer;\r\n  margin-right: 0.3rem;\n}\r\n\r\n/* Typeahead - dropdown */\n.typeahead-dropdown {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  position: absolute;\r\n  width: 100%;\n}\n.typeahead-dropdown li {\r\n  padding: 0.25rem 1rem;\r\n  cursor: pointer;\n}\r\n\r\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\r\n  color: #fff;\r\n  background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\r\n  color: #fff;\r\n  background-color: #007bff;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 433 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "GoogleMap",
+  data: function data() {
+    return {
+      alert: false,
+      buscarPredio: null,
+      predio: {
+        codPredio: null,
+        calle: null,
+        numero: null,
+        piso: null,
+        mz: null,
+        lote: null,
+        interior: null,
+        sector: null,
+        condicion: null,
+        conservacion: null,
+        material: null,
+        clasificacion: null,
+        localidad: null,
+        latitud: null,
+        longitud: null
+      },
+      buscar: null,
+      selectedTags: [],
+      lista: {
+        // 1: 'Web Development',
+        // 2: 'PHP',
+        // 3: 'JavaScript',
+        // 4:'Java',
+      },
+      listaAd: [],
+      material: [],
+      condicion: [],
+      sector: [],
+      conservacion: [],
+      clasificacion: [],
+      localidad: [],
+      rows: [],
+      center: { lat: 0, lng: 0 },
+      markers: [{
+        name: "Posicionar en ubicación",
+        position: { lat: null, lng: null }
+      }],
+      map: null,
+      infoContent: "",
+      infoWindowPos: { lat: 0, lng: 0 },
+      infoWinOpen: false,
+      currentMidx: null,
+      //optional: offset infowindow so it visually sits nicely on top of our marker
+      infoOptions: { pixelOffset: { width: 0, height: -35 } }
+    };
+  },
+  mounted: function mounted() {
+    //set bounds of the map
+    this.geolocate();
+    this.markers[0].position = this.center;
+    this.getDatosSelect();
+    $("input[placeholder='Agregar contribuyente']").keyup(function () {
+      var a = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.getContribuyente();
+
+      return this.value;
+    });
+  },
+  created: function created() {},
+
+  methods: {
+    addRow: function addRow() {
+      var elem = document.createElement("tr");
+      this.rows.push({
+        valor: "",
+        anio: "",
+        percent: "",
+        idPC: "",
+        idPH: ""
+        // file: {
+        //     name: 'Choose File'
+        // }
+      });
+    },
+    removeElement: function removeElement(index) {
+      this.rows.splice(index, 1);
+      this.selectedTags.splice(index, 1);
+      console.log(this.selectedTags);
+    },
+    setFilename: function setFilename(event, row) {
+      var file = event.target.files[0];
+      row.file = file;
+    },
+    geolocate: function geolocate() {
+      var _this = this;
+
+      navigator.geolocation.getCurrentPosition(function (position) {
+        _this.center = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        _this.markers[0].position = _this.center;
+        _this.predio.latitud = _this.center.lat;
+        _this.predio.longitud = _this.center.lng;
+      });
+    },
+    setSelectedTags: function setSelectedTags() {
+      this.selectedTags = ["programmatically", "selected", "tags"];
+      // ALTERNATIVELY
+      this.selectedTags = "programmatically,selected,tags";
+    },
+    editarCont: function editarCont(id) {
+      var _this2 = this;
+
+      this.selectedTags = [];
+      this.rows = [];
+      axios.get("datoPredioCont/" + id).then(function (data) {
+        // console.log(data);
+        var i = 0;
+        if (data.data.datos[0] != null) {
+          _this2.alert = false;
+          data.data.datos.forEach(function (element) {
+            //this.setSelectedTags[i][element.dniRUC] = `${element.nombre}-${element.dniRUC}`;
+            var s = element.dniRUC;
+            _this2.selectedTags.push([element.dniRUC]);
+            // this.selectedTags.push
+            _this2.rows.push({
+              valor: element.valorPredio,
+              anio: element.anio,
+              percent: element.percentPropiedad,
+              idPH: element.idPH,
+              idPC: element.idPC
+            });
+          });
+          //console.log(this.selectedTags);
+
+          _this2.markers.position = {
+            lat: parseFloat(data.data.datos.latitud),
+            lng: parseFloat(data.data.datos.longitud)
+          };
+          _this2.predio.latitud = parseFloat(data.data.datos.latitud);
+          _this2.predio.longitud = parseFloat(data.data.datos.longitud);
+          _this2.predio = data.data.datos[0];
+        } else {
+          _this2.alert = true;
+          _this2.selectedTags = [];
+          _this2.rows = [];
+          _this2.predio = {
+            codPredio: null,
+            calle: null,
+            numero: null,
+            piso: null,
+            mz: null,
+            lote: null,
+            interior: null,
+            sector: null,
+            condicion: null,
+            conservacion: null,
+            material: null,
+            clasificacion: null,
+            localidad: null,
+            latitud: null,
+            longitud: null
+          };
+        }
+      }).catch(function (error) {
+        console.log("Error: " + error);
+      });
+    },
+    getDatosSelect: function getDatosSelect() {
+      var _this3 = this;
+
+      axios.get("datosSelect").then(function (data) {
+        _this3.material = data.data.material;
+        _this3.condicion = data.data.condicion;
+        _this3.conservacion = data.data.conservacion;
+        _this3.clasificacion = data.data.clasificacion;
+        _this3.localidad = data.data.localidad;
+        _this3.sector = data.data.sector;
+      }).catch(function (error) {
+        console.log("Ocurrio un error " + error);
+        _this3.$Progress.fail();
+      });
+    },
+    getContribuyente: function getContribuyente(e) {
+      var _this4 = this;
+
+      axios.get("/getContribuyente/" + e).then(function (data) {
+        var datos = data.data.contribuyente;
+        datos.forEach(function (e, i) {
+          _this4.lista[e.dniRUC] = e.nombres + "-" + e.dniRUC;
+        });
+      }).catch(function (error) {
+        console.log("Ocurrio un error " + error);
+        _this4.$Progress.fail();
+      });
+    },
+    updateCoordinates: function updateCoordinates(location) {
+      //console.log("imprimiendo desde update");
+      this.coordinates = {
+        lat: location.latLng.lat(),
+        lng: location.latLng.lng()
+      };
+      this.markers[0].position = this.coordinates;
+      this.predio.latitud = this.coordinates.lat;
+      this.predio.longitud = this.coordinates.lng;
+    },
+
+    toggleInfoWindow: function toggleInfoWindow(marker, idx) {
+      this.infoWindowPos = marker.position;
+      this.infoContent = this.getInfoWindowContent(marker);
+
+      //check if its the same marker that was selected if yes toggle
+      if (this.currentMidx == idx) {
+        this.infoWinOpen = !this.infoWinOpen;
+      }
+      //if different marker set infowindow to open and reset current marker index
+      else {
+          this.infoWinOpen = true;
+          this.currentMidx = idx;
+        }
+    },
+    getInfoWindowContent: function getInfoWindowContent(marker) {
+      return "" + marker.name;
+    },
+    agregarPredio: function agregarPredio() {
+      // this.$validator.validateAll().then(res => {
+      //     if (res) {
+      axios.post("predio", {
+        predio: this.predio,
+        contribuyentes: this.selectedTags,
+        rows: this.rows
+      }).then(function (data) {
+        if (data.data == "OK") {
+          swal({
+            position: "top-end",
+            type: "success",
+            title: "Datos ingresados correctamente",
+            showConfirmButton: false,
+            timer: 2000
+          });
+          setTimeout(function () {
+            location.reload();
+          }, 2500);
+        } else {
+          swal({
+            position: "top-end",
+            type: "error",
+            title: "No se pudo Ingresar datos",
+            showConfirmButton: false,
+            timer: 2000
+          });
+        }
+      }).catch(function (error) {
+        swal({
+          position: "top-end",
+          type: "error",
+          title: "Sucedió un error, comuníquese con el Administrador",
+          showConfirmButton: false,
+          timer: 2000
+        });
+        console.log("Error: " + error);
+      });
+      // } else {
+      //     swal({
+      //         position: 'top-end',
+      //         type: 'error',
+      //         title: 'Por favor corrija los errores',
+      //         showConfirmButton: false,
+      //         timer: 2000
+      //     });
+      // }
+      // });
+    },
+    buscarContribuyente: function buscarContribuyente() {
+      swal({
+        title: "Busca contribuyente",
+        input: "text",
+        inputAttributes: {
+          autocapitalize: "off"
+        },
+        showCancelButton: true,
+        confirmButtonText: "Look up",
+        showLoaderOnConfirm: true,
+        preConfirm: function preConfirm(login) {
+          return fetch("//api.github.com/users/" + login).then(function (response) {
+            if (!response.ok) {
+              throw new Error(response.statusText);
+            }
+            return response.json();
+          }).catch(function (error) {
+            swal.showValidationMessage("Request failed: " + error);
+          });
+        },
+        allowOutsideClick: function allowOutsideClick() {
+          return !swal.isLoading();
+        }
+      }).then(function (result) {
+        if (result.value) {
+          swal({
+            title: result.value.login + "'s avatar",
+            imageUrl: result.value.avatar_url
+          });
+        }
+      });
+    }
+  }
+});
+//        en: node_modules/@voerro/vue-tagsinput/src/VoerroTagsInput.vue
+//        en la funcion searchTag() de methods pegar este codigo dentro del segundo if 
+// //------------------- Funcion para agregar etiquetas dinamicamente al input  
+//                         if(this.input!=''){
+//                             axios.get(`/getContribuyente/${this.input}`)
+//                             .then(data => {
+//                                 //console.log(data);
+//                                 let datos = data.data.contribuyente;
+//                                 datos.forEach((e, i) => {
+//                                     this.existingTags[e.dniRUC] = `${e.nombres}-${e.dniRUC}`;
+//                                 });  
+//                             }).catch(error => {
+//                                 console.log('Ocurrio un error ' + error);
+//                                 this.$Progress.fail();
+//                             });
+//                         }
+// //---------------------------------------------------------------------------------------------
+
+/***/ }),
+/* 434 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Editar Predio")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "card-body" }, [
+            _c("div", { staticClass: "box box-warning" }, [
+              _c("div", { staticClass: "box-header with-border" }, [
+                _c("div", { staticClass: "col-12 col-lg-12 col-md-12" }, [
+                  _c("div", { staticClass: "form-inline" }, [
+                    _c("h3", { staticClass: "box-title mr-3" }, [
+                      _vm._v("Buscar Predio")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.buscarPredio,
+                          expression: "buscarPredio"
+                        }
+                      ],
+                      staticClass: "form-control mr-3",
+                      attrs: {
+                        type: "text",
+                        placeholder: "Codigo de Predio",
+                        required: "",
+                        maxlength: "10"
+                      },
+                      domProps: { value: _vm.buscarPredio },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.buscarPredio = $event.target.value
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "form-control btn btn-info",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.editarCont(_vm.buscarPredio)
+                          }
+                        }
+                      },
+                      [_c("li", { staticClass: "fa fa-search-plus" })]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.alert,
+                          expression: "alert"
+                        }
+                      ],
+                      staticClass:
+                        "alert alert-danger mt-3 col-12 col-lg-10 col-md-10"
+                    },
+                    [
+                      _c("strong", [_vm._v("Aviso")]),
+                      _vm._v(
+                        " No se ha encontrado ningun predio con el codigo ingresado! "
+                      ),
+                      _c(
+                        "router-link",
+                        {
+                          staticClass: "alert-link",
+                          attrs: { to: "/predio-lista" }
+                        },
+                        [_vm._v("Cosultar?")]
+                      )
+                    ],
+                    1
+                  )
+                ])
+              ]),
+              _vm._v(" "),
+              _c("hr"),
+              _vm._v(" "),
+              _c("div", { staticClass: "box-body" }, [
+                _c(
+                  "form",
+                  {
+                    on: {
+                      submit: function($event) {
+                        $event.preventDefault()
+                        return _vm.agregarPredio($event)
+                      }
+                    }
+                  },
+                  [
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Codigo Predio")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.codPredio,
+                                expression: "predio.codPredio"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Codigo de Predio",
+                              required: "",
+                              readonly: "",
+                              maxlength: "10"
+                            },
+                            domProps: { value: _vm.predio.codPredio },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.predio,
+                                  "codPredio",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Calle")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.calle,
+                                expression: "predio.calle"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Calle",
+                              required: ""
+                            },
+                            domProps: { value: _vm.predio.calle },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.predio,
+                                  "calle",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Numero")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.numero,
+                                expression: "predio.numero"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Numero",
+                              maxlength: "6"
+                            },
+                            domProps: { value: _vm.predio.numero },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.predio,
+                                  "numero",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Piso")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.piso,
+                                expression: "predio.piso"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Piso",
+                              required: ""
+                            },
+                            domProps: { value: _vm.predio.piso },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.predio,
+                                  "piso",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Manzana")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.mz,
+                                expression: "predio.mz"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Manzana",
+                              maxlength: "1"
+                            },
+                            domProps: { value: _vm.predio.mz },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(_vm.predio, "mz", $event.target.value)
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Lote")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.lote,
+                                expression: "predio.lote"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Lote",
+                              maxlength: "5"
+                            },
+                            domProps: { value: _vm.predio.lote },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.predio,
+                                  "lote",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Interior")]),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.predio.interior,
+                                expression: "predio.interior"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              type: "text",
+                              placeholder: "Interior",
+                              maxlength: "3"
+                            },
+                            domProps: { value: _vm.predio.interior },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.predio,
+                                  "interior",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-3 col-md-3" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Sector")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.predio.sector,
+                                  expression: "predio.sector"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                name: "material",
+                                id: "material",
+                                required: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.predio,
+                                    "sector",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            _vm._l(_vm.sector, function(sc) {
+                              return _c(
+                                "option",
+                                {
+                                  key: sc.id_sector,
+                                  domProps: { value: sc.id_sector }
+                                },
+                                [_vm._v(_vm._s(sc.descripcion))]
+                              )
+                            })
+                          )
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Material")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.predio.material,
+                                  expression: "predio.material"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                name: "material",
+                                id: "material",
+                                required: ""
+                              },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.predio,
+                                    "material",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            _vm._l(_vm.material, function(m) {
+                              return _c(
+                                "option",
+                                {
+                                  key: m.id_material,
+                                  domProps: { value: m.id_material }
+                                },
+                                [_vm._v(_vm._s(m.descripcion))]
+                              )
+                            })
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Condicion Propiedad")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.predio.condicion,
+                                  expression: "predio.condicion"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.predio,
+                                    "condicion",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            _vm._l(_vm.condicion, function(c) {
+                              return _c(
+                                "option",
+                                {
+                                  key: c.id_condicion,
+                                  domProps: { value: c.id_condicion }
+                                },
+                                [_vm._v(_vm._s(c.descripcion))]
+                              )
+                            })
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("conservacion")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.predio.conservacion,
+                                  expression: "predio.conservacion"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.predio,
+                                    "conservacion",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            _vm._l(_vm.conservacion, function(co) {
+                              return _c(
+                                "option",
+                                {
+                                  key: co.id_conservacion,
+                                  domProps: { value: co.id_conservacion }
+                                },
+                                [_vm._v(_vm._s(co.descripcion))]
+                              )
+                            })
+                          )
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("clasificación")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.predio.clasificacion,
+                                  expression: "predio.clasificacion"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.predio,
+                                    "clasificacion",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            _vm._l(_vm.clasificacion, function(cl) {
+                              return _c(
+                                "option",
+                                {
+                                  key: cl.id_clasificacion,
+                                  domProps: { value: cl.id_clasificacion }
+                                },
+                                [_vm._v(_vm._s(cl.descripcion))]
+                              )
+                            })
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-8 col-md-8" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("label", [_vm._v("Localidad")]),
+                          _vm._v(" "),
+                          _c(
+                            "select",
+                            {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.predio.localidad,
+                                  expression: "predio.localidad"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: { required: "" },
+                              on: {
+                                change: function($event) {
+                                  var $$selectedVal = Array.prototype.filter
+                                    .call($event.target.options, function(o) {
+                                      return o.selected
+                                    })
+                                    .map(function(o) {
+                                      var val =
+                                        "_value" in o ? o._value : o.value
+                                      return val
+                                    })
+                                  _vm.$set(
+                                    _vm.predio,
+                                    "localidad",
+                                    $event.target.multiple
+                                      ? $$selectedVal
+                                      : $$selectedVal[0]
+                                  )
+                                }
+                              }
+                            },
+                            _vm._l(_vm.localidad, function(l) {
+                              return _c(
+                                "option",
+                                {
+                                  key: l.id_localidad,
+                                  domProps: { value: l.id_localidad }
+                                },
+                                [_vm._v(_vm._s(l.descripcion))]
+                              )
+                            })
+                          )
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _vm._m(0),
+                    _vm._v(" "),
+                    _vm._l(_vm.rows, function(row, index) {
+                      return _c("div", { key: index }, [
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-lg-8 col-md-8" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group" },
+                              [
+                                _c("tags-input", {
+                                  attrs: {
+                                    "element-id": "tags",
+                                    placeholder: "DNI",
+                                    "input-class": "form-control",
+                                    limit: 1,
+                                    "only-existing-tags": true,
+                                    "existing-tags": _vm.lista,
+                                    typeahead: true
+                                  },
+                                  model: {
+                                    value: _vm.selectedTags[index],
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.selectedTags, index, $$v)
+                                    },
+                                    expression: "selectedTags[index]"
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-lg-2 col-md-2" }, [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "btn btn-info",
+                                staticStyle: { cursor: "pointer" },
+                                on: {
+                                  click: function($event) {
+                                    _vm.removeElement(index)
+                                  }
+                                }
+                              },
+                              [
+                                _c("i", {
+                                  staticClass: "fa fa-trash-o",
+                                  attrs: { "aria-hidden": "true" }
+                                })
+                              ]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "row" }, [
+                          _c("div", { staticClass: "col-lg-3" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { attrs: { for: "" } }, [
+                                _vm._v("Valor Predio")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: row.valor,
+                                    expression: "row.valor"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text" },
+                                domProps: { value: row.valor },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(row, "valor", $event.target.value)
+                                  }
+                                }
+                              })
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-lg-3" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { attrs: { for: "" } }, [
+                                _vm._v("Año")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: row.anio,
+                                    expression: "row.anio"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text", maxlength: "" },
+                                domProps: { value: row.anio },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(row, "anio", $event.target.value)
+                                  }
+                                }
+                              })
+                            ])
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-lg-3" }, [
+                            _c("div", { staticClass: "form-group" }, [
+                              _c("label", { attrs: { for: "" } }, [
+                                _vm._v("Porcentaje de Propiedad")
+                              ]),
+                              _vm._v(" "),
+                              _c("input", {
+                                directives: [
+                                  {
+                                    name: "model",
+                                    rawName: "v-model",
+                                    value: row.percent,
+                                    expression: "row.percent"
+                                  }
+                                ],
+                                staticClass: "form-control",
+                                attrs: { type: "text", maxlength: "3" },
+                                domProps: { value: row.percent },
+                                on: {
+                                  input: function($event) {
+                                    if ($event.target.composing) {
+                                      return
+                                    }
+                                    _vm.$set(
+                                      row,
+                                      "percent",
+                                      $event.target.value
+                                    )
+                                  }
+                                }
+                              })
+                            ])
+                          ])
+                        ])
+                      ])
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-4 col-md-4" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "button btn-primary form-control",
+                              attrs: { type: "button" },
+                              on: { click: _vm.addRow }
+                            },
+                            [_vm._v("Agregar Contribuyente")]
+                          )
+                        ])
+                      ])
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "row" }, [
+                      _c("div", { staticClass: "col-lg-12 col-md-12" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c(
+                            "label",
+                            { staticClass: "col-lg-4 control-label" },
+                            [_vm._v("Ubicación")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "col-lg-10" },
+                            [
+                              _c("div", { staticClass: "input-group" }, [
+                                _vm._m(1),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.predio.latitud,
+                                      expression: "predio.latitud"
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    "aria-label": "First name",
+                                    readonly: ""
+                                  },
+                                  domProps: { value: _vm.predio.latitud },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.predio,
+                                        "latitud",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _vm._m(2),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.predio.longitud,
+                                      expression: "predio.longitud "
+                                    }
+                                  ],
+                                  staticClass: "form-control",
+                                  attrs: {
+                                    type: "text",
+                                    "aria-label": "Last name",
+                                    readonly: ""
+                                  },
+                                  domProps: { value: _vm.predio.longitud },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.predio,
+                                        "longitud",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "gmap-map",
+                                {
+                                  ref: "gmap",
+                                  staticStyle: {
+                                    width: "100%",
+                                    height: "100vh"
+                                  },
+                                  attrs: { center: _vm.center, zoom: 16 }
+                                },
+                                [
+                                  _vm._l(_vm.markers, function(m, index) {
+                                    return _c("gmap-marker", {
+                                      key: index,
+                                      attrs: {
+                                        position: m.position,
+                                        draggable: true
+                                      },
+                                      on: {
+                                        drag: _vm.updateCoordinates,
+                                        click: function($event) {
+                                          _vm.toggleInfoWindow(m, index)
+                                        }
+                                      }
+                                    })
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "gmap-info-window",
+                                    {
+                                      attrs: {
+                                        options: _vm.infoOptions,
+                                        position: _vm.infoWindowPos,
+                                        opened: _vm.infoWinOpen
+                                      },
+                                      on: {
+                                        closeclick: function($event) {
+                                          _vm.infoWinOpen = false
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c("div", {
+                                        domProps: {
+                                          innerHTML: _vm._s(_vm.infoContent)
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ],
+                                2
+                              )
+                            ],
+                            1
+                          )
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "col-lg-10 col-md-10" }, [
+                        _c("div", { staticClass: "form-group" }, [
+                          _c("input", {
+                            staticClass:
+                              "form-control btn btn-primary pull-left",
+                            attrs: {
+                              type: "submit",
+                              disabled: _vm.errors.any()
+                            }
+                          })
+                        ])
+                      ])
+                    ])
+                  ],
+                  2
+                )
+              ])
+            ])
+          ])
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col-lg-10 col-md-10" }, [
+        _c("h3", [
+          _vm._v("Contribuyente\n                        "),
+          _c("small", [_vm._v("(Buscar por DNI)")])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group" })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("Latitud")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "input-group-prepend" }, [
+      _c("span", { staticClass: "input-group-text" }, [_vm._v("Altitud")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-c6413388", module.exports)
+  }
+}
+
+/***/ }),
+/* 435 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(436)
+/* template */
+var __vue_template__ = __webpack_require__(437)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -96253,7 +98196,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 431 */
+/* 436 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -96399,7 +98342,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 432 */
+/* 437 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -96755,7 +98698,7 @@ if (false) {
 }
 
 /***/ }),
-/* 433 */
+/* 438 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -96876,7 +98819,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 434 */
+/* 439 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -96959,15 +98902,15 @@ if (false) {
 }
 
 /***/ }),
-/* 435 */
+/* 440 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(436)
+var __vue_script__ = __webpack_require__(441)
 /* template */
-var __vue_template__ = __webpack_require__(437)
+var __vue_template__ = __webpack_require__(442)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -97006,7 +98949,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 436 */
+/* 441 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97078,7 +99021,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 437 */
+/* 442 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -97145,15 +99088,15 @@ if (false) {
 }
 
 /***/ }),
-/* 438 */
+/* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(439)
+var __vue_script__ = __webpack_require__(444)
 /* template */
-var __vue_template__ = __webpack_require__(440)
+var __vue_template__ = __webpack_require__(445)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -97192,7 +99135,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 439 */
+/* 444 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97308,7 +99251,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 440 */
+/* 445 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -97389,19 +99332,19 @@ if (false) {
 }
 
 /***/ }),
-/* 441 */
+/* 446 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(442)
+  __webpack_require__(447)
 }
 var normalizeComponent = __webpack_require__(2)
 /* script */
-var __vue_script__ = __webpack_require__(444)
+var __vue_script__ = __webpack_require__(449)
 /* template */
-var __vue_template__ = __webpack_require__(445)
+var __vue_template__ = __webpack_require__(450)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -97440,17 +99383,17 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 442 */
+/* 447 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(443);
+var content = __webpack_require__(448);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(10)("74a5d0dc", content, false, {});
+var update = __webpack_require__(7)("74a5d0dc", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
@@ -97466,10 +99409,10 @@ if(false) {
 }
 
 /***/ }),
-/* 443 */
+/* 448 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(9)(false);
+exports = module.exports = __webpack_require__(6)(false);
 // imports
 
 
@@ -97480,7 +99423,7 @@ exports.push([module.i, "\n.v-spinner .v-moon1\n{\n\n    -webkit-animation: v-mo
 
 
 /***/ }),
-/* 444 */
+/* 449 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -97558,7 +99501,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 445 */
+/* 450 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -97603,7 +99546,7 @@ if (false) {
 }
 
 /***/ }),
-/* 446 */
+/* 451 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

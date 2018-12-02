@@ -3,13 +3,31 @@
     <div class="row justify-content-center">
       <div class="col-md-12">
         <div class="card card-default">
-          <div class="card-header">Agregar Predio</div>
+          <div class="card-header">Editar Predio</div>
 
           <div class="card-body">
             <div class="box box-warning">
               <div class="box-header with-border">
-                <h3 class="box-title">Datos Generales</h3>
+                <div class="col-12 col-lg-12 col-md-12">
+                    <div class="form-inline">
+                        <h3 class="box-title mr-3">Buscar Predio</h3>
+                        <input
+                          type="text"
+                          class="form-control mr-3"
+                          placeholder="Codigo de Predio"
+                          v-model="buscarPredio"
+                          required
+                          maxlength="10"
+                        >
+                        <button type="button" v-on:click="editarCont(buscarPredio)" class="form-control btn btn-info"><li class="fa fa-search-plus"></li></button>
+                        
+                    </div>
+                    <div class="alert alert-danger mt-3 col-12 col-lg-10 col-md-10" v-show="alert">
+					    <strong>Aviso</strong> No se ha encontrado ningun predio con el codigo ingresado! <router-link to="/predio-lista" class="alert-link">Cosultar?</router-link>
+                        </div>
+                </div>                
               </div>
+              <hr>
               <!-- /.box-header -->
               <div class="box-body">
                 <form @submit.prevent="agregarPredio">
@@ -24,6 +42,7 @@
                           placeholder="Codigo de Predio"
                           v-model="predio.codPredio"
                           required
+                          readonly
                           maxlength="10"
                         >
                       </div>
@@ -270,6 +289,12 @@
                       </div>
                     </div>
                   </div>
+                  <!-- <pre>
+                    {{rows}}
+                  </pre>
+                  <pre>
+                    {{selectedTags}}
+                  </pre> -->
                   <div class="row">
                     <div class="col-lg-12 col-md-12">
                       <div class="form-group">
@@ -349,6 +374,8 @@ export default {
   name: "GoogleMap",
   data() {
     return {
+      alert:false,
+      buscarPredio:null,
       predio: {
         codPredio: null,
         calle: null,
@@ -375,8 +402,6 @@ export default {
         // 4:'Java',
       },
       listaAd: [],
-      // ALTERNATIVELY
-      // selectedTags: null,
       material: [],
       condicion: [],
       sector: [],
@@ -419,7 +444,7 @@ export default {
         valor: "",
         anio: "",
         percent: "",
-        idPC: "",
+        idPC:"",
         idPH:""
         // file: {
         //     name: 'Choose File'
@@ -450,6 +475,61 @@ export default {
       this.selectedTags = ["programmatically", "selected", "tags"];
       // ALTERNATIVELY
       this.selectedTags = "programmatically,selected,tags";
+    },
+    editarCont(id){
+        this.selectedTags=[];
+        this.rows=[];
+        axios.get(`datoPredioCont/${id}`).then(data=>{
+            // console.log(data);
+            var i=0;
+            if (data.data.datos[0]!=null) {
+                this.alert=false;
+                data.data.datos.forEach(element => {
+                  //this.setSelectedTags[i][element.dniRUC] = `${element.nombre}-${element.dniRUC}`;
+                  var s=element.dniRUC;
+                  this.selectedTags.push([element.dniRUC]);
+                  // this.selectedTags.push
+                    this.rows.push({
+                        valor: element.valorPredio,
+                        anio: element.anio,
+                        percent: element.percentPropiedad,
+                        idPH:element.idPH,
+                        idPC:element.idPC
+                    });
+                    
+                });
+                //console.log(this.selectedTags);
+                
+                this.markers.position = {
+                lat: parseFloat(data.data.datos.latitud),
+                lng: parseFloat(data.data.datos.longitud)
+              };
+                this.predio.latitud = parseFloat(data.data.datos.latitud);
+                this.predio.longitud = parseFloat(data.data.datos.longitud); 
+                this.predio=data.data.datos[0];
+            }else{
+                this.alert=true;
+                this.selectedTags=[];
+                this.rows=[];
+                this.predio={
+                    codPredio: null,
+                    calle: null,
+                    numero: null,
+                    piso: null,
+                    mz: null,
+                    lote: null,
+                    interior: null,
+                    sector: null,
+                    condicion: null,
+                    conservacion: null,
+                    material: null,
+                    clasificacion: null,
+                    localidad: null,
+                    latitud: null,
+                    longitud: null,
+                };
+            }
+        }).catch(error=>{console.log("Error: "+error);});
     },
     getDatosSelect() {
       axios
@@ -482,7 +562,7 @@ export default {
         });
     },
     updateCoordinates(location) {
-      console.log("imprimiendo desde update");
+      //console.log("imprimiendo desde update");
       this.coordinates = {
         lat: location.latLng.lat(),
         lng: location.latLng.lng()

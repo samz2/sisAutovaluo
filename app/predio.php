@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class predio extends Model
 {
     public $table='predio';
+    protected $primaryKey = 'CodPredio';
     protected $fillable = [
         'CodPredio',
         'calle',

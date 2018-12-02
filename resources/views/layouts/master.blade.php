@@ -101,10 +101,10 @@
 										</router-link>
 									</li>
 									<li class="nav-item">
-										<a href="../examples/profile.html" class="nav-link">
+										<router-link to="/predio-editar" class="nav-link">
 											<i class="fa fa-pencil-square nav-icon"></i>
 											<p>Editar</p>
-										</a>
+										</router-link>
 									</li>
 								</ul>
 							</li>

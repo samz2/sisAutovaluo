@@ -25,6 +25,8 @@ Route::post('/addUser', 'personaController@store');
 //rutas para admin/predio-------
 Route::resource('/getPredioList', 'predioController');
 Route::get('/datosSelect', 'predioController@getDatosSelect')->name('predio.datosSelect');
+Route::get('/contribuyentes/{e}', 'predioController@getContribuyentesPredio')->name('predio.datosContribuyentes');
+Route::get('/datoPredioCont/{e}', 'predioController@getPredioContribuyentes')->name('predio.datosPredioCont');
 Route::resource('/predio', 'predioController', ['except' => ['destroy', 'edit', 'show', 'create']]);
 Route::get('/getContribuyente/{e}', 'predioController@getContribuyente')->name('predio.getContribuyente');
 //------------------------------
