@@ -5,12 +5,112 @@
                 <div class="card card-default">
                     <div class="card-header">Componente de Visualizacion</div>
                     <div class="card-body">
-                        <v-client-table :data="tableData" :columns="columns" :options="options">
+                        <v-client-table :data="tableData" :columns="columns" class="text-center" :options="options">
                             <div slot="Acciones" slot-scope="props">
-                                <button @click="getUser(props.row.id)">Editar</button>
-                                <button>Eliminar</button>
+                                <a style="color: blue; cursor: pointer" @click="getUser(props.row.codigo_predio)" title="Ver más">
+                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                </a>
                             </div>
                         </v-client-table>
+                    </div>
+                </div>
+                <div class="card card-default">
+                    <div class="card-header">Datos Generales</div>
+                    <div class="card-body">
+                        <h2 class="text-center">DATOS GENERALES</h2>
+                        <form class="mt-4">
+                            <div class="form-row">
+                                <div class="form-group col-md-4">
+                                    <label for="calle">Código:</label>
+                                    <p v-text="predio.codPredio"></p>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="calle">Calle: </label>
+                                    <p v-text="predio.calle"></p>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="calle">Número: </label>
+                                    <p v-text="predio.numero"></p>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="piso">Piso: </label>
+                                    <p v-text="predio.piso"></p>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="manzana">Manzana: </label>
+                                    <p v-text="predio.manzana"></p>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="lote">Lote: </label>
+                                    <p v-text="predio.lote"></p>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="interior">Interior: </label>
+                                    <p v-text="predio.interior"></p>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="sector">Sector: </label>
+                                    <p v-text="predio.sector"></p>
+                                </div>
+                                <div class="form-group col-md-5">
+                                    <label for="condicion_propiedad">Condición de Propiedad: </label>
+                                    <p v-text="predio.condicion"></p>
+                                </div>
+                                <div class="form-group col-md-4">
+                                    <label for="conservacion_propiedad">Conservacion de Propiedad: </label>
+                                    <p v-text="predio.conservacion"></p>
+                                </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-3">
+                                    <label for="material">Material: </label>
+                                    <p v-text="predio.material"></p>
+                                </div>
+                                <div class="form-group col-md-3">
+                                    <label for="clasificacion">Clasificacion: </label>
+                                    <p v-text="predio.clasificacion"></p>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="localidad">Localidad: </label>
+                                    <p v-text="predio.localidad"></p>
+                                </div>
+                            </div>
+                        </form>
+                        <h2 class="text-center">ESTADO DE CUENTA</h2>
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Periodo</th>
+                                    <th>Formato</th>
+                                    <th>Impuesto Predial</th>
+                                    <th>Limpieza Pública</th>
+                                    <th>Barrido Calles</th>
+                                    <th>Parques y Jardines</th>
+                                    <th>Serenazgo</th>
+                                    <th>SubTotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr v-for="(e, index) in estado_cuenta" :key="index">
+                                    <td>{{ e.periodo }}</td>
+                                    <td>{{ e.formato }}</td>
+                                    <td>{{ e.impuesto_predial }}</td>
+                                    <td>{{ e.limpieza_publica }}</td>
+                                    <td>{{ e.barrido_calles }}</td>
+                                    <td>{{ e.parques_jardines }}</td>
+                                    <td>{{ e.serenazgo }}</td>
+                                    <td>{{ e.sub_total }}</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="7">Total</td>
+                                    <td>{{ total }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -22,49 +122,96 @@
 export default {
     data() {
         return {
-            columns: ['id', 'name', 'age', 'Acciones'],
+            columns: ['codigo_predio', 'calle', 'cant_contribuyentes', 'estado', 'deuda', 'Acciones'],
             tableData: [
-                { id: 1, name: 'John', age: 20 },
-                { id: 2, name: "Jane", age: "24" },
-                { id: 3, name: "Susan", age: "16" },
-                { id: 4, name: "Chris", age: "55" },
-                { id: 5, name: "Dan", age: "40" }
+                { codigo_predio: null, calle: null, cant_contribuyentes: null, estado: null, deuda: null }
             ],
             options: {
                 headings: {
-                    id: 'ID',
-                    name: 'Nombre',
-                    age: 'Edad',
+                    codigo_predio: 'Codigo Predio',
+                    calle: 'Dirección',
+                    cant_contribuyentes: 'Contribuyentes',
+                    estado: 'Estado',
+                    deuda: 'Deuda',
                     Acciones: 'Acciones'
                 },
-                sortable: ['name', 'age'],
-                filterable: ['name', 'age']
-            }
+                sortable: ['calle', 'codigo_predio'],
+                filterable: ['calle', 'codigo_predio']
+            },
+            estado_cuenta: [ ],
+            predio: {}, 
+            total: 0.0
         }
     },
     mounted() {
-        console.log('Component mounted.')
+        this.getData();
     },
     methods: {
         getData() {
-            return [{
-                code: "ZW",
-                name: "Zimbabwe",
-                created_at: "2015-04-24T01:46:50.459583",
-                updated_at: "2015-04-24T01:46:50.459593",
-                uri: "http://api.lobbyfacts.eu/api/1/country/245",
-                id: 245
-            }, {
-                code: "ZM",
-                name: "Zambia",
-                created_at: "2015-04-24T01:46:50.457459",
-                updated_at: "2015-04-24T01:46:50.457468",
-                uri: "http://api.lobbyfacts.eu/api/1/country/244",
-                id: 244
-            }];
+            this.$Progress.start();
+            axios.get('obtener-estado')
+                .then(data => {
+                    const datos = data.data.predioSalvaje.map((e, i) => {
+                        const deuda = (e.suma > 0) ? `${e.suma}` : `${e.suma}`;
+                        const state = (e.suma > 0) ? `Con deuda` : `Sin deuda`;
+
+                        return {
+                            codigo_predio: e.Codigo_Predio,
+                            calle: e.Calle,
+                            cant_contribuyentes: e.Cantidad_Contribuyente,
+                            estado: state,
+                            deuda: deuda
+                        }
+                    });
+
+                    this.tableData = datos;
+                    this.$Progress.finish();
+                }).catch(error => {
+                    this.$Progress.fail();
+                    console.log(error);
+                });
         },
         getUser(id) {
-            console.log(id);
+            axios.get(`/obtener-personal/${id}`)
+                .then(data => {
+                    var total = 0.0;
+                    this.estado_cuenta = data.data.estado_cuenta.map(e => {
+                        const subtotal = parseFloat(e.barrido_calles) + parseFloat(e.formato) + parseFloat(e.impuesto_predial) + 
+                                    parseFloat(e.limpieza_publica) + parseFloat(e.parques_jardines) + parseFloat(e.serenazgo);
+                        total += subtotal;
+
+                        return {
+                            barrido_calles: parseFloat(e.barrido_calles),
+                            formato: parseFloat(e.formato),
+                            impuesto_predial: parseFloat(e.impuesto_predial),
+                            id_predio: parseFloat(e.id_predio),
+                            limpieza_publica: parseFloat(e.limpieza_publica),
+                            parques_jardines: parseFloat(e.parques_jardines),
+                            periodo: parseFloat(e.periodo),
+                            serenazgo: parseFloat(e.serenazgo),
+                            sub_total: subtotal.toFixed(2)
+                        };
+                    });
+                    this.total = parseFloat(total).toFixed(2);
+
+                    this.predio = {
+                        calle: data.data.predio.calle,
+                        clasificacion: data.data.predio.clasificacion ? data.data.predio.clasificacion : 'Sin datos',
+                        codPredio: data.data.predio.codPredio,
+                        condicion: data.data.predio.condicion ? data.data.predio.condicion : 'Sin datos',
+                        conservacion: data.data.predio.conservacion ? data.data.predio.conservacion : 'Sin datos',
+                        interior: data.data.predio.interior ? data.data.predio.interior : 'Sin datos',
+                        localidad: data.data.predio.localidad ? data.data.predio.localidad : 'Sin datos',
+                        lote: data.data.predio.lote ? data.data.predio.lote : 'Sin datos',
+                        material: data.data.predio.material ? data.data.predio.material : 'Sin datos',
+                        manzana: data.data.predio.mz ? (data.data.predio.mz).toUpperCase() : 'Sin datos',
+                        numero: data.data.predio.numero ? data.data.predio.numero : 'Sin datos',
+                        piso: data.data.predio.piso ? data.data.predio.piso : 'Sin datos',
+                        sector: data.data.predio.sector ? data.data.predio.sector : 'Sin datos'
+                    };
+                }).catch(error => {
+                    console.log(error);
+                })
         }
     },
 }
