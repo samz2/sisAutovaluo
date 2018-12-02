@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class predio extends Model
 {
     public $table='predio';
-    protected $primaryKey = 'CodPredio';
+    protected $primaryKey = 'codPredio';
     protected $fillable = [
-        'CodPredio',
+        'codPredio',
         'calle',
         'numero',
         'piso',

@@ -20,7 +20,7 @@
                           maxlength="10"
                         >
                         <button type="button" v-on:click="editarCont(buscarPredio)" class="form-control btn btn-info"><li class="fa fa-search-plus"></li></button>
-                        
+                        <button type="button" v-on:click="cancelForm(false)" class="form-control btn btn-danger ml-3"><li class="fa fa-ban"></li></button>
                     </div>
                     <div class="alert alert-danger mt-3 col-12 col-lg-10 col-md-10" v-show="alert">
 					    <strong>Aviso</strong> No se ha encontrado ningun predio con el codigo ingresado! <router-link to="/predio-lista" class="alert-link">Cosultar?</router-link>
@@ -325,7 +325,7 @@
                           <gmap-map
                             ref="gmap"
                             :center="center"
-                            :zoom="16"
+                            :zoom="13"
                             style="width:100%;  height: 100vh;"
                           >
                             <gmap-marker
@@ -359,6 +359,9 @@
                     </div>
                   </div>
                 </form>
+                <!-- <pre>
+                  {{predio}}
+                </pre> -->
               </div>
               <!-- /.box-body -->
             </div>
@@ -438,6 +441,29 @@ export default {
   },
   created() {},
   methods: {
+    cancelForm(op){
+      this.buscarPredio='';
+      this.alert=op;
+                this.selectedTags=[];
+                this.rows=[];
+                this.predio={
+                    codPredio: null,
+                    calle: null,
+                    numero: null,
+                    piso: null,
+                    mz: null,
+                    lote: null,
+                    interior: null,
+                    sector: null,
+                    condicion: null,
+                    conservacion: null,
+                    material: null,
+                    clasificacion: null,
+                    localidad: null,
+                    latitud: null,
+                    longitud: null,
+                };
+    },
     addRow: function() {
       var elem = document.createElement("tr");
       this.rows.push({
@@ -498,36 +524,20 @@ export default {
                     });
                     
                 });
+                //console.log(data.data.datos);
                 //console.log(this.selectedTags);
-                
-                this.markers.position = {
-                lat: parseFloat(data.data.datos.latitud),
-                lng: parseFloat(data.data.datos.longitud)
+                this.markers[0].position = {
+                lat: parseFloat(data.data.datos[0].latitud),
+                lng: parseFloat(data.data.datos[0].longitud)
               };
-                this.predio.latitud = parseFloat(data.data.datos.latitud);
-                this.predio.longitud = parseFloat(data.data.datos.longitud); 
+              //  -8.366378559475566
+              //  -74.56967130104977
+              //console.log(this.markers[0]);
+                this.predio.latitud = parseFloat(data.data.datos[0].latitud);
+                this.predio.longitud = parseFloat(data.data.datos[0].longitud); 
                 this.predio=data.data.datos[0];
             }else{
-                this.alert=true;
-                this.selectedTags=[];
-                this.rows=[];
-                this.predio={
-                    codPredio: null,
-                    calle: null,
-                    numero: null,
-                    piso: null,
-                    mz: null,
-                    lote: null,
-                    interior: null,
-                    sector: null,
-                    condicion: null,
-                    conservacion: null,
-                    material: null,
-                    clasificacion: null,
-                    localidad: null,
-                    latitud: null,
-                    longitud: null,
-                };
+                cancelForm(true);
             }
         }).catch(error=>{console.log("Error: "+error);});
     },

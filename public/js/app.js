@@ -96381,7 +96381,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* The input */\n.tags-input {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\n}\n.tags-input input {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  background: transparent;\r\n  border: none;\n}\n.tags-input input:focus {\r\n  outline: none;\n}\n.tags-input input[type=\"text\"] {\r\n  color: #495057;\n}\n.tags-input-wrapper-default {\r\n  padding: 0.5rem 0.25rem;\r\n\r\n  background: #fff;\r\n\r\n  border: 1px solid transparent;\r\n  border-radius: 0.25rem;\r\n  border-color: #dbdbdb;\n}\r\n\r\n/* The tag badges & the remove icon */\n.tags-input span {\r\n  margin-right: 0.3rem;\n}\n.tags-input-remove {\r\n  cursor: pointer;\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 0.5rem;\r\n  height: 0.5rem;\r\n  overflow: hidden;\n}\n.tags-input-remove:before,\r\n.tags-input-remove:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 100%;\r\n  top: 50%;\r\n  left: 0;\r\n  background: #5dc282;\r\n\r\n  height: 2px;\r\n  margin-top: -1px;\n}\n.tags-input-remove:before {\r\n  -webkit-transform: rotate(45deg);\r\n          transform: rotate(45deg);\n}\n.tags-input-remove:after {\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\n}\r\n\r\n/* Tag badge styles */\n.tags-input-badge {\r\n  display: inline-block;\r\n  padding: 0.25em 0.4em;\r\n  font-size: 75%;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n  text-align: center;\r\n  white-space: nowrap;\r\n  vertical-align: baseline;\r\n  border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\r\n  padding-right: 0.6em;\r\n  padding-left: 0.6em;\r\n  border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\r\n  color: #212529;\r\n  background-color: #f0f1f2;\n}\r\n\r\n/* Typeahead - badges */\n.typeahead-badges > span {\r\n  cursor: pointer;\r\n  margin-right: 0.3rem;\n}\r\n\r\n/* Typeahead - dropdown */\n.typeahead-dropdown {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  position: absolute;\r\n  width: 100%;\n}\n.typeahead-dropdown li {\r\n  padding: 0.25rem 1rem;\r\n  cursor: pointer;\n}\r\n\r\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\r\n  color: #fff;\r\n  background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\r\n  color: #fff;\r\n  background-color: #007bff;\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* The input */\n.tags-input {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\n}\n.tags-input input {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  background: transparent;\r\n  border: none;\n}\n.tags-input input:focus {\r\n  outline: none;\n}\n.tags-input input[type=\"text\"] {\r\n  color: #495057;\n}\n.tags-input-wrapper-default {\r\n  padding: 0.5rem 0.25rem;\r\n\r\n  background: #fff;\r\n\r\n  border: 1px solid transparent;\r\n  border-radius: 0.25rem;\r\n  border-color: #dbdbdb;\n}\r\n\r\n/* The tag badges & the remove icon */\n.tags-input span {\r\n  margin-right: 0.3rem;\n}\n.tags-input-remove {\r\n  cursor: pointer;\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 0.5rem;\r\n  height: 0.5rem;\r\n  overflow: hidden;\n}\n.tags-input-remove:before,\r\n.tags-input-remove:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 100%;\r\n  top: 50%;\r\n  left: 0;\r\n  background: #5dc282;\r\n\r\n  height: 2px;\r\n  margin-top: -1px;\n}\n.tags-input-remove:before {\r\n  -webkit-transform: rotate(45deg);\r\n          transform: rotate(45deg);\n}\n.tags-input-remove:after {\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\n}\r\n\r\n/* Tag badge styles */\n.tags-input-badge {\r\n  display: inline-block;\r\n  padding: 0.25em 0.4em;\r\n  font-size: 75%;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n  text-align: center;\r\n  white-space: nowrap;\r\n  vertical-align: baseline;\r\n  border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\r\n  padding-right: 0.6em;\r\n  padding-left: 0.6em;\r\n  border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\r\n  color: #212529;\r\n  background-color: #f0f1f2;\n}\r\n\r\n/* Typeahead - badges */\n.typeahead-badges > span {\r\n  cursor: pointer;\r\n  margin-right: 0.3rem;\n}\r\n\r\n/* Typeahead - dropdown */\n.typeahead-dropdown {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  position: absolute;\r\n  width: 100%;\n}\n.typeahead-dropdown li {\r\n  padding: 0.25rem 1rem;\r\n  cursor: pointer;\n}\r\n\r\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\r\n  color: #fff;\r\n  background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\r\n  color: #fff;\r\n  background-color: #007bff;\n}\r\n", ""]);
 
 // exports
 
@@ -96392,6 +96392,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -96831,6 +96834,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   created: function created() {},
 
   methods: {
+    cancelForm: function cancelForm(op) {
+      this.buscarPredio = '';
+      this.alert = op;
+      this.selectedTags = [];
+      this.rows = [];
+      this.predio = {
+        codPredio: null,
+        calle: null,
+        numero: null,
+        piso: null,
+        mz: null,
+        lote: null,
+        interior: null,
+        sector: null,
+        condicion: null,
+        conservacion: null,
+        material: null,
+        clasificacion: null,
+        localidad: null,
+        latitud: null,
+        longitud: null
+      };
+    },
+
     addRow: function addRow() {
       var elem = document.createElement("tr");
       this.rows.push({
@@ -96894,36 +96921,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
               idPC: element.idPC
             });
           });
+          //console.log(data.data.datos);
           //console.log(this.selectedTags);
-
-          _this2.markers.position = {
-            lat: parseFloat(data.data.datos.latitud),
-            lng: parseFloat(data.data.datos.longitud)
+          _this2.markers[0].position = {
+            lat: parseFloat(data.data.datos[0].latitud),
+            lng: parseFloat(data.data.datos[0].longitud)
           };
-          _this2.predio.latitud = parseFloat(data.data.datos.latitud);
-          _this2.predio.longitud = parseFloat(data.data.datos.longitud);
+          //  -8.366378559475566
+          //  -74.56967130104977
+          //console.log(this.markers[0]);
+          _this2.predio.latitud = parseFloat(data.data.datos[0].latitud);
+          _this2.predio.longitud = parseFloat(data.data.datos[0].longitud);
           _this2.predio = data.data.datos[0];
         } else {
-          _this2.alert = true;
-          _this2.selectedTags = [];
-          _this2.rows = [];
-          _this2.predio = {
-            codPredio: null,
-            calle: null,
-            numero: null,
-            piso: null,
-            mz: null,
-            lote: null,
-            interior: null,
-            sector: null,
-            condicion: null,
-            conservacion: null,
-            material: null,
-            clasificacion: null,
-            localidad: null,
-            latitud: null,
-            longitud: null
-          };
+          cancelForm(true);
         }
       }).catch(function (error) {
         console.log("Error: " + error);
@@ -97148,6 +97159,20 @@ var render = function() {
                         }
                       },
                       [_c("li", { staticClass: "fa fa-search-plus" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "form-control btn btn-danger ml-3",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.cancelForm(false)
+                          }
+                        }
+                      },
+                      [_c("li", { staticClass: "fa fa-ban" })]
                     )
                   ]),
                   _vm._v(" "),
@@ -98032,7 +98057,7 @@ var render = function() {
                                     width: "100%",
                                     height: "100vh"
                                   },
-                                  attrs: { center: _vm.center, zoom: 16 }
+                                  attrs: { center: _vm.center, zoom: 13 }
                                 },
                                 [
                                   _vm._l(_vm.markers, function(m, index) {
