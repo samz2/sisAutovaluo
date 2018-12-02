@@ -5,7 +5,11 @@
                 <div class="card card-default">
                     <div class="card-header">Componente de Notificador</div>
                     <div class="card-body" v-if="center.lat && center.lng">
-                        <gmap-map ref="gmap" :center="center" :zoom="14" style="width:100%;  height: 100vh;">
+                        <form class="mb-4">
+                            <button type="button" class="btn btn-danger" @click="mostrar(true)">Contribuyentes con deuda</button>
+                            <button type="button" class="btn btn-success" @click="mostrar(false)">Contribuyentes sin deuda</button>
+                        </form>
+                        <gmap-map ref="gmap" :center="center" :zoom="13" style="width:100%;  height: 100vh;">
                             <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position"
                                 @click="toggleInfoWindow(m,index)">
                             </gmap-marker>
@@ -42,22 +46,15 @@ export default {
                     height: -35
                 }
             },
-            markers: []
+            markers: [],
+            customerHasData: [],
+            customerHasntData: [],
         }
     },
     created() { 
         this.getEstado();
     },
-    mounted() {
-        //set bounds of the map
-        // this.$refs.gmap.$mapPromise.then((map) => {
-        //     const bounds = new google.maps.LatLngBounds()
-        //     for (let m of this.markers) {
-        //         bounds.extend(m.position)
-        //     }
-        //     map.fitBounds(bounds);
-        // });
-    },
+    mounted() { },
     methods: {
         getEstado() {
             axios.get('obtener-estado')
@@ -82,6 +79,36 @@ export default {
                         lat: parseFloat(data.data.predioSalvaje[0].Latitud),
                         lng: parseFloat(data.data.predioSalvaje[0].Longitud)
                     }
+
+                    data.data.predioSalvaje.forEach(e => {
+                        if (e.suma > 0) {
+                            this.customerHasData.push({
+                                calle: e.Calle,
+                                cantidad_contribuyentes: e.Cantidad_Contribuyente,
+                                codigo_contribuyentes: e.Codigo_Contribuyente,
+                                codigo_predio: e.Codigo_Predio,
+                                position: {
+                                    lat: parseFloat(e.Latitud),
+                                    lng: parseFloat(e.Longitud)
+                                },
+                                nombre_completo: e.Nombres_Apellidos,
+                                total: e.suma
+                            });
+                        } else {
+                            this.customerHasntData.push({
+                                calle: e.Calle,
+                                cantidad_contribuyentes: e.Cantidad_Contribuyente,
+                                codigo_contribuyentes: e.Codigo_Contribuyente,
+                                codigo_predio: e.Codigo_Predio,
+                                position: {
+                                    lat: parseFloat(e.Latitud),
+                                    lng: parseFloat(e.Longitud)
+                                },
+                                nombre_completo: e.Nombres_Apellidos,
+                                total: e.suma
+                            });
+                        }
+                    });
                 }).catch(error => {
                     console.log(error);
                 });
@@ -104,7 +131,7 @@ export default {
             var estado = '';
             if (marker.total > 0) {
                 estado = '<i class="fa fa-circle" style="color: red" aria-hidden="true"></i> Deuda Pendiente';
-            } else {
+            } else if (marker.total == 0) {
                 estado = '<i class="fa fa-circle" style="color: green" aria-hidden="true"></i> Sin deuda';
             }
             return (`
@@ -121,6 +148,13 @@ export default {
                 </div>`
             );
         },
+        mostrar(data) {
+            if (data) {
+                this.markers = this.customerHasData;
+            } else {
+                this.markers = this.customerHasntData;
+            }
+        }
     }
 }
 </script>

@@ -117,6 +117,7 @@ Vue.filter('formatDate', function (data) {
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 Vue.component('manager', require('./components/management/AdministratorComponent.vue'));
 Vue.component('moon-loader', require('vue-spinner/src/MoonLoader.vue'));
+Vue.component('datos-generales', require('./components/notifier/DatosGenerales.vue'));
 
 // const files = require.context('./', true, /\.vue$/i)
 
