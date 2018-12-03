@@ -6,81 +6,6 @@ use Illuminate\Http\Request;
 
 class EstadoCuentaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 
     public function getEstado()
     {
@@ -114,7 +39,12 @@ class EstadoCuentaController extends Controller
     }
 
     public function getPersonal($id) {
-        $estado_cuenta = \DB::table('estado_cuenta')->where('id_predio', $id)->get();
+        $contribuyentes = \DB::table('prediocontribuyente')
+                ->join('contribuyente', 'prediocontribuyente.codContribuyente', '=', 'contribuyente.dniRUC')
+                ->select('prediocontribuyente.codPredio', 'contribuyente.codContribuyente', 
+                'contribuyente.nombre', 'contribuyente.apellidos', 'contribuyente.dniRUC')
+                ->where('prediocontribuyente.codPredio', '=', $id)->get();
+        $estado_cuenta = \DB::table('estado_cuenta')->where('id_predio', $id)->orderByRaw('periodo asc')->get();
         $predio = \DB::table('predio')
             ->join('sector', 'predio.sector', '=', 'sector.id_sector')
             ->join('condicion_propiedad', 'predio.idCondicion', '=', 'condicion_propiedad.id_condicion')
@@ -128,6 +58,6 @@ class EstadoCuentaController extends Controller
                 'clasificacion.descripcion as clasificacion', 'localidad.descripcion as localidad')
             ->where('predio.codPredio', '=', $id)->first();
 
-        return compact('estado_cuenta', 'predio');
+        return compact('estado_cuenta', 'predio', 'contribuyentes');
     }
 }

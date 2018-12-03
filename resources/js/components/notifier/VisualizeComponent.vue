@@ -14,14 +14,14 @@
                         </v-client-table>
                     </div>
                 </div>
-                <div class="card card-default">
+                <!-- <div class="card card-default" v-if="hasData">
                     <div class="card-header">Datos Generales</div>
                     <div class="card-body">
                         <h2 class="text-center">DATOS GENERALES</h2>
                         <form class="mt-4">
                             <div class="form-row">
                                 <div class="form-group col-md-4">
-                                    <label for="calle">Código:</label>
+                                    <label for="calle">Código de Predio:</label>
                                     <p v-text="predio.codPredio"></p>
                                 </div>
                                 <div class="form-group col-md-4">
@@ -32,6 +32,17 @@
                                     <label for="calle">Número: </label>
                                     <p v-text="predio.numero"></p>
                                 </div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="">Datos del Contribuyente</label>
+                                </div>
+                            </div>
+                            <div class="form-row mb-2" style="border-width: 4px; border-left-style: solid; border-color: #6c757d!important; 
+                                background-color: #f5f5f5" v-for="(c, index) in contribuyente" :key="index">
+                                    <p class="col-md-3"><b>Código Contribuyente</b>: {{ c.codigo_contribuyente }}</p>
+                                    <p class="col-md-6"><b>Nombres Completos</b>: {{ c.nombre }} {{ c.apellidos }}</p>
+                                    <p class="col-md-3"><b>DNI Contribuyente</b>: {{ c.dni }}</p>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-3">
@@ -70,11 +81,11 @@
                                     <label for="material">Material: </label>
                                     <p v-text="predio.material"></p>
                                 </div>
-                                <div class="form-group col-md-3">
+                                <div class="form-group col-md-4">
                                     <label for="clasificacion">Clasificacion: </label>
                                     <p v-text="predio.clasificacion"></p>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-5">
                                     <label for="localidad">Localidad: </label>
                                     <p v-text="predio.localidad"></p>
                                 </div>
@@ -106,12 +117,17 @@
                                     <td>{{ e.sub_total }}</td>
                                 </tr>
                                 <tr>
-                                    <td colspan="7">Total</td>
+                                    <td colspan="7" class="text-right"><b>TOTAL</b></td>
                                     <td>{{ total }}</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                </div> -->
+                <div v-if="hasData">
+                    <datos-generales :hasData="hasData" :predio="predio" :contribuyente="contribuyente" :estado_cuenta="estado_cuenta"
+                        :total="total">
+                    </datos-generales>
                 </div>
             </div>
         </div>
@@ -138,9 +154,12 @@ export default {
                 sortable: ['calle', 'codigo_predio'],
                 filterable: ['calle', 'codigo_predio']
             },
-            estado_cuenta: [ ],
+            estado_cuenta: [],
+            contribuyente: [],
+            hasData: false,
             predio: {}, 
-            total: 0.0
+            total: 0.0,
+            title: 'Hola Mundo'
         }
     },
     mounted() {
@@ -172,6 +191,7 @@ export default {
                 });
         },
         getUser(id) {
+            this.hasData = true;
             axios.get(`/obtener-personal/${id}`)
                 .then(data => {
                     var total = 0.0;
@@ -209,6 +229,18 @@ export default {
                         piso: data.data.predio.piso ? data.data.predio.piso : 'Sin datos',
                         sector: data.data.predio.sector ? data.data.predio.sector : 'Sin datos'
                     };
+
+                    var contribuyente = data.data.contribuyentes.map(e => {
+                        return {
+                            codigo_predio: e.codPredio,
+                            codigo_contribuyente: e.codContribuyente,
+                            nombre: e.nombre,
+                            apellidos: e.apellidos,
+                            dni: e.dniRUC
+                        }
+                    });
+
+                    this.contribuyente = contribuyente;
                 }).catch(error => {
                     console.log(error);
                 })

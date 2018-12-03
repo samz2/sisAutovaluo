@@ -35,7 +35,7 @@ Route::get('/getContribuyente/{e}', 'predioController@getContribuyente')->name('
 
 // Rutas Notificador
 Route::resource('/estado', 'EstadoCuentaController', [
-    'except' => ['update', 'destroy', 'edit']
+    'except' => ['index', 'create', 'store', 'edit', 'update', 'destroy']
 ])->middleware('auth');
 Route::get('/obtener-estado', 'EstadoCuentaController@getEstado')->middleware('auth');
 Route::get('/obtener-personal/{id}', 'EstadoCuentaController@getPersonal')->middleware('auth');

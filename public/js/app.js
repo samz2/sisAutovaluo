@@ -45929,6 +45929,7 @@ Vue.filter('formatDate', function (data) {
 Vue.component('example-component', __webpack_require__(22));
 Vue.component('manager', __webpack_require__(177));
 Vue.component('moon-loader', __webpack_require__(446));
+Vue.component('datos-generales', __webpack_require__(465));
 
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -96355,7 +96356,7 @@ exports = module.exports = __webpack_require__(6)(false);
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* The input */\n.tags-input {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\n}\n.tags-input input {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  background: transparent;\r\n  border: none;\n}\n.tags-input input:focus {\r\n  outline: none;\n}\n.tags-input input[type=\"text\"] {\r\n  color: #495057;\n}\n.tags-input-wrapper-default {\r\n  padding: 0.5rem 0.25rem;\r\n\r\n  background: #fff;\r\n\r\n  border: 1px solid transparent;\r\n  border-radius: 0.25rem;\r\n  border-color: #dbdbdb;\n}\r\n\r\n/* The tag badges & the remove icon */\n.tags-input span {\r\n  margin-right: 0.3rem;\n}\n.tags-input-remove {\r\n  cursor: pointer;\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 0.5rem;\r\n  height: 0.5rem;\r\n  overflow: hidden;\n}\n.tags-input-remove:before,\r\n.tags-input-remove:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 100%;\r\n  top: 50%;\r\n  left: 0;\r\n  background: #5dc282;\r\n\r\n  height: 2px;\r\n  margin-top: -1px;\n}\n.tags-input-remove:before {\r\n  -webkit-transform: rotate(45deg);\r\n          transform: rotate(45deg);\n}\n.tags-input-remove:after {\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\n}\r\n\r\n/* Tag badge styles */\n.tags-input-badge {\r\n  display: inline-block;\r\n  padding: 0.25em 0.4em;\r\n  font-size: 75%;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n  text-align: center;\r\n  white-space: nowrap;\r\n  vertical-align: baseline;\r\n  border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\r\n  padding-right: 0.6em;\r\n  padding-left: 0.6em;\r\n  border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\r\n  color: #212529;\r\n  background-color: #f0f1f2;\n}\r\n\r\n/* Typeahead - badges */\n.typeahead-badges > span {\r\n  cursor: pointer;\r\n  margin-right: 0.3rem;\n}\r\n\r\n/* Typeahead - dropdown */\n.typeahead-dropdown {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  position: absolute;\r\n  width: 100%;\n}\n.typeahead-dropdown li {\r\n  padding: 0.25rem 1rem;\r\n  cursor: pointer;\n}\r\n\r\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\r\n  color: #fff;\r\n  background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\r\n  color: #fff;\r\n  background-color: #007bff;\n}\r\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n/* The input */\n.tags-input {\r\n  display: -webkit-box;\r\n  display: -ms-flexbox;\r\n  display: flex;\r\n  -ms-flex-wrap: wrap;\r\n      flex-wrap: wrap;\r\n  -webkit-box-align: center;\r\n      -ms-flex-align: center;\r\n          align-items: center;\n}\n.tags-input input {\r\n  -webkit-box-flex: 1;\r\n      -ms-flex: 1;\r\n          flex: 1;\r\n  background: transparent;\r\n  border: none;\n}\n.tags-input input:focus {\r\n  outline: none;\n}\n.tags-input input[type=\"text\"] {\r\n  color: #495057;\n}\n.tags-input-wrapper-default {\r\n  padding: 0.5rem 0.25rem;\r\n\r\n  background: #fff;\r\n\r\n  border: 1px solid transparent;\r\n  border-radius: 0.25rem;\r\n  border-color: #dbdbdb;\n}\r\n\r\n/* The tag badges & the remove icon */\n.tags-input span {\r\n  margin-right: 0.3rem;\n}\n.tags-input-remove {\r\n  cursor: pointer;\r\n  position: relative;\r\n  display: inline-block;\r\n  width: 0.5rem;\r\n  height: 0.5rem;\r\n  overflow: hidden;\n}\n.tags-input-remove:before,\r\n.tags-input-remove:after {\r\n  content: \"\";\r\n  position: absolute;\r\n  width: 100%;\r\n  top: 50%;\r\n  left: 0;\r\n  background: #5dc282;\r\n\r\n  height: 2px;\r\n  margin-top: -1px;\n}\n.tags-input-remove:before {\r\n  -webkit-transform: rotate(45deg);\r\n          transform: rotate(45deg);\n}\n.tags-input-remove:after {\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\n}\r\n\r\n/* Tag badge styles */\n.tags-input-badge {\r\n  display: inline-block;\r\n  padding: 0.25em 0.4em;\r\n  font-size: 75%;\r\n  font-weight: 700;\r\n  line-height: 1;\r\n  text-align: center;\r\n  white-space: nowrap;\r\n  vertical-align: baseline;\r\n  border-radius: 0.25rem;\n}\n.tags-input-badge-pill {\r\n  padding-right: 0.6em;\r\n  padding-left: 0.6em;\r\n  border-radius: 10rem;\n}\n.tags-input-badge-selected-default {\r\n  color: #212529;\r\n  background-color: #f0f1f2;\n}\r\n\r\n/* Typeahead - badges */\n.typeahead-badges > span {\r\n  cursor: pointer;\r\n  margin-right: 0.3rem;\n}\r\n\r\n/* Typeahead - dropdown */\n.typeahead-dropdown {\r\n  list-style-type: none;\r\n  padding: 0;\r\n  margin: 0;\r\n  position: absolute;\r\n  width: 100%;\n}\n.typeahead-dropdown li {\r\n  padding: 0.25rem 1rem;\r\n  cursor: pointer;\n}\r\n\r\n/* Typeahead elements style/theme */\n.tags-input-typeahead-item-default {\r\n  color: #fff;\r\n  background-color: #343a40;\n}\n.tags-input-typeahead-item-highlighted-default {\r\n  color: #fff;\r\n  background-color: #007bff;\n}\r\n", ""]);
 
 // exports
 
@@ -96366,6 +96367,9 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
 //
 //
 //
@@ -96805,6 +96809,30 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   created: function created() {},
 
   methods: {
+    cancelForm: function cancelForm(op) {
+      this.buscarPredio = '';
+      this.alert = op;
+      this.selectedTags = [];
+      this.rows = [];
+      this.predio = {
+        codPredio: null,
+        calle: null,
+        numero: null,
+        piso: null,
+        mz: null,
+        lote: null,
+        interior: null,
+        sector: null,
+        condicion: null,
+        conservacion: null,
+        material: null,
+        clasificacion: null,
+        localidad: null,
+        latitud: null,
+        longitud: null
+      };
+    },
+
     addRow: function addRow() {
       var elem = document.createElement("tr");
       this.rows.push({
@@ -96868,36 +96896,20 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
               idPC: element.idPC
             });
           });
+          //console.log(data.data.datos);
           //console.log(this.selectedTags);
-
-          _this2.markers.position = {
-            lat: parseFloat(data.data.datos.latitud),
-            lng: parseFloat(data.data.datos.longitud)
+          _this2.markers[0].position = {
+            lat: parseFloat(data.data.datos[0].latitud),
+            lng: parseFloat(data.data.datos[0].longitud)
           };
-          _this2.predio.latitud = parseFloat(data.data.datos.latitud);
-          _this2.predio.longitud = parseFloat(data.data.datos.longitud);
+          //  -8.366378559475566
+          //  -74.56967130104977
+          //console.log(this.markers[0]);
+          _this2.predio.latitud = parseFloat(data.data.datos[0].latitud);
+          _this2.predio.longitud = parseFloat(data.data.datos[0].longitud);
           _this2.predio = data.data.datos[0];
         } else {
-          _this2.alert = true;
-          _this2.selectedTags = [];
-          _this2.rows = [];
-          _this2.predio = {
-            codPredio: null,
-            calle: null,
-            numero: null,
-            piso: null,
-            mz: null,
-            lote: null,
-            interior: null,
-            sector: null,
-            condicion: null,
-            conservacion: null,
-            material: null,
-            clasificacion: null,
-            localidad: null,
-            latitud: null,
-            longitud: null
-          };
+          cancelForm(true);
         }
       }).catch(function (error) {
         console.log("Error: " + error);
@@ -97122,6 +97134,20 @@ var render = function() {
                         }
                       },
                       [_c("li", { staticClass: "fa fa-search-plus" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "form-control btn btn-danger ml-3",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.cancelForm(false)
+                          }
+                        }
+                      },
+                      [_c("li", { staticClass: "fa fa-ban" })]
                     )
                   ]),
                   _vm._v(" "),
@@ -98006,7 +98032,7 @@ var render = function() {
                                     width: "100%",
                                     height: "100vh"
                                   },
-                                  attrs: { center: _vm.center, zoom: 16 }
+                                  attrs: { center: _vm.center, zoom: 13 }
                                 },
                                 [
                                   _vm._l(_vm.markers, function(m, index) {
@@ -99048,6 +99074,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -99067,8 +99109,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 filterable: ['calle', 'codigo_predio']
             },
             estado_cuenta: [],
+            contribuyente: [],
+            hasData: false,
             predio: {},
-            total: 0.0
+            total: 0.0,
+            title: 'Hola Mundo'
         };
     },
     mounted: function mounted() {
@@ -99104,6 +99149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getUser: function getUser(id) {
             var _this2 = this;
 
+            this.hasData = true;
             axios.get('/obtener-personal/' + id).then(function (data) {
                 var total = 0.0;
                 _this2.estado_cuenta = data.data.estado_cuenta.map(function (e) {
@@ -99139,6 +99185,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     piso: data.data.predio.piso ? data.data.predio.piso : 'Sin datos',
                     sector: data.data.predio.sector ? data.data.predio.sector : 'Sin datos'
                 };
+
+                var contribuyente = data.data.contribuyentes.map(function (e) {
+                    return {
+                        codigo_predio: e.codPredio,
+                        codigo_contribuyente: e.codContribuyente,
+                        nombre: e.nombre,
+                        apellidos: e.apellidos,
+                        dni: e.dniRUC
+                    };
+                });
+
+                _this2.contribuyente = contribuyente;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -99206,219 +99264,28 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Datos Generales")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h2", { staticClass: "text-center" }, [
-              _vm._v("DATOS GENERALES")
-            ]),
-            _vm._v(" "),
-            _c("form", { staticClass: "mt-4" }, [
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "form-group col-md-4" }, [
-                  _c("label", { attrs: { for: "calle" } }, [_vm._v("Código:")]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.codPredio) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-4" }, [
-                  _c("label", { attrs: { for: "calle" } }, [_vm._v("Calle: ")]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.calle) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-4" }, [
-                  _c("label", { attrs: { for: "calle" } }, [
-                    _vm._v("Número: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.numero) }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "piso" } }, [_vm._v("Piso: ")]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.piso) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "manzana" } }, [
-                    _vm._v("Manzana: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.manzana) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "lote" } }, [_vm._v("Lote: ")]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.lote) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "interior" } }, [
-                    _vm._v("Interior: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.interior) }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "sector" } }, [
-                    _vm._v("Sector: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.sector) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-5" }, [
-                  _c("label", { attrs: { for: "condicion_propiedad" } }, [
-                    _vm._v("Condición de Propiedad: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.condicion) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-4" }, [
-                  _c("label", { attrs: { for: "conservacion_propiedad" } }, [
-                    _vm._v("Conservacion de Propiedad: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.conservacion) }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "material" } }, [
-                    _vm._v("Material: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.material) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "clasificacion" } }, [
-                    _vm._v("Clasificacion: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.clasificacion) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-6" }, [
-                  _c("label", { attrs: { for: "localidad" } }, [
-                    _vm._v("Localidad: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.localidad) }
-                  })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("h2", { staticClass: "text-center" }, [
-              _vm._v("ESTADO DE CUENTA")
-            ]),
-            _vm._v(" "),
-            _c("table", { staticClass: "table table-striped table-hover" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                [
-                  _vm._l(_vm.estado_cuenta, function(e, index) {
-                    return _c("tr", { key: index }, [
-                      _c("td", [_vm._v(_vm._s(e.periodo))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.formato))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.impuesto_predial))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.limpieza_publica))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.barrido_calles))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.parques_jardines))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.serenazgo))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.sub_total))])
-                    ])
-                  }),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", { attrs: { colspan: "7" } }, [_vm._v("Total")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(_vm.total))])
-                  ])
-                ],
-                2
-              )
-            ])
-          ])
-        ])
+        _vm.hasData
+          ? _c(
+              "div",
+              [
+                _c("datos-generales", {
+                  attrs: {
+                    hasData: _vm.hasData,
+                    predio: _vm.predio,
+                    contribuyente: _vm.contribuyente,
+                    estado_cuenta: _vm.estado_cuenta,
+                    total: _vm.total
+                  }
+                })
+              ],
+              1
+            )
+          : _vm._e()
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Periodo")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Formato")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Impuesto Predial")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Limpieza Pública")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Barrido Calles")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Parques y Jardines")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Serenazgo")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("SubTotal")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -99504,6 +99371,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -99525,22 +99396,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     height: -35
                 }
             },
-            markers: []
+            markers: [],
+            customerHasData: [],
+            customerHasntData: []
         };
     },
     created: function created() {
         this.getEstado();
     },
-    mounted: function mounted() {
-        //set bounds of the map
-        // this.$refs.gmap.$mapPromise.then((map) => {
-        //     const bounds = new google.maps.LatLngBounds()
-        //     for (let m of this.markers) {
-        //         bounds.extend(m.position)
-        //     }
-        //     map.fitBounds(bounds);
-        // });
-    },
+    mounted: function mounted() {},
 
     methods: {
         getEstado: function getEstado() {
@@ -99567,6 +99431,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     lat: parseFloat(data.data.predioSalvaje[0].Latitud),
                     lng: parseFloat(data.data.predioSalvaje[0].Longitud)
                 };
+
+                data.data.predioSalvaje.forEach(function (e) {
+                    if (e.suma > 0) {
+                        _this.customerHasData.push({
+                            calle: e.Calle,
+                            cantidad_contribuyentes: e.Cantidad_Contribuyente,
+                            codigo_contribuyentes: e.Codigo_Contribuyente,
+                            codigo_predio: e.Codigo_Predio,
+                            position: {
+                                lat: parseFloat(e.Latitud),
+                                lng: parseFloat(e.Longitud)
+                            },
+                            nombre_completo: e.Nombres_Apellidos,
+                            total: e.suma
+                        });
+                    } else {
+                        _this.customerHasntData.push({
+                            calle: e.Calle,
+                            cantidad_contribuyentes: e.Cantidad_Contribuyente,
+                            codigo_contribuyentes: e.Codigo_Contribuyente,
+                            codigo_predio: e.Codigo_Predio,
+                            position: {
+                                lat: parseFloat(e.Latitud),
+                                lng: parseFloat(e.Longitud)
+                            },
+                            nombre_completo: e.Nombres_Apellidos,
+                            total: e.suma
+                        });
+                    }
+                });
             }).catch(function (error) {
                 console.log(error);
             });
@@ -99590,10 +99484,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var estado = '';
             if (marker.total > 0) {
                 estado = '<i class="fa fa-circle" style="color: red" aria-hidden="true"></i> Deuda Pendiente';
-            } else {
+            } else if (marker.total == 0) {
                 estado = '<i class="fa fa-circle" style="color: green" aria-hidden="true"></i> Sin deuda';
             }
             return '\n                <div class="card">\n                    <div class="card-header">\n                        <p class=""><b>' + 'Código de Predio'.toUpperCase() + ':</b> ' + marker.codigo_predio + '</p>\n                    </div>\n                    <div class="card-body">\n                        <p><b>Calle:</b> ' + marker.calle + '</p>\n                        <p><b>Cantidad de Contribuyentes:</b> ' + marker.cantidad_contribuyentes + '</p>\n                        <p><b>Estado:</b> ' + estado + '</p>\n                        <p><b>Cantidad Deuda:</b> ' + marker.total + '</p>\n                    </div>\n                </div>';
+        },
+        mostrar: function mostrar(data) {
+            if (data) {
+                this.markers = this.customerHasData;
+            } else {
+                this.markers = this.customerHasntData;
+            }
         }
     }
 });
@@ -99619,12 +99520,42 @@ var render = function() {
                 "div",
                 { staticClass: "card-body" },
                 [
+                  _c("form", { staticClass: "mb-4" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.mostrar(true)
+                          }
+                        }
+                      },
+                      [_vm._v("Contribuyentes con deuda")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.mostrar(false)
+                          }
+                        }
+                      },
+                      [_vm._v("Contribuyentes sin deuda")]
+                    )
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "gmap-map",
                     {
                       ref: "gmap",
                       staticStyle: { width: "100%", height: "100vh" },
-                      attrs: { center: _vm.center, zoom: 14 }
+                      attrs: { center: _vm.center, zoom: 13 }
                     },
                     [
                       _vm._l(_vm.markers, function(m, index) {
@@ -100130,6 +100061,442 @@ if (false) {
   module.hot.accept()
   if (module.hot.data) {
     require("vue-hot-reload-api")      .rerender("data-v-66f95e50", module.exports)
+  }
+}
+
+/***/ }),
+/* 465 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(466)
+/* template */
+var __vue_template__ = __webpack_require__(467)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/notifier/DatosGenerales.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9970216e", Component.options)
+  } else {
+    hotAPI.reload("data-v-9970216e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 466 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['predio', 'contribuyente', 'estado_cuenta', 'total'],
+    data: function data() {
+        return {};
+    }
+});
+
+/***/ }),
+/* 467 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card card-default" }, [
+    _c("div", { staticClass: "card-header" }, [_vm._v("Datos Generales")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("h2", { staticClass: "text-center" }, [_vm._v("DATOS GENERALES")]),
+      _vm._v(" "),
+      _c(
+        "form",
+        { staticClass: "mt-4" },
+        [
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "calle" } }, [
+                _vm._v("Código de Predio:")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.codPredio) }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "calle" } }, [_vm._v("Calle: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.calle) } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "calle" } }, [_vm._v("Número: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.numero) } })
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.contribuyente, function(c, index) {
+            return _c(
+              "div",
+              {
+                key: index,
+                staticClass: "form-row mb-2",
+                staticStyle: {
+                  "border-width": "4px",
+                  "border-left-style": "solid",
+                  "border-color": "#6c757d!important",
+                  "background-color": "#f5f5f5"
+                }
+              },
+              [
+                _c("p", { staticClass: "col-md-3" }, [
+                  _c("b", [_vm._v("Código Contribuyente")]),
+                  _vm._v(": " + _vm._s(c.codigo_contribuyente))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "col-md-6" }, [
+                  _c("b", [_vm._v("Nombres Completos")]),
+                  _vm._v(": " + _vm._s(c.nombre) + " " + _vm._s(c.apellidos))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "col-md-3" }, [
+                  _c("b", [_vm._v("DNI Contribuyente")]),
+                  _vm._v(": " + _vm._s(c.dni))
+                ])
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "piso" } }, [_vm._v("Piso: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.piso) } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "manzana" } }, [_vm._v("Manzana: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.manzana) } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "lote" } }, [_vm._v("Lote: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.lote) } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "interior" } }, [
+                _vm._v("Interior: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.interior) }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "sector" } }, [_vm._v("Sector: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.sector) } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-5" }, [
+              _c("label", { attrs: { for: "condicion_propiedad" } }, [
+                _vm._v("Condición de Propiedad: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.condicion) }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "conservacion_propiedad" } }, [
+                _vm._v("Conservacion de Propiedad: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.conservacion) }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "material" } }, [
+                _vm._v("Material: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.material) }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "clasificacion" } }, [
+                _vm._v("Clasificacion: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.clasificacion) }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-5" }, [
+              _c("label", { attrs: { for: "localidad" } }, [
+                _vm._v("Localidad: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.localidad) }
+              })
+            ])
+          ])
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("h2", { staticClass: "text-center" }, [_vm._v("ESTADO DE CUENTA")]),
+      _vm._v(" "),
+      _c("table", { staticClass: "table table-striped table-hover" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          [
+            _vm._l(_vm.estado_cuenta, function(e, index) {
+              return _c("tr", { key: index }, [
+                _c("td", [_vm._v(_vm._s(e.periodo))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.formato))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.impuesto_predial))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.limpieza_publica))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.barrido_calles))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.parques_jardines))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.serenazgo))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.sub_total))])
+              ])
+            }),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(_vm.total))])
+            ])
+          ],
+          2
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-row" }, [
+      _c("div", { staticClass: "form-group col-md-12" }, [
+        _c("label", { attrs: { for: "" } }, [_vm._v("Datos del Contribuyente")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Periodo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Formato")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Impuesto Predial")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Limpieza Pública")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Barrido Calles")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Parques y Jardines")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Serenazgo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("SubTotal")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-right", attrs: { colspan: "7" } }, [
+      _c("b", [_vm._v("TOTAL")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9970216e", module.exports)
   }
 }
 
