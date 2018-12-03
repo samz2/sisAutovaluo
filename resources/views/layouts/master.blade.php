@@ -137,6 +137,60 @@
 									</li>
 								</ul>
 							</li>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Sector
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</a>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Material
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</a>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Condicion Propiedad
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</a>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Conservacion
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</a>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Clasificación
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</a>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Localidad
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</a>
+							</li>
 							@break
 							@case(2)
 								<li class="nav-item has-treeview">
