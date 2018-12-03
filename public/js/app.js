@@ -45900,7 +45900,7 @@ var routes = [
 { path: '/predio-lista', component: __webpack_require__(422) }, { path: '/predio-agregar', component: __webpack_require__(425) }, { path: '/predio-editar', component: __webpack_require__(430) },
 //fin rutas
 //rutas admin
-{ path: '/addUser', component: __webpack_require__(435) },
+{ path: '/addUser', component: __webpack_require__(435) }, { path: '/usuarios', component: __webpack_require__(462) },
 //fin rutas admin
 // Manager Routes
 { path: '/manager', component: __webpack_require__(177) },
@@ -93713,7 +93713,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: String,
             default: 'tags-input-wrapper-default'
         }
-
     },
 
     data: function data() {
@@ -93728,14 +93727,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             searchResults: [],
             searchSelection: 0
-
         };
-    },
-    mounted: function mounted() {
-
-        $('.input-number').keypress(function () {
-            this.value = (this.value + '').replace(/[^0-9]/g, '');
-        });
     },
     created: function created() {
         this.tagsFromValue();
@@ -93749,7 +93741,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         tags: function tags() {
             // Updating the hidden input
             this.hiddenInput = this.tags.join(',');
-            //console.log(this.tags);
+
             // Update the bound v-model value
             this.$emit('input', this.tags);
         },
@@ -93760,7 +93752,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         escapeRegExp: function escapeRegExp(string) {
-            //console.log(string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         },
         tagFromInput: function tagFromInput() {
@@ -93784,13 +93775,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     slug = existingTag ? slug : text;
                     text = existingTag ? existingTag : text;
+
                     this.addTag(slug, text);
                 }
             }
         },
         tagFromSearchOnClick: function tagFromSearchOnClick(tag) {
             this.tagFromSearch(tag);
-            //console.log(tag);
+
             this.$refs['taginput'].blur();
         },
         tagFromSearch: function tagFromSearch(tag) {
@@ -93835,27 +93827,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$emit('tags-updated');
         },
         searchTag: function searchTag() {
-            var _this = this;
-
             if (this.typeahead === true) {
                 if (this.oldInput != this.input || !this.searchResults.length && this.typeaheadActivationThreshold == 0) {
-                    //------------------- Funcion para agregar etiquetas dinamicamente al input  
-                    if (this.input != '') {
-                        axios.get('/getContribuyente/' + this.input).then(function (data) {
-                            //console.log(data);
-                            var datos = data.data.contribuyente;
-                            datos.forEach(function (e, i) {
-                                _this.existingTags[e.dniRUC] = e.nombres + '-' + e.dniRUC;
-                            });
-                        }).catch(function (error) {
-                            console.log('Ocurrio un error ' + error);
-                            _this.$Progress.fail();
-                        });
-                    }
-                    //---------------------------------------------------------------------------------------------
                     this.searchResults = [];
                     this.searchSelection = 0;
-
                     var input = this.input.trim();
 
                     if (input.length && input.length >= this.typeaheadActivationThreshold || this.typeaheadActivationThreshold == 0) {
@@ -93889,11 +93864,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.searchTag();
         },
         hideTypeahead: function hideTypeahead() {
-            var _this2 = this;
+            var _this = this;
 
             if (!this.input.length) {
                 this.$nextTick(function () {
-                    _this2.ignoreSearchResults();
+                    _this.ignoreSearchResults();
                 });
             }
         },
@@ -93976,7 +93951,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         * Check if the tag with the provided slug is already selected
         */
         tagSelected: function tagSelected(slug) {
-            var _this3 = this;
+            var _this2 = this;
 
             if (this.allowDuplicates) {
                 return false;
@@ -93988,8 +93963,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var searchSlug = this.makeSlug(slug);
             var found = this.tags.find(function (value) {
-                //console.log(value);
-                return searchSlug == _this3.makeSlug(value);
+                return searchSlug == _this2.makeSlug(value);
             });
 
             return !!found;
@@ -94005,7 +93979,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (this.addTagsOnComma) {
                     // The comma shouldn't actually be inserted
                     e.preventDefault();
-                    //console.log(this.addTagsOnComma);
+
                     // Add the inputed tag
                     this.tagFromInput();
                 }
@@ -99926,6 +99900,238 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(463)
+/* template */
+var __vue_template__ = __webpack_require__(464)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/usuarios.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-66f95e50", Component.options)
+  } else {
+    hotAPI.reload("data-v-66f95e50", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 463 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            var: null,
+            reporte: [{
+                dni: null,
+                nombre: null,
+                direccion: null,
+                celular: null,
+                tipo: null
+            }],
+            columns: ["DNI", "nombre", "Direccion", "Celular", "tipo", "Acciones"],
+            options: {
+                headings: {
+                    dni: "DNI",
+                    nombre: "Nombre",
+                    direccion: "Direccion",
+                    celular: "Celular",
+                    tipo: "Tipo",
+                    Acciones: "Acciones"
+                },
+                sortable: ["DNI", "nombre", "Direccion", "tipo"],
+                filterable: ["DNI", "nombre", "Direccion", "Celular", "tipo"]
+            }
+        };
+    },
+    created: function created() {
+        this.getData();
+    },
+
+    methods: {
+        getData: function getData() {
+            var _this = this;
+
+            this.$Progress.start();
+            axios.get('verUsuarios').then(function (data) {
+                _this.reporte = data.data.usuarios;
+                _this.$Progress.finish();
+                console.log(data);
+            }).catch(function (error) {
+                _this.$Progress.fail();
+                console.log('Error: ' + error);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 464 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "content" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card card-default" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "div",
+            { staticClass: "content table-responsive table-full-width" },
+            [
+              _c("v-client-table", {
+                attrs: {
+                  data: _vm.reporte,
+                  columns: _vm.columns,
+                  options: _vm.options
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "Acciones",
+                    fn: function(props) {
+                      return _c(
+                        "div",
+                        {},
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-success",
+                              attrs: {
+                                "data-toggle": "tooltip",
+                                "data-placement": "left",
+                                title: "Editar Usuario"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.editUsuario(props.row.DNI)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-edit" })]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                to: "/verReporte/" + props.row.DNI,
+                                target: "_blank"
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-file-pdf-o" })]
+                          )
+                        ],
+                        1
+                      )
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header text-center" }, [
+      _c("h4", { staticClass: "title" }, [_vm._v("Lista de Usuarios")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-66f95e50", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);

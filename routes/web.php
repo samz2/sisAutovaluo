@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //rutas administrador
 Route::post('/addUser', 'personaController@store');
+Route::get('/verUsuarios', 'personaController@getDatos');
+Route::get('/verReporte/{id}', 'userController@getReporte');
 //fin rutas administrador
 
 //rutas para admin/predio-------

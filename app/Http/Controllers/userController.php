@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 
 class userController extends Controller
@@ -80,5 +81,11 @@ class userController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function getReporte($id)
+    {
+        $pdf = PDF::loadView('reporteUsuario', compact('id'));
+        return $pdf->stream('Reporte.pdf');
+        
     }
 }
