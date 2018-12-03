@@ -122,4 +122,9 @@ class personaController extends Controller
     {
         //
     }
+    public function getDatos()
+    {
+        $usuarios = \DB::select("CALL `sp_mostrarUsuarios`()");
+        return compact("usuarios");
+    }
 }

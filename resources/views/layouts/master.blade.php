@@ -124,7 +124,7 @@
 										</router-link>
 									</li>
 									<li class="nav-item">
-										<a href="../examples/profile.html" class="nav-link">
+										<router-link to="/usuarios" class="nav-link">
 											<i class="fa fa-address-book nav-icon"></i>
 											<p>Lista de usuarios</p>
 										</a>

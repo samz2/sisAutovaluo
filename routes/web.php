@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //rutas administrador
 Route::post('/addUser', 'personaController@store');
+Route::get('/verUsuarios', 'personaController@getDatos');
+Route::get('/verReporte/{id}', 'userController@getReporte');
 //fin rutas administrador
 
 //rutas para admin/predio-------
@@ -33,7 +35,7 @@ Route::get('/getContribuyente/{e}', 'predioController@getContribuyente')->name('
 
 // Rutas Notificador
 Route::resource('/estado', 'EstadoCuentaController', [
-    'except' => ['update', 'destroy', 'edit']
+    'except' => ['index', 'create', 'store', 'edit', 'update', 'destroy']
 ])->middleware('auth');
 Route::get('/obtener-estado', 'EstadoCuentaController@getEstado')->middleware('auth');
 Route::get('/obtener-personal/{id}', 'EstadoCuentaController@getPersonal')->middleware('auth');

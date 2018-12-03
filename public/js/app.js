@@ -45900,7 +45900,7 @@ var routes = [
 { path: '/predio-lista', component: __webpack_require__(422) }, { path: '/predio-agregar', component: __webpack_require__(425) }, { path: '/predio-editar', component: __webpack_require__(430) },
 //fin rutas
 //rutas admin
-{ path: '/addUser', component: __webpack_require__(435) },
+{ path: '/addUser', component: __webpack_require__(435) }, { path: '/usuarios', component: __webpack_require__(462) },
 //fin rutas admin
 // Manager Routes
 { path: '/manager', component: __webpack_require__(177) },
@@ -45929,6 +45929,7 @@ Vue.filter('formatDate', function (data) {
 Vue.component('example-component', __webpack_require__(22));
 Vue.component('manager', __webpack_require__(177));
 Vue.component('moon-loader', __webpack_require__(446));
+Vue.component('datos-generales', __webpack_require__(465));
 
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -93713,7 +93714,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             type: String,
             default: 'tags-input-wrapper-default'
         }
-
     },
 
     data: function data() {
@@ -93728,14 +93728,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             searchResults: [],
             searchSelection: 0
-
         };
-    },
-    mounted: function mounted() {
-
-        $('.input-number').keypress(function () {
-            this.value = (this.value + '').replace(/[^0-9]/g, '');
-        });
     },
     created: function created() {
         this.tagsFromValue();
@@ -93749,7 +93742,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         tags: function tags() {
             // Updating the hidden input
             this.hiddenInput = this.tags.join(',');
-            //console.log(this.tags);
+
             // Update the bound v-model value
             this.$emit('input', this.tags);
         },
@@ -93760,7 +93753,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     methods: {
         escapeRegExp: function escapeRegExp(string) {
-            //console.log(string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
             return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         },
         tagFromInput: function tagFromInput() {
@@ -93784,13 +93776,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
                     slug = existingTag ? slug : text;
                     text = existingTag ? existingTag : text;
+
                     this.addTag(slug, text);
                 }
             }
         },
         tagFromSearchOnClick: function tagFromSearchOnClick(tag) {
             this.tagFromSearch(tag);
-            //console.log(tag);
+
             this.$refs['taginput'].blur();
         },
         tagFromSearch: function tagFromSearch(tag) {
@@ -93835,27 +93828,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.$emit('tags-updated');
         },
         searchTag: function searchTag() {
-            var _this = this;
-
             if (this.typeahead === true) {
                 if (this.oldInput != this.input || !this.searchResults.length && this.typeaheadActivationThreshold == 0) {
-                    //------------------- Funcion para agregar etiquetas dinamicamente al input  
-                    if (this.input != '') {
-                        axios.get('/getContribuyente/' + this.input).then(function (data) {
-                            //console.log(data);
-                            var datos = data.data.contribuyente;
-                            datos.forEach(function (e, i) {
-                                _this.existingTags[e.dniRUC] = e.nombres + '-' + e.dniRUC;
-                            });
-                        }).catch(function (error) {
-                            console.log('Ocurrio un error ' + error);
-                            _this.$Progress.fail();
-                        });
-                    }
-                    //---------------------------------------------------------------------------------------------
                     this.searchResults = [];
                     this.searchSelection = 0;
-
                     var input = this.input.trim();
 
                     if (input.length && input.length >= this.typeaheadActivationThreshold || this.typeaheadActivationThreshold == 0) {
@@ -93889,11 +93865,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             this.searchTag();
         },
         hideTypeahead: function hideTypeahead() {
-            var _this2 = this;
+            var _this = this;
 
             if (!this.input.length) {
                 this.$nextTick(function () {
-                    _this2.ignoreSearchResults();
+                    _this.ignoreSearchResults();
                 });
             }
         },
@@ -93976,7 +93952,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         * Check if the tag with the provided slug is already selected
         */
         tagSelected: function tagSelected(slug) {
-            var _this3 = this;
+            var _this2 = this;
 
             if (this.allowDuplicates) {
                 return false;
@@ -93988,8 +93964,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             var searchSlug = this.makeSlug(slug);
             var found = this.tags.find(function (value) {
-                //console.log(value);
-                return searchSlug == _this3.makeSlug(value);
+                return searchSlug == _this2.makeSlug(value);
             });
 
             return !!found;
@@ -94005,7 +93980,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (this.addTagsOnComma) {
                     // The comma shouldn't actually be inserted
                     e.preventDefault();
-                    //console.log(this.addTagsOnComma);
+
                     // Add the inputed tag
                     this.tagFromInput();
                 }
@@ -99099,6 +99074,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -99118,8 +99109,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 filterable: ['calle', 'codigo_predio']
             },
             estado_cuenta: [],
+            contribuyente: [],
+            hasData: false,
             predio: {},
-            total: 0.0
+            total: 0.0,
+            title: 'Hola Mundo'
         };
     },
     mounted: function mounted() {
@@ -99155,6 +99149,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getUser: function getUser(id) {
             var _this2 = this;
 
+            this.hasData = true;
             axios.get('/obtener-personal/' + id).then(function (data) {
                 var total = 0.0;
                 _this2.estado_cuenta = data.data.estado_cuenta.map(function (e) {
@@ -99190,6 +99185,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     piso: data.data.predio.piso ? data.data.predio.piso : 'Sin datos',
                     sector: data.data.predio.sector ? data.data.predio.sector : 'Sin datos'
                 };
+
+                var contribuyente = data.data.contribuyentes.map(function (e) {
+                    return {
+                        codigo_predio: e.codPredio,
+                        codigo_contribuyente: e.codContribuyente,
+                        nombre: e.nombre,
+                        apellidos: e.apellidos,
+                        dni: e.dniRUC
+                    };
+                });
+
+                _this2.contribuyente = contribuyente;
             }).catch(function (error) {
                 console.log(error);
             });
@@ -99257,219 +99264,28 @@ var render = function() {
           )
         ]),
         _vm._v(" "),
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [
-            _vm._v("Datos Generales")
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: "card-body" }, [
-            _c("h2", { staticClass: "text-center" }, [
-              _vm._v("DATOS GENERALES")
-            ]),
-            _vm._v(" "),
-            _c("form", { staticClass: "mt-4" }, [
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "form-group col-md-4" }, [
-                  _c("label", { attrs: { for: "calle" } }, [_vm._v("Código:")]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.codPredio) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-4" }, [
-                  _c("label", { attrs: { for: "calle" } }, [_vm._v("Calle: ")]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.calle) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-4" }, [
-                  _c("label", { attrs: { for: "calle" } }, [
-                    _vm._v("Número: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.numero) }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "piso" } }, [_vm._v("Piso: ")]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.piso) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "manzana" } }, [
-                    _vm._v("Manzana: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.manzana) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "lote" } }, [_vm._v("Lote: ")]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.lote) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "interior" } }, [
-                    _vm._v("Interior: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.interior) }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "sector" } }, [
-                    _vm._v("Sector: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.sector) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-5" }, [
-                  _c("label", { attrs: { for: "condicion_propiedad" } }, [
-                    _vm._v("Condición de Propiedad: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.condicion) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-4" }, [
-                  _c("label", { attrs: { for: "conservacion_propiedad" } }, [
-                    _vm._v("Conservacion de Propiedad: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.conservacion) }
-                  })
-                ])
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "form-row" }, [
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "material" } }, [
-                    _vm._v("Material: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.material) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-3" }, [
-                  _c("label", { attrs: { for: "clasificacion" } }, [
-                    _vm._v("Clasificacion: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.clasificacion) }
-                  })
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group col-md-6" }, [
-                  _c("label", { attrs: { for: "localidad" } }, [
-                    _vm._v("Localidad: ")
-                  ]),
-                  _vm._v(" "),
-                  _c("p", {
-                    domProps: { textContent: _vm._s(_vm.predio.localidad) }
-                  })
-                ])
-              ])
-            ]),
-            _vm._v(" "),
-            _c("h2", { staticClass: "text-center" }, [
-              _vm._v("ESTADO DE CUENTA")
-            ]),
-            _vm._v(" "),
-            _c("table", { staticClass: "table table-striped table-hover" }, [
-              _vm._m(0),
-              _vm._v(" "),
-              _c(
-                "tbody",
-                [
-                  _vm._l(_vm.estado_cuenta, function(e, index) {
-                    return _c("tr", { key: index }, [
-                      _c("td", [_vm._v(_vm._s(e.periodo))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.formato))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.impuesto_predial))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.limpieza_publica))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.barrido_calles))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.parques_jardines))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.serenazgo))]),
-                      _vm._v(" "),
-                      _c("td", [_vm._v(_vm._s(e.sub_total))])
-                    ])
-                  }),
-                  _vm._v(" "),
-                  _c("tr", [
-                    _c("td", { attrs: { colspan: "7" } }, [_vm._v("Total")]),
-                    _vm._v(" "),
-                    _c("td", [_vm._v(_vm._s(_vm.total))])
-                  ])
-                ],
-                2
-              )
-            ])
-          ])
-        ])
+        _vm.hasData
+          ? _c(
+              "div",
+              [
+                _c("datos-generales", {
+                  attrs: {
+                    hasData: _vm.hasData,
+                    predio: _vm.predio,
+                    contribuyente: _vm.contribuyente,
+                    estado_cuenta: _vm.estado_cuenta,
+                    total: _vm.total
+                  }
+                })
+              ],
+              1
+            )
+          : _vm._e()
       ])
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Periodo")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Formato")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Impuesto Predial")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Limpieza Pública")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Barrido Calles")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Parques y Jardines")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Serenazgo")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("SubTotal")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
@@ -99555,6 +99371,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
     data: function data() {
@@ -99576,22 +99396,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     height: -35
                 }
             },
-            markers: []
+            markers: [],
+            customerHasData: [],
+            customerHasntData: []
         };
     },
     created: function created() {
         this.getEstado();
     },
-    mounted: function mounted() {
-        //set bounds of the map
-        // this.$refs.gmap.$mapPromise.then((map) => {
-        //     const bounds = new google.maps.LatLngBounds()
-        //     for (let m of this.markers) {
-        //         bounds.extend(m.position)
-        //     }
-        //     map.fitBounds(bounds);
-        // });
-    },
+    mounted: function mounted() {},
 
     methods: {
         getEstado: function getEstado() {
@@ -99618,6 +99431,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     lat: parseFloat(data.data.predioSalvaje[0].Latitud),
                     lng: parseFloat(data.data.predioSalvaje[0].Longitud)
                 };
+
+                data.data.predioSalvaje.forEach(function (e) {
+                    if (e.suma > 0) {
+                        _this.customerHasData.push({
+                            calle: e.Calle,
+                            cantidad_contribuyentes: e.Cantidad_Contribuyente,
+                            codigo_contribuyentes: e.Codigo_Contribuyente,
+                            codigo_predio: e.Codigo_Predio,
+                            position: {
+                                lat: parseFloat(e.Latitud),
+                                lng: parseFloat(e.Longitud)
+                            },
+                            nombre_completo: e.Nombres_Apellidos,
+                            total: e.suma
+                        });
+                    } else {
+                        _this.customerHasntData.push({
+                            calle: e.Calle,
+                            cantidad_contribuyentes: e.Cantidad_Contribuyente,
+                            codigo_contribuyentes: e.Codigo_Contribuyente,
+                            codigo_predio: e.Codigo_Predio,
+                            position: {
+                                lat: parseFloat(e.Latitud),
+                                lng: parseFloat(e.Longitud)
+                            },
+                            nombre_completo: e.Nombres_Apellidos,
+                            total: e.suma
+                        });
+                    }
+                });
             }).catch(function (error) {
                 console.log(error);
             });
@@ -99641,10 +99484,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var estado = '';
             if (marker.total > 0) {
                 estado = '<i class="fa fa-circle" style="color: red" aria-hidden="true"></i> Deuda Pendiente';
-            } else {
+            } else if (marker.total == 0) {
                 estado = '<i class="fa fa-circle" style="color: green" aria-hidden="true"></i> Sin deuda';
             }
             return '\n                <div class="card">\n                    <div class="card-header">\n                        <p class=""><b>' + 'Código de Predio'.toUpperCase() + ':</b> ' + marker.codigo_predio + '</p>\n                    </div>\n                    <div class="card-body">\n                        <p><b>Calle:</b> ' + marker.calle + '</p>\n                        <p><b>Cantidad de Contribuyentes:</b> ' + marker.cantidad_contribuyentes + '</p>\n                        <p><b>Estado:</b> ' + estado + '</p>\n                        <p><b>Cantidad Deuda:</b> ' + marker.total + '</p>\n                    </div>\n                </div>';
+        },
+        mostrar: function mostrar(data) {
+            if (data) {
+                this.markers = this.customerHasData;
+            } else {
+                this.markers = this.customerHasntData;
+            }
         }
     }
 });
@@ -99670,12 +99520,42 @@ var render = function() {
                 "div",
                 { staticClass: "card-body" },
                 [
+                  _c("form", { staticClass: "mb-4" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.mostrar(true)
+                          }
+                        }
+                      },
+                      [_vm._v("Contribuyentes con deuda")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            _vm.mostrar(false)
+                          }
+                        }
+                      },
+                      [_vm._v("Contribuyentes sin deuda")]
+                    )
+                  ]),
+                  _vm._v(" "),
                   _c(
                     "gmap-map",
                     {
                       ref: "gmap",
                       staticStyle: { width: "100%", height: "100vh" },
-                      attrs: { center: _vm.center, zoom: 14 }
+                      attrs: { center: _vm.center, zoom: 13 }
                     },
                     [
                       _vm._l(_vm.markers, function(m, index) {
@@ -99951,6 +99831,674 @@ if (false) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 452 */,
+/* 453 */,
+/* 454 */,
+/* 455 */,
+/* 456 */,
+/* 457 */,
+/* 458 */,
+/* 459 */,
+/* 460 */,
+/* 461 */,
+/* 462 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(463)
+/* template */
+var __vue_template__ = __webpack_require__(464)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/usuarios.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-66f95e50", Component.options)
+  } else {
+    hotAPI.reload("data-v-66f95e50", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 463 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            var: null,
+            reporte: [{
+                dni: null,
+                nombre: null,
+                direccion: null,
+                celular: null,
+                tipo: null
+            }],
+            columns: ["DNI", "nombre", "Direccion", "Celular", "tipo", "Acciones"],
+            options: {
+                headings: {
+                    dni: "DNI",
+                    nombre: "Nombre",
+                    direccion: "Direccion",
+                    celular: "Celular",
+                    tipo: "Tipo",
+                    Acciones: "Acciones"
+                },
+                sortable: ["DNI", "nombre", "Direccion", "tipo"],
+                filterable: ["DNI", "nombre", "Direccion", "Celular", "tipo"]
+            }
+        };
+    },
+    created: function created() {
+        this.getData();
+    },
+
+    methods: {
+        getData: function getData() {
+            var _this = this;
+
+            this.$Progress.start();
+            axios.get('verUsuarios').then(function (data) {
+                _this.reporte = data.data.usuarios;
+                _this.$Progress.finish();
+                console.log(data);
+            }).catch(function (error) {
+                _this.$Progress.fail();
+                console.log('Error: ' + error);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 464 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "content" }, [
+    _c("div", { staticClass: "col-md-12" }, [
+      _c("div", { staticClass: "card card-default" }, [
+        _vm._m(0),
+        _vm._v(" "),
+        _c("div", { staticClass: "card-body" }, [
+          _c(
+            "div",
+            { staticClass: "content table-responsive table-full-width" },
+            [
+              _c("v-client-table", {
+                attrs: {
+                  data: _vm.reporte,
+                  columns: _vm.columns,
+                  options: _vm.options
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "Acciones",
+                    fn: function(props) {
+                      return _c(
+                        "div",
+                        {},
+                        [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-success",
+                              attrs: {
+                                "data-toggle": "tooltip",
+                                "data-placement": "left",
+                                title: "Editar Usuario"
+                              },
+                              on: {
+                                click: function($event) {
+                                  _vm.editUsuario(props.row.DNI)
+                                }
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-edit" })]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "router-link",
+                            {
+                              staticClass: "btn btn-primary",
+                              attrs: {
+                                to: "/verReporte/" + props.row.DNI,
+                                target: "_blank"
+                              }
+                            },
+                            [_c("i", { staticClass: "fa fa-file-pdf-o" })]
+                          )
+                        ],
+                        1
+                      )
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "card-header text-center" }, [
+      _c("h4", { staticClass: "title" }, [_vm._v("Lista de Usuarios")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-66f95e50", module.exports)
+  }
+}
+
+/***/ }),
+/* 465 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(2)
+/* script */
+var __vue_script__ = __webpack_require__(466)
+/* template */
+var __vue_template__ = __webpack_require__(467)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/notifier/DatosGenerales.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-9970216e", Component.options)
+  } else {
+    hotAPI.reload("data-v-9970216e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 466 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    props: ['predio', 'contribuyente', 'estado_cuenta', 'total'],
+    data: function data() {
+        return {};
+    }
+});
+
+/***/ }),
+/* 467 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card card-default" }, [
+    _c("div", { staticClass: "card-header" }, [_vm._v("Datos Generales")]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("h2", { staticClass: "text-center" }, [_vm._v("DATOS GENERALES")]),
+      _vm._v(" "),
+      _c(
+        "form",
+        { staticClass: "mt-4" },
+        [
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "calle" } }, [
+                _vm._v("Código de Predio:")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.codPredio) }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "calle" } }, [_vm._v("Calle: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.calle) } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "calle" } }, [_vm._v("Número: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.numero) } })
+            ])
+          ]),
+          _vm._v(" "),
+          _vm._m(0),
+          _vm._v(" "),
+          _vm._l(_vm.contribuyente, function(c, index) {
+            return _c(
+              "div",
+              {
+                key: index,
+                staticClass: "form-row mb-2",
+                staticStyle: {
+                  "border-width": "4px",
+                  "border-left-style": "solid",
+                  "border-color": "#6c757d!important",
+                  "background-color": "#f5f5f5"
+                }
+              },
+              [
+                _c("p", { staticClass: "col-md-3" }, [
+                  _c("b", [_vm._v("Código Contribuyente")]),
+                  _vm._v(": " + _vm._s(c.codigo_contribuyente))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "col-md-6" }, [
+                  _c("b", [_vm._v("Nombres Completos")]),
+                  _vm._v(": " + _vm._s(c.nombre) + " " + _vm._s(c.apellidos))
+                ]),
+                _vm._v(" "),
+                _c("p", { staticClass: "col-md-3" }, [
+                  _c("b", [_vm._v("DNI Contribuyente")]),
+                  _vm._v(": " + _vm._s(c.dni))
+                ])
+              ]
+            )
+          }),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "piso" } }, [_vm._v("Piso: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.piso) } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "manzana" } }, [_vm._v("Manzana: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.manzana) } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "lote" } }, [_vm._v("Lote: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.lote) } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "interior" } }, [
+                _vm._v("Interior: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.interior) }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "sector" } }, [_vm._v("Sector: ")]),
+              _vm._v(" "),
+              _c("p", { domProps: { textContent: _vm._s(_vm.predio.sector) } })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-5" }, [
+              _c("label", { attrs: { for: "condicion_propiedad" } }, [
+                _vm._v("Condición de Propiedad: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.condicion) }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "conservacion_propiedad" } }, [
+                _vm._v("Conservacion de Propiedad: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.conservacion) }
+              })
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-row" }, [
+            _c("div", { staticClass: "form-group col-md-3" }, [
+              _c("label", { attrs: { for: "material" } }, [
+                _vm._v("Material: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.material) }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-4" }, [
+              _c("label", { attrs: { for: "clasificacion" } }, [
+                _vm._v("Clasificacion: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.clasificacion) }
+              })
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group col-md-5" }, [
+              _c("label", { attrs: { for: "localidad" } }, [
+                _vm._v("Localidad: ")
+              ]),
+              _vm._v(" "),
+              _c("p", {
+                domProps: { textContent: _vm._s(_vm.predio.localidad) }
+              })
+            ])
+          ])
+        ],
+        2
+      ),
+      _vm._v(" "),
+      _c("h2", { staticClass: "text-center" }, [_vm._v("ESTADO DE CUENTA")]),
+      _vm._v(" "),
+      _c("table", { staticClass: "table table-striped table-hover" }, [
+        _vm._m(1),
+        _vm._v(" "),
+        _c(
+          "tbody",
+          [
+            _vm._l(_vm.estado_cuenta, function(e, index) {
+              return _c("tr", { key: index }, [
+                _c("td", [_vm._v(_vm._s(e.periodo))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.formato))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.impuesto_predial))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.limpieza_publica))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.barrido_calles))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.parques_jardines))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.serenazgo))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(e.sub_total))])
+              ])
+            }),
+            _vm._v(" "),
+            _c("tr", [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("td", [_vm._v(_vm._s(_vm.total))])
+            ])
+          ],
+          2
+        )
+      ])
+    ])
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-row" }, [
+      _c("div", { staticClass: "form-group col-md-12" }, [
+        _c("label", { attrs: { for: "" } }, [_vm._v("Datos del Contribuyente")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("thead", [
+      _c("tr", [
+        _c("th", [_vm._v("Periodo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Formato")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Impuesto Predial")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Limpieza Pública")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Barrido Calles")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Parques y Jardines")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Serenazgo")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("SubTotal")])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("td", { staticClass: "text-right", attrs: { colspan: "7" } }, [
+      _c("b", [_vm._v("TOTAL")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-9970216e", module.exports)
+  }
+}
 
 /***/ })
 /******/ ]);
