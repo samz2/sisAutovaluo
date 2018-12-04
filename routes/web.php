@@ -32,6 +32,16 @@ Route::get('/datoPredioCont/{e}', 'predioController@getPredioContribuyentes')->n
 Route::resource('/predio', 'predioController', ['except' => ['destroy', 'edit', 'show', 'create']]);
 Route::get('/getContribuyente/{e}', 'predioController@getContribuyente')->name('predio.getContribuyente');
 
+//Rutas de localidad
+Route::get('/getLocalidad', 'predioController@getLocalidad')->name('predio.getLocalidad');
+Route::post('/agregarOrUpdateLocalidad', 'predioController@storeLocalidad')->name('predio.storeLocalidad');
+Route::get('/eliminarLocalidad/{id}', 'predioController@destroyLocalidad')->name('predio.destroyLocalidad');
+
+//Rutas de conservacion
+Route::get('/getConservacion', 'predioController@getConservacion')->name('predio.getConservacion');
+Route::post('/agregarOrUpdateConservacion', 'predioController@storeConservacion')->name('predio.storeConservacion');
+Route::get('/eliminarConservacion/{id}', 'predioController@destroyConservacion')->name('predio.destroyConservacion');
+
 // Rutas para materiales
 Route::resource('/material', 'MaterialController', ['except' => ['create', 'show', 'edit']])->middleware('auth');
 

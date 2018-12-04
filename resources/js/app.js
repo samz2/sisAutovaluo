@@ -89,6 +89,8 @@ const routes = [
     { path: '/sector-agregar', component: require('./components/admin/agregar/AddSector.vue') },
     { path: '/condicion-agregar', component: require('./components/admin/agregar/AddCondicionPropiedad.vue') },
     { path: '/clasificacion', component: require('./components/admin/clasificacion.vue') },
+    { path: '/conservacion', component: require('./components/admin/conservacion.vue') },
+    { path: '/localidad', component: require('./components/admin/localidad.vue') },
     //fin rutas
     //rutas admin
     { path: '/addUser', component: require('./components/admin/addUser.vue') },

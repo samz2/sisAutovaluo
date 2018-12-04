@@ -76,6 +76,16 @@ class predioController extends Controller
         return compact('datos');
     }
 
+    public function getConservacion(){
+        $datos=Conservacion::all();
+        return compact('datos');
+    }
+
+    public function getLocalidad(){
+        $datos=Localidad::all();
+        return compact('datos');
+    }
+
     public function storeClasificacion(Request $request){
         $clasificacion=Clasificacion::updateOrCreate(
             ['id_clasificacion'=>$request['clasificacionForm']['id_clasificacion']],
@@ -90,9 +100,57 @@ class predioController extends Controller
         }
     }
 
+    public function storeLocalidad(Request $request){
+        $localidad=Localidad::updateOrCreate(
+            ['id_localidad'=>$request['localidadForm']['id_localidad']],
+            [
+                'descripcion'   =>$request['localidadForm']['descripcion']
+            ]
+        );
+        if($localidad){
+            return "OK";
+        }else{
+            return "FAIL";
+        }
+    }
+
+    public function storeConservacion(Request $request){
+        $conservacion=Conservacion::updateOrCreate(
+            ['id_conservacion'=>$request['conservacionForm']['id_conservacion']],
+            [
+                'descripcion'   =>$request['conservacionForm']['descripcion']
+            ]
+        );
+        if($conservacion){
+            return "OK";
+        }else{
+            return "FAIL";
+        }
+    }
+
     public function destroyClasificacion($id)
     {
         $eliminar=Clasificacion::where('id_clasificacion',$id)->delete();
+        if($eliminar){
+            return "OK";
+        }else{
+            return "FAIL";
+        }
+    }
+
+    public function destroyLocalidad($id)
+    {
+        $eliminar=Localidad::where('id_localidad',$id)->delete();
+        if($eliminar){
+            return "OK";
+        }else{
+            return "FAIL";
+        }
+    }
+
+    public function destroyConservacion($id)
+    {
+        $eliminar=Conservacion::where('id_conservacion',$id)->delete();
         if($eliminar){
             return "OK";
         }else{
