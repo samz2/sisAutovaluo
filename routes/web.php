@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 //rutas administrador
 Route::post('/addUser', 'personaController@store');
+Route::get('/verUsuarios', 'personaController@getDatos');
+Route::get('/verReporte/{id}', 'userController@getReporte');
 //fin rutas administrador
 
 //rutas para admin/predio-------
@@ -29,6 +31,15 @@ Route::get('/contribuyentes/{e}', 'predioController@getContribuyentesPredio')->n
 Route::get('/datoPredioCont/{e}', 'predioController@getPredioContribuyentes')->name('predio.datosPredioCont');
 Route::resource('/predio', 'predioController', ['except' => ['destroy', 'edit', 'show', 'create']]);
 Route::get('/getContribuyente/{e}', 'predioController@getContribuyente')->name('predio.getContribuyente');
+
+// Rutas para materiales
+Route::resource('/material', 'MaterialController', ['except' => ['create', 'show', 'edit']])->middleware('auth');
+
+// Rutas para sector
+Route::resource('/sector', 'SectorController', ['except' => ['create', 'show', 'edit']])->middleware('auth');
+
+// Rutas para Condicion de Propiedad
+Route::resource('/condicion-propiedad', 'CondicionPropiedadController', ['except' => ['create', 'show', 'edit']])->middleware('auth');
 //------------------------------
 
 // Rutas Notificador

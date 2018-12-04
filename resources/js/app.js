@@ -62,10 +62,10 @@ const messages = {
     between: (field, [min, max]) => `Este campo debe estar entre ${min} y ${max}.`,
     email: (field) => `El campo ${field} debe ser un correo electrónico válido.`,
     date_format: (field, [format]) => format == 'YYYY' ? `Este campo debe tener formato de año` : `Este campo debe tener formato ${format}.`,
-    max: (field, [length]) => `El campo de ${field} no debe ser mayor a ${length} caracteres.`,
-    min: (field, [length]) => `El campo de ${field} debe tener al menos ${length} caracteres.`,
+    max: (field, [length]) => `Este campo no debe ser mayor a ${length} caracteres.`,
+    min: (field, [length]) => `Este campo debe tener al menos ${length} caracteres.`,
     numeric: (field) => `Este campo debe contener solo caracteres numéricos.`,
-    required: (field) => `El campo ${field} es obligatorio.`,
+    required: (field) => `Este campo es obligatorio.`,
     url: (field) => `Este campo no es una URL válida.`
 };
 
@@ -85,9 +85,13 @@ const routes = [
     { path: '/predio-lista', component: require('./components/admin/predioLista.vue') },
     { path: '/predio-agregar', component: require('./components/admin/predioAgregar.vue') },
     { path: '/predio-editar', component: require('./components/admin/predioEdit.vue') },
+    { path: '/material-agregar', component: require('./components/admin/agregar/AddMaterial.vue') },
+    { path: '/sector-agregar', component: require('./components/admin/agregar/AddSector.vue') },
+    { path: '/condicion-agregar', component: require('./components/admin/agregar/AddCondicionPropiedad.vue') },
     //fin rutas
     //rutas admin
     { path: '/addUser', component: require('./components/admin/addUser.vue') },
+    { path: '/usuarios', component: require('./components/admin/usuarios.vue') },
     //fin rutas admin
     // Manager Routes
     { path: '/manager', component: require('./components/management/AdministratorComponent.vue') },

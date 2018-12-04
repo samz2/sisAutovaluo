@@ -124,7 +124,7 @@
 										</router-link>
 									</li>
 									<li class="nav-item">
-										<a href="../examples/profile.html" class="nav-link">
+										<router-link to="/usuarios" class="nav-link">
 											<i class="fa fa-address-book nav-icon"></i>
 											<p>Lista de usuarios</p>
 										</a>
@@ -136,6 +136,60 @@
 										</a>
 									</li>
 								</ul>
+							</li>
+							<li class="nav-item has-treeview">
+								<router-link to="/sector-agregar" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Sector
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</router-link>
+							</li>
+							<li class="nav-item has-treeview">
+								<router-link to="/material-agregar" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Material
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</router-link>
+							</li>
+							<li class="nav-item has-treeview">
+								<router-link to="/condicion-agregar" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Condicion Propiedad
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</router-link>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Conservacion
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</a>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Clasificación
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</a>
+							</li>
+							<li class="nav-item has-treeview">
+								<a href="#" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Localidad
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</a>
 							</li>
 							@break
 							@case(2)

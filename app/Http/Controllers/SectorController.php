@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
+use App\Sector;
 
-class userController extends Controller
+class SectorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,19 +14,10 @@ class userController extends Controller
      */
     public function index()
     {
-        //
+        $sector = Sector::all();
+        return compact('sector');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -35,29 +26,8 @@ class userController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $sector = Sector::create(['descripcion' => ucfirst($request->sector)]);
+        return $sector ? 'bien' : 'error';
     }
 
     /**
@@ -69,7 +39,8 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $sector = Sector::where('id_sector', $id)->update(['descripcion' => ucfirst($request->sector)]);
+        return $sector ? 'bien' : 'error';
     }
 
     /**
@@ -80,12 +51,7 @@ class userController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-    public function getReporte($id)
-    {
-        $pdf = PDF::loadView('reporteUsuario', compact('id'));
-        return $pdf->stream('Reporte.pdf');
-        
+        $sector = Sector::where('id_sector', $id)->delete();
+        return $sector ? 'bien' : 'error';
     }
 }

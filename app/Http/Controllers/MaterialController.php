@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
+use App\Material;
 
-class userController extends Controller
+class MaterialController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,17 +14,8 @@ class userController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $material = Material::all();
+        return compact('material');
     }
 
     /**
@@ -35,29 +26,8 @@ class userController extends Controller
      */
     public function store(Request $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
+        $material = Material::create(['descripcion' => strtoupper($request->material)]);
+        return $material ? 'bien' : 'error';
     }
 
     /**
@@ -69,7 +39,8 @@ class userController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $material = Material::where('id_material', $id)->update(['descripcion' => strtoupper($request->material)]);
+        return $material ? 'bien' : 'error';
     }
 
     /**
@@ -80,12 +51,7 @@ class userController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
-    public function getReporte($id)
-    {
-        $pdf = PDF::loadView('reporteUsuario', compact('id'));
-        return $pdf->stream('Reporte.pdf');
-        
+        $data = Material::where('id_material', $id)->delete();
+        return $data ? 'bien' : 'error';
     }
 }
