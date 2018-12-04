@@ -71,6 +71,34 @@ class predioController extends Controller
         return compact('datos');
     }
 
+    public function getClasificacion(){
+        $datos=Clasificacion::all();
+        return compact('datos');
+    }
+
+    public function storeClasificacion(Request $request){
+        $clasificacion=Clasificacion::updateOrCreate(
+            ['id_clasificacion'=>$request['clasificacionForm']['id_clasificacion']],
+            [
+                'descripcion'   =>$request['clasificacionForm']['descripcion']
+            ]
+        );
+        if($clasificacion){
+            return "OK";
+        }else{
+            return "FAIL";
+        }
+    }
+
+    public function destroyClasificacion($id)
+    {
+        $eliminar=Clasificacion::where('id_clasificacion',$id)->delete();
+        if($eliminar){
+            return "OK";
+        }else{
+            return "FAIL";
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *

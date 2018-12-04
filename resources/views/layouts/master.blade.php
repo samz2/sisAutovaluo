@@ -174,22 +174,22 @@
 								</a>
 							</li>
 							<li class="nav-item has-treeview">
-								<a href="#" class="nav-link">
+								<router-link to="clasificacion" class="nav-link">
 									<i class="nav-icon fa fa-folder"></i>
 									<p>
 										Clasificación
 										{{-- <i class="fa fa-angle-right right"></i> --}}
 									</p>
-								</a>
+								</router-link>
 							</li>
 							<li class="nav-item has-treeview">
-								<a href="#" class="nav-link">
+								<router-link to="#" class="nav-link">
 									<i class="nav-icon fa fa-folder"></i>
 									<p>
 										Localidad
 										{{-- <i class="fa fa-angle-right right"></i> --}}
 									</p>
-								</a>
+								</router-link>
 							</li>
 							@break
 							@case(2)

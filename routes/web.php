@@ -31,6 +31,9 @@ Route::get('/contribuyentes/{e}', 'predioController@getContribuyentesPredio')->n
 Route::get('/datoPredioCont/{e}', 'predioController@getPredioContribuyentes')->name('predio.datosPredioCont');
 Route::resource('/predio', 'predioController', ['except' => ['destroy', 'edit', 'show', 'create']]);
 Route::get('/getContribuyente/{e}', 'predioController@getContribuyente')->name('predio.getContribuyente');
+Route::get('/getClasificacion', 'predioController@getClasificacion')->name('predio.getClasificacion');
+Route::post('/agregarOrUpdateClasificacion', 'predioController@storeClasificacion')->name('predio.storeClasificacion');
+Route::get('/eliminarClasificacion/{id}', 'predioController@destroyClasificacion')->name('predio.destroyClasificacion');
 //------------------------------
 
 // Rutas Notificador
