@@ -40,6 +40,9 @@ Route::resource('/sector', 'SectorController', ['except' => ['create', 'show', '
 
 // Rutas para Condicion de Propiedad
 Route::resource('/condicion-propiedad', 'CondicionPropiedadController', ['except' => ['create', 'show', 'edit']])->middleware('auth');
+Route::get('/getClasificacion', 'predioController@getClasificacion')->name('predio.getClasificacion');
+Route::post('/agregarOrUpdateClasificacion', 'predioController@storeClasificacion')->name('predio.storeClasificacion');
+Route::get('/eliminarClasificacion/{id}', 'predioController@destroyClasificacion')->name('predio.destroyClasificacion');
 //------------------------------
 
 // Rutas Notificador

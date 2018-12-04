@@ -45713,9 +45713,9 @@ exports.default = function (input) {
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(447)
+var __vue_script__ = __webpack_require__(459)
 /* template */
-var __vue_template__ = __webpack_require__(448)
+var __vue_template__ = __webpack_require__(460)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -45758,7 +45758,7 @@ module.exports = Component.exports
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(179);
-module.exports = __webpack_require__(463);
+module.exports = __webpack_require__(475);
 
 
 /***/ }),
@@ -45897,15 +45897,15 @@ var routes = [
 // Main Routes
 { path: '/', component: __webpack_require__(22) }, { path: '*', component: __webpack_require__(22) },
 // admin/predio routes
-{ path: '/predio-lista', component: __webpack_require__(422) }, { path: '/predio-agregar', component: __webpack_require__(425) }, { path: '/predio-editar', component: __webpack_require__(430) }, { path: '/material-agregar', component: __webpack_require__(435) }, { path: '/sector-agregar', component: __webpack_require__(440) }, { path: '/condicion-agregar', component: __webpack_require__(479) },
+{ path: '/predio-lista', component: __webpack_require__(422) }, { path: '/predio-agregar', component: __webpack_require__(425) }, { path: '/predio-editar', component: __webpack_require__(430) }, { path: '/material-agregar', component: __webpack_require__(435) }, { path: '/sector-agregar', component: __webpack_require__(440) }, { path: '/condicion-agregar', component: __webpack_require__(445) }, { path: '/clasificacion', component: __webpack_require__(450) },
 //fin rutas
 //rutas admin
-{ path: '/addUser', component: __webpack_require__(441) }, { path: '/usuarios', component: __webpack_require__(444) },
+{ path: '/addUser', component: __webpack_require__(453) }, { path: '/usuarios', component: __webpack_require__(456) },
 //fin rutas admin
 // Manager Routes
 { path: '/manager', component: __webpack_require__(177) },
 // Deudor Routes
-{ path: '/visualize', component: __webpack_require__(449) }, { path: '/listado', component: __webpack_require__(452) }];
+{ path: '/visualize', component: __webpack_require__(461) }, { path: '/listado', component: __webpack_require__(464) }];
 
 // Create the route instance
 var router = new __WEBPACK_IMPORTED_MODULE_4_vue_router__["a" /* default */]({
@@ -45928,8 +45928,8 @@ Vue.filter('formatDate', function (data) {
 
 Vue.component('example-component', __webpack_require__(22));
 Vue.component('manager', __webpack_require__(177));
-Vue.component('moon-loader', __webpack_require__(455));
-Vue.component('datos-generales', __webpack_require__(460));
+Vue.component('moon-loader', __webpack_require__(467));
+Vue.component('datos-generales', __webpack_require__(472));
 
 // const files = require.context('./', true, /\.vue$/i)
 
@@ -98854,13 +98854,13 @@ if (false) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(476)
+  __webpack_require__(441)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(474)
+var __vue_script__ = __webpack_require__(443)
 /* template */
-var __vue_template__ = __webpack_require__(478)
+var __vue_template__ = __webpack_require__(444)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -98902,12 +98902,2054 @@ module.exports = Component.exports
 /* 441 */
 /***/ (function(module, exports, __webpack_require__) {
 
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(442);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(6)("b88a4b98", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e77f8c48\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AddSector.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e77f8c48\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AddSector.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 442 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(5)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.error[data-v-e77f8c48] {\r\n    border-color: #dc3545;\n}\n.errorSpan[data-v-e77f8c48] {\r\n    color: #dc3545;\n}\ninput[data-v-e77f8c48]:focus {\r\n    -webkit-box-shadow: none;\r\n            box-shadow: none;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 443 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            columns: ["id_sector", "descripcion", "acciones"],
+            tableData: [{ id_sector: null, descripcion: null }],
+            options: {
+                headings: {
+                    id_sector: "ID",
+                    descripcion: "Descripcion",
+                    acciones: "Acciones"
+                },
+                sortable: ["id_sector", "descripcion"],
+                filterable: ["id_sector", "descripcion"]
+            },
+            hasClicked: false,
+            hasData: false,
+            sector: null,
+            id: null
+        };
+    },
+    created: function created() {
+        this.getSector();
+    },
+
+    methods: {
+        add: function add() {
+            this.hasClicked = true;
+            $('input#sector').focus();
+        },
+        cancel: function cancel() {
+            this.hasData = false;
+            this.hasClicked = false;
+            this.sector = null;
+            this.id = null;
+            $('#sector').focus();
+        },
+        editSector: function editSector(id, nombre) {
+            this.hasClicked = true;
+            this.hasData = true;
+            this.sector = nombre;
+            this.id = id;
+            $('#sector').focus();
+        },
+        getSector: function getSector() {
+            var _this = this;
+
+            this.$Progress.start();
+            axios.get('sector').then(function (data) {
+                _this.tableData = data.data.sector;
+                _this.$Progress.finish();
+            }).catch(function (error) {
+                _this.$Progress.fail();
+                console.log(error);
+            });
+        },
+        addSector: function addSector() {
+            var _this2 = this;
+
+            this.$validator.validateAll().then(function (res) {
+                if (res) {
+                    axios.post('sector', {
+                        sector: _this2.sector
+                    }).then(function (data) {
+                        if (data.data == 'bien') {
+                            swal({
+                                type: 'success',
+                                title: 'Buen trabajo!',
+                                text: 'Dato agregado correctamente!',
+                                timer: 2000
+                            });
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'No se pudo agregar correctamente!',
+                                timer: 2000
+                            });
+                        }
+                        setTimeout(function () {
+                            _this2.cancel();
+                            _this2.getSector();
+                        }, 2500);
+                    }).catch(function (error) {
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Error externo, no se pudo agregar correctamente!',
+                            timer: 2000
+                        });
+                        setTimeout(function () {
+                            _this2.cancel();
+                            _this2.getSector();
+                        }, 2500);
+                    });
+                } else {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Ocurrió un error!',
+                        timer: 2000
+                    });
+                }
+            });
+        },
+        updateSector: function updateSector() {
+            var _this3 = this;
+
+            this.$validator.validateAll().then(function (res) {
+                if (res) {
+                    axios.put("/sector/" + _this3.id, {
+                        sector: _this3.sector
+                    }).then(function (data) {
+                        if (data.data == 'bien') {
+                            swal({
+                                type: 'success',
+                                title: 'Buen trabajo!',
+                                text: 'Dato actualizado correctamente!',
+                                timer: 2000
+                            });
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'No se pudo actualizar correctamente!',
+                                timer: 2000
+                            });
+                        }
+                        setTimeout(function () {
+                            _this3.cancel();
+                            _this3.getSector();
+                        }, 2500);
+                    }).catch(function (error) {
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Error externo, no se pudo actualizar correctamente!',
+                            timer: 2000
+                        });
+                        setTimeout(function () {
+                            _this3.cancel();
+                            _this3.getSector();
+                        }, 2500);
+                    });
+                } else {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Ocurrió un error!',
+                        timer: 2000
+                    });
+                }
+            });
+        },
+        deleteSector: function deleteSector(id) {
+            var _this4 = this;
+
+            swal({
+                title: 'Está seguro?',
+                text: "No podrá revertir los cambios!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, Eliminar!',
+                cancelButtonText: 'Cancelar'
+            }).then(function (result) {
+                if (result.value) {
+                    axios.delete("sector/" + id).then(function (data) {
+                        if (data.data == 'bien') {
+                            swal({
+                                type: 'success',
+                                title: 'Buen trabajo!',
+                                text: 'Dato eliminado correctamente!',
+                                timer: 2000
+                            });
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'No se pudo eliminar correctamente!',
+                                timer: 2000
+                            });
+                        }
+                        setTimeout(function () {
+                            _this4.cancel();
+                            _this4.getSector();
+                        }, 2500);
+                    }).catch(function (error) {
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Error externo, no se pudo agregar correctamente!',
+                            timer: 2000
+                        });
+                        setTimeout(function () {
+                            _this4.cancel();
+                            _this4.getSector();
+                        }, 2500);
+                    });
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 444 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Sectores")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col text-center mb-3" }, [
+                  !_vm.hasData
+                    ? _c(
+                        "span",
+                        {
+                          staticStyle: {
+                            "font-size": "20px",
+                            "font-weight": "bold",
+                            "text-transform": "uppercase"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                Agregar Sector\n                                "
+                          ),
+                          !_vm.hasClicked
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-success btn-sm",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.add }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-plus-circle",
+                                    attrs: { "aria-hidden": "true" }
+                                  })
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.hasClicked
+                            ? _c("span", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger btn-sm",
+                                    attrs: {
+                                      type: "button",
+                                      title: "Cancelar"
+                                    },
+                                    on: { click: _vm.cancel }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa fa-times-circle",
+                                      attrs: { "aria-hidden": "true" }
+                                    })
+                                  ]
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      )
+                    : _c(
+                        "span",
+                        {
+                          staticStyle: {
+                            "font-size": "20px",
+                            "font-weight": "bold",
+                            "text-transform": "uppercase"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                Editar Sector\n                                "
+                          ),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger btn-sm",
+                              attrs: { type: "button", title: "Cancelar" },
+                              on: { click: _vm.cancel }
+                            },
+                            [
+                              _c("i", {
+                                staticClass: "fa fa-times-circle",
+                                attrs: { "aria-hidden": "true" }
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.hasClicked
+                ? _c(
+                    "form",
+                    {
+                      staticClass: "py-1 mb-4",
+                      staticStyle: {
+                        "background-color": "#dee2e6",
+                        padding: "0px 10px"
+                      },
+                      attrs: { autocomplete: "off" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.addSector($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group row" }, [
+                        !_vm.hasData
+                          ? _c(
+                              "label",
+                              {
+                                staticClass: "col-md-2 mt-2",
+                                attrs: { for: "sector" }
+                              },
+                              [_vm._v("Ingrese un sector: ")]
+                            )
+                          : _c(
+                              "label",
+                              {
+                                staticClass: "col-md-2 mt-2",
+                                attrs: { for: "sector" }
+                              },
+                              [_vm._v("Edite el sector: ")]
+                            ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-8 mt-2" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.sector,
+                                expression: "sector"
+                              },
+                              {
+                                name: "validate",
+                                rawName: "v-validate",
+                                value: "required|min:5|max:15",
+                                expression: "'required|min:5|max:15'"
+                              }
+                            ],
+                            staticClass: "form-control sector",
+                            class: { error: _vm.errors.has("sector") },
+                            attrs: {
+                              type: "text",
+                              name: "sector",
+                              id: "sector",
+                              placeholder: "Ingrese un sector",
+                              required: "",
+                              maxlength: "15",
+                              minlength: "5",
+                              autofocus: ""
+                            },
+                            domProps: { value: _vm.sector },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.sector = $event.target.value
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.has("sector")
+                            ? _c("span", { staticClass: "errorSpan" }, [
+                                _vm._v(_vm._s(_vm.errors.first("sector")))
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-md-2 mt-2 text-center" },
+                          [
+                            !_vm.hasData
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-success",
+                                    attrs: {
+                                      type: "submit",
+                                      disabled: _vm.errors.any()
+                                    }
+                                  },
+                                  [_vm._v("Agregar")]
+                                )
+                              : _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-success",
+                                    attrs: {
+                                      type: "button",
+                                      disabled: _vm.errors.any()
+                                    },
+                                    on: { click: _vm.updateSector }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                    Editar\n                                "
+                                    )
+                                  ]
+                                )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("v-client-table", {
+                staticClass: "text-center",
+                attrs: {
+                  data: _vm.tableData,
+                  columns: _vm.columns,
+                  options: _vm.options
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "acciones",
+                    fn: function(props) {
+                      return _c("div", {}, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "mx-2",
+                            staticStyle: {
+                              cursor: "pointer",
+                              "font-size": "20px"
+                            },
+                            attrs: { title: "Editar" },
+                            on: {
+                              click: function($event) {
+                                _vm.editSector(
+                                  props.row.id_sector,
+                                  props.row.descripcion
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-pencil text-success",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "mx-2",
+                            staticStyle: {
+                              cursor: "pointer",
+                              "font-size": "20px"
+                            },
+                            attrs: { title: "Eliminar" },
+                            on: {
+                              click: function($event) {
+                                _vm.deleteSector(props.row.id_sector)
+                              }
+                            }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-trash text-danger",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        )
+                      ])
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-e77f8c48", module.exports)
+  }
+}
+
+/***/ }),
+/* 445 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(446)
+}
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(448)
+/* template */
+var __vue_template__ = __webpack_require__(449)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = injectStyle
+/* scopeId */
+var __vue_scopeId__ = "data-v-1bf99f1c"
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/agregar/AddCondicionPropiedad.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-1bf99f1c", Component.options)
+  } else {
+    hotAPI.reload("data-v-1bf99f1c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 446 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(447);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(6)("68d0e62d", content, false, {});
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1bf99f1c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AddCondicionPropiedad.vue", function() {
+     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1bf99f1c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AddCondicionPropiedad.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 447 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(5)(false);
+// imports
+
+
+// module
+exports.push([module.i, "\n.error[data-v-1bf99f1c] {\r\n    border-color: #dc3545;\n}\n.errorSpan[data-v-1bf99f1c] {\r\n    color: #dc3545;\n}\ninput[data-v-1bf99f1c]:focus {\r\n    -webkit-box-shadow: none;\r\n            box-shadow: none;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 448 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            columns: ["id_condicion", "descripcion", "acciones"],
+            tableData: [{ id_condicion: null, descripcion: null }],
+            options: {
+                headings: {
+                    id_condicion: "ID",
+                    descripcion: "Descripcion",
+                    acciones: "Acciones"
+                },
+                sortable: ["id_condicion", "descripcion"],
+                filterable: ["id_condicion", "descripcion"]
+            },
+            hasClicked: false,
+            hasData: false,
+            condicion_propiedad: null,
+            id: null
+        };
+    },
+    created: function created() {
+        this.getCondicionPropiedad();
+    },
+
+    methods: {
+        add: function add() {
+            this.hasClicked = true;
+            $('input#condicion_propiedad').focus();
+        },
+        cancel: function cancel() {
+            this.hasData = false;
+            this.hasClicked = false;
+            this.condicion_propiedad = null;
+            this.id = null;
+            $('#condicion_propiedad').focus();
+        },
+        editSector: function editSector(id, nombre) {
+            this.hasClicked = true;
+            this.hasData = true;
+            this.condicion_propiedad = nombre;
+            this.id = id;
+            $('#condicion_propiedad').focus();
+        },
+        getCondicionPropiedad: function getCondicionPropiedad() {
+            var _this = this;
+
+            this.$Progress.start();
+            axios.get('condicion-propiedad').then(function (data) {
+                _this.tableData = data.data.condicion;
+                _this.$Progress.finish();
+            }).catch(function (error) {
+                _this.$Progress.fail();
+                console.log(error);
+            });
+        },
+        addCondicionPropiedad: function addCondicionPropiedad() {
+            var _this2 = this;
+
+            this.$validator.validateAll().then(function (res) {
+                if (res) {
+                    axios.post('condicion-propiedad', {
+                        condicion: _this2.condicion_propiedad
+                    }).then(function (data) {
+                        if (data.data == 'bien') {
+                            swal({
+                                type: 'success',
+                                title: 'Buen trabajo!',
+                                text: 'Dato agregado correctamente!',
+                                timer: 2000
+                            });
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'No se pudo agregar correctamente!',
+                                timer: 2000
+                            });
+                        }
+                        setTimeout(function () {
+                            _this2.cancel();
+                            _this2.getCondicionPropiedad();
+                        }, 2500);
+                    }).catch(function (error) {
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Error externo, no se pudo agregar correctamente!',
+                            timer: 2000
+                        });
+                        setTimeout(function () {
+                            _this2.cancel();
+                            _this2.getCondicionPropiedad();
+                        }, 2500);
+                    });
+                } else {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Ocurrió un error!',
+                        timer: 2000
+                    });
+                }
+            });
+        },
+        updateCondicionPropiedad: function updateCondicionPropiedad() {
+            var _this3 = this;
+
+            this.$validator.validateAll().then(function (res) {
+                if (res) {
+                    axios.put("/condicion-propiedad/" + _this3.id, {
+                        condicion: _this3.condicion_propiedad
+                    }).then(function (data) {
+                        if (data.data == 'bien') {
+                            swal({
+                                type: 'success',
+                                title: 'Buen trabajo!',
+                                text: 'Dato actualizado correctamente!',
+                                timer: 2000
+                            });
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'No se pudo actualizar correctamente!',
+                                timer: 2000
+                            });
+                        }
+                        setTimeout(function () {
+                            _this3.cancel();
+                            _this3.getCondicionPropiedad();
+                        }, 2500);
+                    }).catch(function (error) {
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Error externo, no se pudo actualizar correctamente!',
+                            timer: 2000
+                        });
+                        setTimeout(function () {
+                            _this3.cancel();
+                            _this3.getCondicionPropiedad();
+                        }, 2500);
+                    });
+                } else {
+                    swal({
+                        type: 'error',
+                        title: 'Oops...',
+                        text: 'Ocurrió un error!',
+                        timer: 2000
+                    });
+                }
+            });
+        },
+        deleteSector: function deleteSector(id) {
+            var _this4 = this;
+
+            swal({
+                title: 'Está seguro?',
+                text: "No podrá revertir los cambios!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sí, Eliminar!',
+                cancelButtonText: 'Cancelar'
+            }).then(function (result) {
+                if (result.value) {
+                    axios.delete("condicion-propiedad/" + id).then(function (data) {
+                        if (data.data == 'bien') {
+                            swal({
+                                type: 'success',
+                                title: 'Buen trabajo!',
+                                text: 'Dato eliminado correctamente!',
+                                timer: 2000
+                            });
+                        } else {
+                            swal({
+                                type: 'error',
+                                title: 'Oops...',
+                                text: 'No se pudo eliminar correctamente!',
+                                timer: 2000
+                            });
+                        }
+                        setTimeout(function () {
+                            _this4.cancel();
+                            _this4.getCondicionPropiedad();
+                        }, 2500);
+                    }).catch(function (error) {
+                        swal({
+                            type: 'error',
+                            title: 'Oops...',
+                            text: 'Error externo, no se pudo agregar correctamente!',
+                            timer: 2000
+                        });
+                        setTimeout(function () {
+                            _this4.cancel();
+                            _this4.getCondicionPropiedad();
+                        }, 2500);
+                    });
+                }
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 449 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c("div", { staticClass: "row justify-content-center" }, [
+      _c("div", { staticClass: "col-md-12" }, [
+        _c("div", { staticClass: "card card-default" }, [
+          _c("div", { staticClass: "card-header" }, [_vm._v("Sectores")]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "card-body" },
+            [
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col text-center mb-3" }, [
+                  !_vm.hasData
+                    ? _c(
+                        "span",
+                        {
+                          staticStyle: {
+                            "font-size": "20px",
+                            "font-weight": "bold",
+                            "text-transform": "uppercase"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                Agregar Condicion de Propiedad\n                                "
+                          ),
+                          !_vm.hasClicked
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-success btn-sm",
+                                  attrs: { type: "button" },
+                                  on: { click: _vm.add }
+                                },
+                                [
+                                  _c("i", {
+                                    staticClass: "fa fa-plus-circle",
+                                    attrs: { "aria-hidden": "true" }
+                                  })
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.hasClicked
+                            ? _c("span", [
+                                _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-danger btn-sm",
+                                    attrs: {
+                                      type: "button",
+                                      title: "Cancelar"
+                                    },
+                                    on: { click: _vm.cancel }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fa fa-times-circle",
+                                      attrs: { "aria-hidden": "true" }
+                                    })
+                                  ]
+                                )
+                              ])
+                            : _vm._e()
+                        ]
+                      )
+                    : _c(
+                        "span",
+                        {
+                          staticStyle: {
+                            "font-size": "20px",
+                            "font-weight": "bold",
+                            "text-transform": "uppercase"
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                                Editar Condicion de Propiedad\n                                "
+                          ),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger btn-sm",
+                              attrs: { type: "button", title: "Cancelar" },
+                              on: { click: _vm.cancel }
+                            },
+                            [
+                              _c("i", {
+                                staticClass: "fa fa-times-circle",
+                                attrs: { "aria-hidden": "true" }
+                              })
+                            ]
+                          )
+                        ]
+                      )
+                ])
+              ]),
+              _vm._v(" "),
+              _vm.hasClicked
+                ? _c(
+                    "form",
+                    {
+                      staticClass: "py-1 mb-4",
+                      staticStyle: {
+                        "background-color": "#dee2e6",
+                        padding: "0px 10px"
+                      },
+                      attrs: { autocomplete: "off" },
+                      on: {
+                        submit: function($event) {
+                          $event.preventDefault()
+                          return _vm.addCondicionPropiedad($event)
+                        }
+                      }
+                    },
+                    [
+                      _c("div", { staticClass: "form-group row" }, [
+                        !_vm.hasData
+                          ? _c(
+                              "label",
+                              {
+                                staticClass: "col-md-2 mt-2",
+                                attrs: { for: "condicion_propiedad" }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                Ingrese una condicion de propiedad: \n                            "
+                                )
+                              ]
+                            )
+                          : _c(
+                              "label",
+                              {
+                                staticClass: "col-md-2 mt-2",
+                                attrs: { for: "condicion_propiedad" }
+                              },
+                              [_vm._v("Edite la condicion de propiedad: ")]
+                            ),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-8 mt-2" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.condicion_propiedad,
+                                expression: "condicion_propiedad"
+                              },
+                              {
+                                name: "validate",
+                                rawName: "v-validate",
+                                value: "required|alpha_spaces|min:5|max:15",
+                                expression:
+                                  "'required|alpha_spaces|min:5|max:15'"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            class: {
+                              error: _vm.errors.has("condicion_propiedad")
+                            },
+                            attrs: {
+                              type: "text",
+                              name: "condicion_propiedad",
+                              id: "condicion_propiedad",
+                              placeholder: "Ingrese una condicion de propiedad",
+                              required: "",
+                              maxlength: "15",
+                              minlength: "5",
+                              autofocus: ""
+                            },
+                            domProps: { value: _vm.condicion_propiedad },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.condicion_propiedad = $event.target.value
+                              }
+                            }
+                          }),
+                          _vm._v(" "),
+                          _vm.errors.has("condicion_propiedad")
+                            ? _c("span", { staticClass: "errorSpan" }, [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(
+                                      _vm.errors.first("condicion_propiedad")
+                                    ) +
+                                    "\n                                "
+                                )
+                              ])
+                            : _vm._e()
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "col-md-2 mt-2 text-center" },
+                          [
+                            !_vm.hasData
+                              ? _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-success",
+                                    attrs: {
+                                      type: "submit",
+                                      disabled: _vm.errors.any()
+                                    }
+                                  },
+                                  [_vm._v("Agregar")]
+                                )
+                              : _c(
+                                  "button",
+                                  {
+                                    staticClass: "btn btn-success",
+                                    attrs: {
+                                      type: "button",
+                                      disabled: _vm.errors.any()
+                                    },
+                                    on: { click: _vm.updateCondicionPropiedad }
+                                  },
+                                  [
+                                    _vm._v(
+                                      "\n                                    Editar\n                                "
+                                    )
+                                  ]
+                                )
+                          ]
+                        )
+                      ])
+                    ]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c("v-client-table", {
+                staticClass: "text-center",
+                attrs: {
+                  data: _vm.tableData,
+                  columns: _vm.columns,
+                  options: _vm.options
+                },
+                scopedSlots: _vm._u([
+                  {
+                    key: "acciones",
+                    fn: function(props) {
+                      return _c("div", {}, [
+                        _c(
+                          "a",
+                          {
+                            staticClass: "mx-2",
+                            staticStyle: {
+                              cursor: "pointer",
+                              "font-size": "20px"
+                            },
+                            attrs: { title: "Editar" },
+                            on: {
+                              click: function($event) {
+                                _vm.editSector(
+                                  props.row.id_condicion,
+                                  props.row.descripcion
+                                )
+                              }
+                            }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-pencil text-success",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "mx-2",
+                            staticStyle: {
+                              cursor: "pointer",
+                              "font-size": "20px"
+                            },
+                            attrs: { title: "Eliminar" },
+                            on: {
+                              click: function($event) {
+                                _vm.deleteSector(props.row.id_condicion)
+                              }
+                            }
+                          },
+                          [
+                            _c("i", {
+                              staticClass: "fa fa-trash text-danger",
+                              attrs: { "aria-hidden": "true" }
+                            })
+                          ]
+                        )
+                      ])
+                    }
+                  }
+                ])
+              })
+            ],
+            1
+          )
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-1bf99f1c", module.exports)
+  }
+}
+
+/***/ }),
+/* 450 */
+/***/ (function(module, exports, __webpack_require__) {
+
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(442)
+var __vue_script__ = __webpack_require__(451)
 /* template */
-var __vue_template__ = __webpack_require__(443)
+var __vue_template__ = __webpack_require__(452)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "resources/js/components/admin/clasificacion.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-36ed1d59", Component.options)
+  } else {
+    hotAPI.reload("data-v-36ed1d59", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 451 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+    data: function data() {
+        return {
+            clasificacion: [{
+                id_clasificacion: null,
+                descripcion: null
+            }],
+            clasificacionForm: {
+                id_clasificacion: null,
+                descripcion: null
+            },
+            clasificacionEdit: {
+                id_clasificacion: null,
+                descripcion: null
+            },
+            columns: ['id_clasificacion', 'descripcion', 'Acciones'],
+            options: {
+                headings: {
+                    id_clasificacion: 'ID',
+                    descripcion: 'Descripcion',
+                    Acciones: 'Acciones'
+                },
+                sortable: ['id_clasificacion', 'descripcion'],
+                filterable: ['id_clasificacion', 'descripcion']
+            },
+            tabla: true,
+            agregar: false,
+            editar: false
+        };
+    },
+    created: function created() {
+        this.getData();
+    },
+
+    methods: {
+        getData: function getData() {
+            var _this = this;
+
+            axios.get('getClasificacion').then(function (data) {
+                _this.clasificacion = data.data.datos;
+                console.log(data);
+                _this.clasificacion.forEach(function (element, i) {
+                    _this.clasificacion[i].id_clasificacion = _this.clasificacion[i].id_clasificacion;
+                });
+                //    console.log(data);
+            }).catch(function (error) {
+                return console.log('Ocurrio un error ' + error);
+            });
+        },
+        agregarClasificacion: function agregarClasificacion() {
+            axios.post('agregarOrUpdateClasificacion', {
+                clasificacionForm: this.clasificacionForm
+            }).then(function (data) {
+                if (data.data == 'OK') {
+                    swal({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'Datos ingresados correctamente',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    swal({
+                        position: 'top-end',
+                        type: 'error',
+                        title: 'No se pudo agregar',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                }
+            }).catch(function (error) {
+                swal({
+                    position: 'top-end',
+                    type: 'error',
+                    title: 'Sucedió un error, comuníquese con el Administrador',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                console.log('Error: ' + error);
+            });
+        },
+        eliminarClasificacion: function eliminarClasificacion(id) {
+            var _this2 = this;
+
+            swal({
+                title: 'Deseas eliminar este sector?',
+                text: "No será posible revertir esta acción!",
+                type: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, elíminalo!',
+                cancelButtonText: 'No, cancelar!'
+            }).then(function (result) {
+                if (result.value) {
+                    axios.get('/eliminarClasificacion/' + id).then(function (data) {
+                        if (data.data == "OK") {
+                            swal('Eliminado!', 'El sector ha sido eliminado.', 'success');
+                            setTimeout(function () {
+                                // location.reload();
+
+                                _this2.getData();
+                            }, 1500);
+                        }
+                    }).catch(function (error) {
+                        console.log('Ocurrio un error ' + error);
+                        _this2.$Progress.fail();
+                    });
+                }
+            });
+        },
+        viewEditarClasificacion: function viewEditarClasificacion(id, des) {
+            this.editar = true;
+            this.tabla = false;
+            this.clasificacionEdit.descripcion = des;
+            this.clasificacionEdit.id_clasificacion = id;
+        },
+        editarClasificacion: function editarClasificacion() {
+            axios.post('agregarOrUpdateClasificacion', {
+                clasificacionForm: this.clasificacionEdit
+            }).then(function (data) {
+                if (data.data == 'OK') {
+                    swal({
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'Datos actualizados correctamente',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    setTimeout(function () {
+                        location.reload();
+                    }, 1500);
+                } else {
+                    swal({
+                        position: 'top-end',
+                        type: 'error',
+                        title: 'No se pudo actualizar',
+                        showConfirmButton: false,
+                        timer: 2000
+                    });
+                    console.log(data);
+                }
+            }).catch(function (error) {
+                swal({
+                    position: 'top-end',
+                    type: 'error',
+                    title: 'Sucedió un error, comuníquese con el Administrador',
+                    showConfirmButton: false,
+                    timer: 2000
+                });
+                console.log('Error: ' + error);
+            });
+        }
+    }
+});
+
+/***/ }),
+/* 452 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.tabla,
+            expression: "tabla"
+          }
+        ],
+        staticClass: "row"
+      },
+      [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "header pt-4" }, [
+              _c("div", { staticClass: "container-fluid" }, [
+                _c("div", { staticClass: "row" }, [
+                  _vm._m(0),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "col align-self-end " }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-primary ml-3",
+                        on: {
+                          click: function($event) {
+                            _vm.tabla = false
+                            _vm.agregar = true
+                          }
+                        }
+                      },
+                      [_vm._v("Agregar")]
+                    )
+                  ])
+                ])
+              ])
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "well" }, [
+              _c("div", { staticClass: "container" }, [
+                _c("div", { staticClass: "row" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "content table-responsive table-full-width"
+                    },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "col col-lg-12 col-md-12" },
+                        [
+                          _c("v-client-table", {
+                            attrs: {
+                              data: _vm.clasificacion,
+                              columns: _vm.columns,
+                              options: _vm.options
+                            },
+                            scopedSlots: _vm._u([
+                              {
+                                key: "Acciones",
+                                fn: function(props) {
+                                  return _c("div", {}, [
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-info",
+                                        attrs: {
+                                          "data-toggle": "tooltip",
+                                          "data-placement": "left",
+                                          title: "Editar Sector"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.viewEditarClasificacion(
+                                              props.row.id_clasificacion,
+                                              props.row.descripcion
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fa fa-pencil-square-o",
+                                          attrs: { "aria-hidden": "true" }
+                                        })
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "button",
+                                      {
+                                        staticClass: "btn btn-danger",
+                                        attrs: {
+                                          "data-toggle": "tooltip",
+                                          "data-placement": "left",
+                                          title: "Eliminar"
+                                        },
+                                        on: {
+                                          click: function($event) {
+                                            _vm.eliminarClasificacion(
+                                              props.row.id_clasificacion
+                                            )
+                                          }
+                                        }
+                                      },
+                                      [
+                                        _c("i", {
+                                          staticClass: "fa fa-trash",
+                                          attrs: { "aria-hidden": "true" }
+                                        })
+                                      ]
+                                    )
+                                  ])
+                                }
+                              }
+                            ])
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  )
+                ])
+              ])
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.agregar,
+            expression: "agregar"
+          }
+        ],
+        staticClass: "row"
+      },
+      [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "content" }, [
+              _c(
+                "div",
+                { staticClass: "header mt-3" },
+                [
+                  _c("center", [
+                    _c("h3", { staticClass: "title" }, [
+                      _vm._v("Agregar Nuevo Rubro")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("hr")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "ml-2 mr-2 mb-2",
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.agregarClasificacion($event)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "row ml-2" }, [
+                    _c("div", { staticClass: "col-md-5" }, [
+                      _c("div", { staticClass: "form-group" }, [
+                        _c("label", { attrs: { for: "ndescripcion" } }, [
+                          _vm._v("Descripcion")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.clasificacionForm.descripcion,
+                              expression: "clasificacionForm.descripcion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "descripcion",
+                            name: "descripcion",
+                            required: ""
+                          },
+                          domProps: {
+                            value: _vm.clasificacionForm.descripcion
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.clasificacionForm,
+                                "descripcion",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "btn btn-info btn-fill pull-right",
+                    attrs: { type: "submit", disabled: _vm.errors.any() }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-fill pull-left",
+                      attrs: { type: "button" },
+                      on: {
+                        click: [
+                          function($event) {
+                            _vm.submitted = false
+                          },
+                          function($event) {
+                            _vm.agregar = false
+                            _vm.tabla = true
+                          }
+                        ]
+                      }
+                    },
+                    [_vm._v("Cancelar")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "clearfix" })
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        directives: [
+          {
+            name: "show",
+            rawName: "v-show",
+            value: _vm.editar,
+            expression: "editar"
+          }
+        ],
+        staticClass: "row"
+      },
+      [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "content" }, [
+              _c(
+                "div",
+                { staticClass: "header mt-3" },
+                [
+                  _c("center", [
+                    _c("h3", { staticClass: "title" }, [
+                      _vm._v("Editar Sector")
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("hr")
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "form",
+                {
+                  staticClass: "ml-2 mr-2 mb-3",
+                  on: {
+                    submit: function($event) {
+                      $event.preventDefault()
+                      return _vm.editarClasificacion($event)
+                    }
+                  }
+                },
+                [
+                  _c("div", { staticClass: "row" }, [
+                    _c("div", { staticClass: "col-md-10" }, [
+                      _c("div", { staticClass: "form-group ml-2" }, [
+                        _c("label", { attrs: { for: "ndescripcion" } }, [
+                          _vm._v("Descripcion")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.clasificacionEdit.descripcion,
+                              expression: "clasificacionEdit.descripcion"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "descripcion",
+                            name: "descripcion",
+                            required: ""
+                          },
+                          domProps: {
+                            value: _vm.clasificacionEdit.descripcion
+                          },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.clasificacionEdit,
+                                "descripcion",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        })
+                      ])
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("input", {
+                    staticClass: "btn btn-info btn-fill pull-right",
+                    attrs: { type: "submit", disabled: _vm.errors.any() }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-primary btn-fill pull-left",
+                      attrs: { type: "button" },
+                      on: {
+                        click: [
+                          function($event) {
+                            _vm.submitted = false
+                          },
+                          function($event) {
+                            _vm.editar = false
+                            _vm.tabla = true
+                          }
+                        ]
+                      }
+                    },
+                    [_vm._v("Cancelar")]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "clearfix" })
+                ]
+              )
+            ])
+          ])
+        ])
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col align-self-center offset-lg-4" }, [
+      _c("h3", [_vm._v("Clasificación Predio")])
+    ])
+  }
+]
+render._withStripped = true
+module.exports = { render: render, staticRenderFns: staticRenderFns }
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+    require("vue-hot-reload-api")      .rerender("data-v-36ed1d59", module.exports)
+  }
+}
+
+/***/ }),
+/* 453 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(1)
+/* script */
+var __vue_script__ = __webpack_require__(454)
+/* template */
+var __vue_template__ = __webpack_require__(455)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -98946,7 +100988,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 442 */
+/* 454 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -99092,7 +101134,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 443 */
+/* 455 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -99448,15 +101490,15 @@ if (false) {
 }
 
 /***/ }),
-/* 444 */
+/* 456 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(445)
+var __vue_script__ = __webpack_require__(457)
 /* template */
-var __vue_template__ = __webpack_require__(446)
+var __vue_template__ = __webpack_require__(458)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -99495,7 +101537,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 445 */
+/* 457 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -99575,7 +101617,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 446 */
+/* 458 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -99670,7 +101712,7 @@ if (false) {
 }
 
 /***/ }),
-/* 447 */
+/* 459 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -99791,7 +101833,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 448 */
+/* 460 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -99874,15 +101916,15 @@ if (false) {
 }
 
 /***/ }),
-/* 449 */
+/* 461 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(450)
+var __vue_script__ = __webpack_require__(462)
 /* template */
-var __vue_template__ = __webpack_require__(451)
+var __vue_template__ = __webpack_require__(463)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -99921,7 +101963,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 450 */
+/* 462 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100177,7 +102219,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 451 */
+/* 463 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -100268,15 +102310,15 @@ if (false) {
 }
 
 /***/ }),
-/* 452 */
+/* 464 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(453)
+var __vue_script__ = __webpack_require__(465)
 /* template */
-var __vue_template__ = __webpack_require__(454)
+var __vue_template__ = __webpack_require__(466)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -100315,7 +102357,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 453 */
+/* 465 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100472,7 +102514,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 454 */
+/* 466 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -100585,19 +102627,19 @@ if (false) {
 }
 
 /***/ }),
-/* 455 */
+/* 467 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(456)
+  __webpack_require__(468)
 }
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(458)
+var __vue_script__ = __webpack_require__(470)
 /* template */
-var __vue_template__ = __webpack_require__(459)
+var __vue_template__ = __webpack_require__(471)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -100636,13 +102678,13 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 456 */
+/* 468 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(457);
+var content = __webpack_require__(469);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -100662,7 +102704,7 @@ if(false) {
 }
 
 /***/ }),
-/* 457 */
+/* 469 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(5)(false);
@@ -100676,7 +102718,7 @@ exports.push([module.i, "\n.v-spinner .v-moon1\n{\n\n    -webkit-animation: v-mo
 
 
 /***/ }),
-/* 458 */
+/* 470 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100754,7 +102796,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 459 */
+/* 471 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -100799,15 +102841,15 @@ if (false) {
 }
 
 /***/ }),
-/* 460 */
+/* 472 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(1)
 /* script */
-var __vue_script__ = __webpack_require__(461)
+var __vue_script__ = __webpack_require__(473)
 /* template */
-var __vue_template__ = __webpack_require__(462)
+var __vue_template__ = __webpack_require__(474)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -100846,7 +102888,7 @@ module.exports = Component.exports
 
 
 /***/ }),
-/* 461 */
+/* 473 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -100973,7 +103015,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 462 */
+/* 474 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -101235,1351 +103277,10 @@ if (false) {
 }
 
 /***/ }),
-/* 463 */
+/* 475 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 464 */,
-/* 465 */,
-/* 466 */,
-/* 467 */,
-/* 468 */,
-/* 469 */,
-/* 470 */,
-/* 471 */,
-/* 472 */,
-/* 473 */,
-/* 474 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            columns: ["id_sector", "descripcion", "acciones"],
-            tableData: [{ id_sector: null, descripcion: null }],
-            options: {
-                headings: {
-                    id_sector: "ID",
-                    descripcion: "Descripcion",
-                    acciones: "Acciones"
-                },
-                sortable: ["id_sector", "descripcion"],
-                filterable: ["id_sector", "descripcion"]
-            },
-            hasClicked: false,
-            hasData: false,
-            sector: null,
-            id: null
-        };
-    },
-    created: function created() {
-        this.getSector();
-    },
-
-    methods: {
-        add: function add() {
-            this.hasClicked = true;
-            $('input#sector').focus();
-        },
-        cancel: function cancel() {
-            this.hasData = false;
-            this.hasClicked = false;
-            this.sector = null;
-            this.id = null;
-            $('#sector').focus();
-        },
-        editSector: function editSector(id, nombre) {
-            this.hasClicked = true;
-            this.hasData = true;
-            this.sector = nombre;
-            this.id = id;
-            $('#sector').focus();
-        },
-        getSector: function getSector() {
-            var _this = this;
-
-            this.$Progress.start();
-            axios.get('sector').then(function (data) {
-                _this.tableData = data.data.sector;
-                _this.$Progress.finish();
-            }).catch(function (error) {
-                _this.$Progress.fail();
-                console.log(error);
-            });
-        },
-        addSector: function addSector() {
-            var _this2 = this;
-
-            this.$validator.validateAll().then(function (res) {
-                if (res) {
-                    axios.post('sector', {
-                        sector: _this2.sector
-                    }).then(function (data) {
-                        if (data.data == 'bien') {
-                            swal({
-                                type: 'success',
-                                title: 'Buen trabajo!',
-                                text: 'Dato agregado correctamente!',
-                                timer: 2000
-                            });
-                        } else {
-                            swal({
-                                type: 'error',
-                                title: 'Oops...',
-                                text: 'No se pudo agregar correctamente!',
-                                timer: 2000
-                            });
-                        }
-                        setTimeout(function () {
-                            _this2.cancel();
-                            _this2.getSector();
-                        }, 2500);
-                    }).catch(function (error) {
-                        swal({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'Error externo, no se pudo agregar correctamente!',
-                            timer: 2000
-                        });
-                        setTimeout(function () {
-                            _this2.cancel();
-                            _this2.getSector();
-                        }, 2500);
-                    });
-                } else {
-                    swal({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: 'Ocurrió un error!',
-                        timer: 2000
-                    });
-                }
-            });
-        },
-        updateSector: function updateSector() {
-            var _this3 = this;
-
-            this.$validator.validateAll().then(function (res) {
-                if (res) {
-                    axios.put("/sector/" + _this3.id, {
-                        sector: _this3.sector
-                    }).then(function (data) {
-                        if (data.data == 'bien') {
-                            swal({
-                                type: 'success',
-                                title: 'Buen trabajo!',
-                                text: 'Dato actualizado correctamente!',
-                                timer: 2000
-                            });
-                        } else {
-                            swal({
-                                type: 'error',
-                                title: 'Oops...',
-                                text: 'No se pudo actualizar correctamente!',
-                                timer: 2000
-                            });
-                        }
-                        setTimeout(function () {
-                            _this3.cancel();
-                            _this3.getSector();
-                        }, 2500);
-                    }).catch(function (error) {
-                        swal({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'Error externo, no se pudo actualizar correctamente!',
-                            timer: 2000
-                        });
-                        setTimeout(function () {
-                            _this3.cancel();
-                            _this3.getSector();
-                        }, 2500);
-                    });
-                } else {
-                    swal({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: 'Ocurrió un error!',
-                        timer: 2000
-                    });
-                }
-            });
-        },
-        deleteSector: function deleteSector(id) {
-            var _this4 = this;
-
-            swal({
-                title: 'Está seguro?',
-                text: "No podrá revertir los cambios!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sí, Eliminar!',
-                cancelButtonText: 'Cancelar'
-            }).then(function (result) {
-                if (result.value) {
-                    axios.delete("sector/" + id).then(function (data) {
-                        if (data.data == 'bien') {
-                            swal({
-                                type: 'success',
-                                title: 'Buen trabajo!',
-                                text: 'Dato eliminado correctamente!',
-                                timer: 2000
-                            });
-                        } else {
-                            swal({
-                                type: 'error',
-                                title: 'Oops...',
-                                text: 'No se pudo eliminar correctamente!',
-                                timer: 2000
-                            });
-                        }
-                        setTimeout(function () {
-                            _this4.cancel();
-                            _this4.getSector();
-                        }, 2500);
-                    }).catch(function (error) {
-                        swal({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'Error externo, no se pudo agregar correctamente!',
-                            timer: 2000
-                        });
-                        setTimeout(function () {
-                            _this4.cancel();
-                            _this4.getSector();
-                        }, 2500);
-                    });
-                }
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 475 */,
-/* 476 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(477);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(6)("b88a4b98", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e77f8c48\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AddSector.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-e77f8c48\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AddSector.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 477 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(5)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.error[data-v-e77f8c48] {\r\n    border-color: #dc3545;\n}\n.errorSpan[data-v-e77f8c48] {\r\n    color: #dc3545;\n}\ninput[data-v-e77f8c48]:focus {\r\n    -webkit-box-shadow: none;\r\n            box-shadow: none;\n}\r\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 478 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Sectores")]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col text-center mb-3" }, [
-                  !_vm.hasData
-                    ? _c(
-                        "span",
-                        {
-                          staticStyle: {
-                            "font-size": "20px",
-                            "font-weight": "bold",
-                            "text-transform": "uppercase"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Agregar Sector\n                                "
-                          ),
-                          !_vm.hasClicked
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-success btn-sm",
-                                  attrs: { type: "button" },
-                                  on: { click: _vm.add }
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa fa-plus-circle",
-                                    attrs: { "aria-hidden": "true" }
-                                  })
-                                ]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.hasClicked
-                            ? _c("span", [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-danger btn-sm",
-                                    attrs: {
-                                      type: "button",
-                                      title: "Cancelar"
-                                    },
-                                    on: { click: _vm.cancel }
-                                  },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fa fa-times-circle",
-                                      attrs: { "aria-hidden": "true" }
-                                    })
-                                  ]
-                                )
-                              ])
-                            : _vm._e()
-                        ]
-                      )
-                    : _c(
-                        "span",
-                        {
-                          staticStyle: {
-                            "font-size": "20px",
-                            "font-weight": "bold",
-                            "text-transform": "uppercase"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Editar Sector\n                                "
-                          ),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger btn-sm",
-                              attrs: { type: "button", title: "Cancelar" },
-                              on: { click: _vm.cancel }
-                            },
-                            [
-                              _c("i", {
-                                staticClass: "fa fa-times-circle",
-                                attrs: { "aria-hidden": "true" }
-                              })
-                            ]
-                          )
-                        ]
-                      )
-                ])
-              ]),
-              _vm._v(" "),
-              _vm.hasClicked
-                ? _c(
-                    "form",
-                    {
-                      staticClass: "py-1 mb-4",
-                      staticStyle: {
-                        "background-color": "#dee2e6",
-                        padding: "0px 10px"
-                      },
-                      attrs: { autocomplete: "off" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.addSector($event)
-                        }
-                      }
-                    },
-                    [
-                      _c("div", { staticClass: "form-group row" }, [
-                        !_vm.hasData
-                          ? _c(
-                              "label",
-                              {
-                                staticClass: "col-md-2 mt-2",
-                                attrs: { for: "sector" }
-                              },
-                              [_vm._v("Ingrese un sector: ")]
-                            )
-                          : _c(
-                              "label",
-                              {
-                                staticClass: "col-md-2 mt-2",
-                                attrs: { for: "sector" }
-                              },
-                              [_vm._v("Edite el sector: ")]
-                            ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-8 mt-2" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.sector,
-                                expression: "sector"
-                              },
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: "required|min:5|max:15",
-                                expression: "'required|min:5|max:15'"
-                              }
-                            ],
-                            staticClass: "form-control sector",
-                            class: { error: _vm.errors.has("sector") },
-                            attrs: {
-                              type: "text",
-                              name: "sector",
-                              id: "sector",
-                              placeholder: "Ingrese un sector",
-                              required: "",
-                              maxlength: "15",
-                              minlength: "5",
-                              autofocus: ""
-                            },
-                            domProps: { value: _vm.sector },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.sector = $event.target.value
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.has("sector")
-                            ? _c("span", { staticClass: "errorSpan" }, [
-                                _vm._v(_vm._s(_vm.errors.first("sector")))
-                              ])
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-md-2 mt-2 text-center" },
-                          [
-                            !_vm.hasData
-                              ? _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-success",
-                                    attrs: {
-                                      type: "submit",
-                                      disabled: _vm.errors.any()
-                                    }
-                                  },
-                                  [_vm._v("Agregar")]
-                                )
-                              : _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-success",
-                                    attrs: {
-                                      type: "button",
-                                      disabled: _vm.errors.any()
-                                    },
-                                    on: { click: _vm.updateSector }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                    Editar\n                                "
-                                    )
-                                  ]
-                                )
-                          ]
-                        )
-                      ])
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c("v-client-table", {
-                staticClass: "text-center",
-                attrs: {
-                  data: _vm.tableData,
-                  columns: _vm.columns,
-                  options: _vm.options
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "acciones",
-                    fn: function(props) {
-                      return _c("div", {}, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "mx-2",
-                            staticStyle: {
-                              cursor: "pointer",
-                              "font-size": "20px"
-                            },
-                            attrs: { title: "Editar" },
-                            on: {
-                              click: function($event) {
-                                _vm.editSector(
-                                  props.row.id_sector,
-                                  props.row.descripcion
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-pencil text-success",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "mx-2",
-                            staticStyle: {
-                              cursor: "pointer",
-                              "font-size": "20px"
-                            },
-                            attrs: { title: "Eliminar" },
-                            on: {
-                              click: function($event) {
-                                _vm.deleteSector(props.row.id_sector)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-trash text-danger",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        )
-                      ])
-                    }
-                  }
-                ])
-              })
-            ],
-            1
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-e77f8c48", module.exports)
-  }
-}
-
-/***/ }),
-/* 479 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(481)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(483)
-/* template */
-var __vue_template__ = __webpack_require__(484)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-1bf99f1c"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "resources/js/components/admin/agregar/AddCondicionPropiedad.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1bf99f1c", Component.options)
-  } else {
-    hotAPI.reload("data-v-1bf99f1c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 480 */,
-/* 481 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(482);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(6)("68d0e62d", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1bf99f1c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AddCondicionPropiedad.vue", function() {
-     var newContent = require("!!../../../../../node_modules/css-loader/index.js!../../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-1bf99f1c\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./AddCondicionPropiedad.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 482 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(5)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.error[data-v-1bf99f1c] {\r\n    border-color: #dc3545;\n}\n.errorSpan[data-v-1bf99f1c] {\r\n    color: #dc3545;\n}\ninput[data-v-1bf99f1c]:focus {\r\n    -webkit-box-shadow: none;\r\n            box-shadow: none;\n}\r\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 483 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-    data: function data() {
-        return {
-            columns: ["id_condicion", "descripcion", "acciones"],
-            tableData: [{ id_condicion: null, descripcion: null }],
-            options: {
-                headings: {
-                    id_condicion: "ID",
-                    descripcion: "Descripcion",
-                    acciones: "Acciones"
-                },
-                sortable: ["id_condicion", "descripcion"],
-                filterable: ["id_condicion", "descripcion"]
-            },
-            hasClicked: false,
-            hasData: false,
-            condicion_propiedad: null,
-            id: null
-        };
-    },
-    created: function created() {
-        this.getCondicionPropiedad();
-    },
-
-    methods: {
-        add: function add() {
-            this.hasClicked = true;
-            $('input#condicion_propiedad').focus();
-        },
-        cancel: function cancel() {
-            this.hasData = false;
-            this.hasClicked = false;
-            this.condicion_propiedad = null;
-            this.id = null;
-            $('#condicion_propiedad').focus();
-        },
-        editSector: function editSector(id, nombre) {
-            this.hasClicked = true;
-            this.hasData = true;
-            this.condicion_propiedad = nombre;
-            this.id = id;
-            $('#condicion_propiedad').focus();
-        },
-        getCondicionPropiedad: function getCondicionPropiedad() {
-            var _this = this;
-
-            this.$Progress.start();
-            axios.get('condicion-propiedad').then(function (data) {
-                _this.tableData = data.data.condicion;
-                _this.$Progress.finish();
-            }).catch(function (error) {
-                _this.$Progress.fail();
-                console.log(error);
-            });
-        },
-        addCondicionPropiedad: function addCondicionPropiedad() {
-            var _this2 = this;
-
-            this.$validator.validateAll().then(function (res) {
-                if (res) {
-                    axios.post('condicion-propiedad', {
-                        condicion: _this2.condicion_propiedad
-                    }).then(function (data) {
-                        if (data.data == 'bien') {
-                            swal({
-                                type: 'success',
-                                title: 'Buen trabajo!',
-                                text: 'Dato agregado correctamente!',
-                                timer: 2000
-                            });
-                        } else {
-                            swal({
-                                type: 'error',
-                                title: 'Oops...',
-                                text: 'No se pudo agregar correctamente!',
-                                timer: 2000
-                            });
-                        }
-                        setTimeout(function () {
-                            _this2.cancel();
-                            _this2.getCondicionPropiedad();
-                        }, 2500);
-                    }).catch(function (error) {
-                        swal({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'Error externo, no se pudo agregar correctamente!',
-                            timer: 2000
-                        });
-                        setTimeout(function () {
-                            _this2.cancel();
-                            _this2.getCondicionPropiedad();
-                        }, 2500);
-                    });
-                } else {
-                    swal({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: 'Ocurrió un error!',
-                        timer: 2000
-                    });
-                }
-            });
-        },
-        updateCondicionPropiedad: function updateCondicionPropiedad() {
-            var _this3 = this;
-
-            this.$validator.validateAll().then(function (res) {
-                if (res) {
-                    axios.put("/condicion-propiedad/" + _this3.id, {
-                        condicion: _this3.condicion_propiedad
-                    }).then(function (data) {
-                        if (data.data == 'bien') {
-                            swal({
-                                type: 'success',
-                                title: 'Buen trabajo!',
-                                text: 'Dato actualizado correctamente!',
-                                timer: 2000
-                            });
-                        } else {
-                            swal({
-                                type: 'error',
-                                title: 'Oops...',
-                                text: 'No se pudo actualizar correctamente!',
-                                timer: 2000
-                            });
-                        }
-                        setTimeout(function () {
-                            _this3.cancel();
-                            _this3.getCondicionPropiedad();
-                        }, 2500);
-                    }).catch(function (error) {
-                        swal({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'Error externo, no se pudo actualizar correctamente!',
-                            timer: 2000
-                        });
-                        setTimeout(function () {
-                            _this3.cancel();
-                            _this3.getCondicionPropiedad();
-                        }, 2500);
-                    });
-                } else {
-                    swal({
-                        type: 'error',
-                        title: 'Oops...',
-                        text: 'Ocurrió un error!',
-                        timer: 2000
-                    });
-                }
-            });
-        },
-        deleteSector: function deleteSector(id) {
-            var _this4 = this;
-
-            swal({
-                title: 'Está seguro?',
-                text: "No podrá revertir los cambios!",
-                type: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Sí, Eliminar!',
-                cancelButtonText: 'Cancelar'
-            }).then(function (result) {
-                if (result.value) {
-                    axios.delete("condicion-propiedad/" + id).then(function (data) {
-                        if (data.data == 'bien') {
-                            swal({
-                                type: 'success',
-                                title: 'Buen trabajo!',
-                                text: 'Dato eliminado correctamente!',
-                                timer: 2000
-                            });
-                        } else {
-                            swal({
-                                type: 'error',
-                                title: 'Oops...',
-                                text: 'No se pudo eliminar correctamente!',
-                                timer: 2000
-                            });
-                        }
-                        setTimeout(function () {
-                            _this4.cancel();
-                            _this4.getCondicionPropiedad();
-                        }, 2500);
-                    }).catch(function (error) {
-                        swal({
-                            type: 'error',
-                            title: 'Oops...',
-                            text: 'Error externo, no se pudo agregar correctamente!',
-                            timer: 2000
-                        });
-                        setTimeout(function () {
-                            _this4.cancel();
-                            _this4.getCondicionPropiedad();
-                        }, 2500);
-                    });
-                }
-            });
-        }
-    }
-});
-
-/***/ }),
-/* 484 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "row justify-content-center" }, [
-      _c("div", { staticClass: "col-md-12" }, [
-        _c("div", { staticClass: "card card-default" }, [
-          _c("div", { staticClass: "card-header" }, [_vm._v("Sectores")]),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "card-body" },
-            [
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col text-center mb-3" }, [
-                  !_vm.hasData
-                    ? _c(
-                        "span",
-                        {
-                          staticStyle: {
-                            "font-size": "20px",
-                            "font-weight": "bold",
-                            "text-transform": "uppercase"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Agregar Condicion de Propiedad\n                                "
-                          ),
-                          !_vm.hasClicked
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-success btn-sm",
-                                  attrs: { type: "button" },
-                                  on: { click: _vm.add }
-                                },
-                                [
-                                  _c("i", {
-                                    staticClass: "fa fa-plus-circle",
-                                    attrs: { "aria-hidden": "true" }
-                                  })
-                                ]
-                              )
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.hasClicked
-                            ? _c("span", [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-danger btn-sm",
-                                    attrs: {
-                                      type: "button",
-                                      title: "Cancelar"
-                                    },
-                                    on: { click: _vm.cancel }
-                                  },
-                                  [
-                                    _c("i", {
-                                      staticClass: "fa fa-times-circle",
-                                      attrs: { "aria-hidden": "true" }
-                                    })
-                                  ]
-                                )
-                              ])
-                            : _vm._e()
-                        ]
-                      )
-                    : _c(
-                        "span",
-                        {
-                          staticStyle: {
-                            "font-size": "20px",
-                            "font-weight": "bold",
-                            "text-transform": "uppercase"
-                          }
-                        },
-                        [
-                          _vm._v(
-                            "\n                                Editar Condicion de Propiedad\n                                "
-                          ),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger btn-sm",
-                              attrs: { type: "button", title: "Cancelar" },
-                              on: { click: _vm.cancel }
-                            },
-                            [
-                              _c("i", {
-                                staticClass: "fa fa-times-circle",
-                                attrs: { "aria-hidden": "true" }
-                              })
-                            ]
-                          )
-                        ]
-                      )
-                ])
-              ]),
-              _vm._v(" "),
-              _vm.hasClicked
-                ? _c(
-                    "form",
-                    {
-                      staticClass: "py-1 mb-4",
-                      staticStyle: {
-                        "background-color": "#dee2e6",
-                        padding: "0px 10px"
-                      },
-                      attrs: { autocomplete: "off" },
-                      on: {
-                        submit: function($event) {
-                          $event.preventDefault()
-                          return _vm.addCondicionPropiedad($event)
-                        }
-                      }
-                    },
-                    [
-                      _c("div", { staticClass: "form-group row" }, [
-                        !_vm.hasData
-                          ? _c(
-                              "label",
-                              {
-                                staticClass: "col-md-2 mt-2",
-                                attrs: { for: "condicion_propiedad" }
-                              },
-                              [
-                                _vm._v(
-                                  "\n                                Ingrese una condicion de propiedad: \n                            "
-                                )
-                              ]
-                            )
-                          : _c(
-                              "label",
-                              {
-                                staticClass: "col-md-2 mt-2",
-                                attrs: { for: "condicion_propiedad" }
-                              },
-                              [_vm._v("Edite la condicion de propiedad: ")]
-                            ),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "col-md-8 mt-2" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.condicion_propiedad,
-                                expression: "condicion_propiedad"
-                              },
-                              {
-                                name: "validate",
-                                rawName: "v-validate",
-                                value: "required|alpha_spaces|min:5|max:15",
-                                expression:
-                                  "'required|alpha_spaces|min:5|max:15'"
-                              }
-                            ],
-                            staticClass: "form-control",
-                            class: {
-                              error: _vm.errors.has("condicion_propiedad")
-                            },
-                            attrs: {
-                              type: "text",
-                              name: "condicion_propiedad",
-                              id: "condicion_propiedad",
-                              placeholder: "Ingrese una condicion de propiedad",
-                              required: "",
-                              maxlength: "15",
-                              minlength: "5",
-                              autofocus: ""
-                            },
-                            domProps: { value: _vm.condicion_propiedad },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
-                                }
-                                _vm.condicion_propiedad = $event.target.value
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _vm.errors.has("condicion_propiedad")
-                            ? _c("span", { staticClass: "errorSpan" }, [
-                                _vm._v(
-                                  "\n                                    " +
-                                    _vm._s(
-                                      _vm.errors.first("condicion_propiedad")
-                                    ) +
-                                    "\n                                "
-                                )
-                              ])
-                            : _vm._e()
-                        ]),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-md-2 mt-2 text-center" },
-                          [
-                            !_vm.hasData
-                              ? _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-success",
-                                    attrs: {
-                                      type: "submit",
-                                      disabled: _vm.errors.any()
-                                    }
-                                  },
-                                  [_vm._v("Agregar")]
-                                )
-                              : _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-success",
-                                    attrs: {
-                                      type: "button",
-                                      disabled: _vm.errors.any()
-                                    },
-                                    on: { click: _vm.updateCondicionPropiedad }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                    Editar\n                                "
-                                    )
-                                  ]
-                                )
-                          ]
-                        )
-                      ])
-                    ]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c("v-client-table", {
-                staticClass: "text-center",
-                attrs: {
-                  data: _vm.tableData,
-                  columns: _vm.columns,
-                  options: _vm.options
-                },
-                scopedSlots: _vm._u([
-                  {
-                    key: "acciones",
-                    fn: function(props) {
-                      return _c("div", {}, [
-                        _c(
-                          "a",
-                          {
-                            staticClass: "mx-2",
-                            staticStyle: {
-                              cursor: "pointer",
-                              "font-size": "20px"
-                            },
-                            attrs: { title: "Editar" },
-                            on: {
-                              click: function($event) {
-                                _vm.editSector(
-                                  props.row.id_condicion,
-                                  props.row.descripcion
-                                )
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-pencil text-success",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            staticClass: "mx-2",
-                            staticStyle: {
-                              cursor: "pointer",
-                              "font-size": "20px"
-                            },
-                            attrs: { title: "Eliminar" },
-                            on: {
-                              click: function($event) {
-                                _vm.deleteSector(props.row.id_condicion)
-                              }
-                            }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fa fa-trash text-danger",
-                              attrs: { "aria-hidden": "true" }
-                            })
-                          ]
-                        )
-                      ])
-                    }
-                  }
-                ])
-              })
-            ],
-            1
-          )
-        ])
-      ])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1bf99f1c", module.exports)
-  }
-}
 
 /***/ })
 /******/ ]);
