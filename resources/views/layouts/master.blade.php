@@ -137,6 +137,60 @@
 									</li>
 								</ul>
 							</li>
+							<li class="nav-item has-treeview">
+								<router-link to="/sector-agregar" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Sector
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</router-link>
+							</li>
+							<li class="nav-item has-treeview">
+								<router-link to="/material-agregar" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Material
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</router-link>
+							</li>
+							<li class="nav-item has-treeview">
+								<router-link to="/condicion-agregar" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Condicion Propiedad
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</router-link>
+							</li>
+							<li class="nav-item has-treeview">
+								<router-link to="conservacion" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Conservacion
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</router-link>
+							</li>
+							<li class="nav-item has-treeview">
+								<router-link to="clasificacion" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Clasificación
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</router-link>
+							</li>
+							<li class="nav-item has-treeview">
+								<router-link to="localidad" class="nav-link">
+									<i class="nav-icon fa fa-folder"></i>
+									<p>
+										Localidad
+										{{-- <i class="fa fa-angle-right right"></i> --}}
+									</p>
+								</router-link>
+							</li>
 							@break
 							@case(2)
 								<li class="nav-item has-treeview">

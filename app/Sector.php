@@ -11,4 +11,6 @@ class Sector extends Model
         'id_sector',
         'descripcion'
     ];
+
+    public $timestamps = false;
 }
