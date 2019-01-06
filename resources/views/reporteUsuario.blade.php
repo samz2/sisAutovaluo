@@ -87,16 +87,7 @@
 </style>
         <?php
             $contribuyente = DB::select("SELECT * FROM `contribuyente` where dniRUC=".$id);
-            $Impuesto      = DB::select("
-            SELECT concat_ws(' ',predio.calle,predio.numero,'Mz. ',predio.mz,'Lt. ',predio.lote) as dir,
-            ROUND ((a.valorConstruccion+a.valorterreno-a.descuento),2) as autovaluo, 
-            ROUND ((a.valorConstruccion+a.valorterreno-a.descuento)*0.002,2) as impuesto,
-            ROUND ((a.valorConstruccion+a.valorterreno-a.descuento)*0.0005,2) as cuota
-            FROM predio 
-            JOIN prediocontribuyente on predio.codPredio=prediocontribuyente.codPredio 
-            JOIN autovaluo a ON prediocontribuyente.id=a.idpredioContribuyente
-            where prediocontribuyente.codContribuyente='000364'
-            ");
+            
             $hoy = date("d/m/Y");
             $mes = date("m");
             switch ($mes) {
@@ -139,12 +130,23 @@
             }
             $dia = date("d");
             $anio = date("Y");
+            
             foreach ($contribuyente as $item)
             {
-            $codigo   =   $item->codContribuyente;
-            $nombre   =   $item->apellidos." ".$item->nombre;
-            $dom      =   $item->domicilio;
+                $codigo   =   $item->codContribuyente;
+                $nombre   =   $item->apellidos." ".$item->nombre;
+                $dom      =   $item->domicilio;
             }
+            $Impuesto      = DB::select("
+            SELECT concat_ws(' ',predio.calle,predio.numero,'Mz. ',predio.mz,'Lt. ',predio.lote) as dir,
+            ROUND ((a.valorConstruccion+a.valorterreno-a.descuento),2) as autovaluo, 
+            ROUND ((a.valorConstruccion+a.valorterreno-a.descuento)*0.002,2) as impuesto,
+            ROUND ((a.valorConstruccion+a.valorterreno-a.descuento)*0.0005,2) as cuota
+            FROM predio 
+            JOIN prediocontribuyente on predio.codPredio=prediocontribuyente.codPredio 
+            JOIN autovaluo a ON prediocontribuyente.id=a.idpredioContribuyente
+            where prediocontribuyente.codContribuyente=".$codigo
+            );
             $autovaluo = DB::select('CALL `SP_Autovaluo`(?)',[$codigo]);
             foreach ($autovaluo as $item) {
                 $calle      = $item->calle;
