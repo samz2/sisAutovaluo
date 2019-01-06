@@ -87,6 +87,9 @@
 </style>
         <?php
             $contribuyente = DB::select("SELECT * FROM `contribuyente` where dniRUC=".$id);
+            if(count($contribuyente)>0)
+            {
+
             
             $hoy = date("d/m/Y");
             $mes = date("m");
@@ -511,4 +514,9 @@
         </tr>
     </table>  
 </body>
+<?php
+    }
+    else
+    echo "no se encontraron registros";
+?>
 </html>   
