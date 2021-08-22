@@ -3,11 +3,14 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Inicio de Sesión') }}</div>
+        <div class="col-md-6">
+            <div class="card card-primary">
+                <div class="card-header text-center">{{ __('Municipalidad Distrital de Yarinacocha - Inicio de Sesión') }}</div>
 
                 <div class="card-body">
+                    <div class="row justify-content-center">
+                        <img src="img/muniyarina.jpg" height="150" width="120">
+                    </div>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
