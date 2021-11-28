@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Reporte Autovaluo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Municipalidad Distrital de Yarinacocha</title>
+    <title>Municipalidad Distrital de Manantay</title>
 </head>
 <style>
     body{
@@ -192,7 +192,7 @@
             <td class="peque">{{$hoy}}</td>
         </tr>
         <tr align="center">
-            <td class="peque">Municipalidad Distrital de Yarinacocha</td>
+            <td class="peque">Municipalidad Distrital de Manantay</td>
             <td colspan="2">&nbsp;</td>
         </tr>
     </table>
@@ -263,7 +263,7 @@
         </tr>
     </table>
     </center>
-    Puerto Callao,{{$dia}} de, {{$sMes}} del {{$anio}}
+    Manantay,{{$dia}} de, {{$sMes}} del {{$anio}}
     <div style="page-break-after:always;"></div>
     <table border="">
             <tr align="center">
@@ -280,7 +280,7 @@
                 <td class="peque">{{$hoy}}</td>
             </tr>
             <tr align="center">
-                <td class="peque">Municipalidad Distrital de Yarinacocha</td>
+                <td class="peque">Municipalidad Distrital de Manantay</td>
                 <td colspan="2">&nbsp;</td>
             </tr>
     </table>
@@ -417,7 +417,7 @@
                 <td class="peque">{{$hoy}}</td>
             </tr>
             <tr align="center">
-                <td class="peque">Municipalidad Distrital de Yarinacocha</td>
+                <td class="peque">Municipalidad Distrital de Manantay</td>
                 <td colspan="2">&nbsp;</td>
             </tr>
     </table>
@@ -439,7 +439,7 @@
             <td><b>NUMEROS</b></td>
         </tr>
         <tr>
-            <td colspan="4">AREA URBANA DE YARINACOCHA</td>
+            <td colspan="4">AREA URBANA DE Manantay</td>
             <td colspan="4">{{$calle}}</td>
             <td></td>
         </tr>

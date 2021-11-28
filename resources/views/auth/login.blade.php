@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="card card-primary">
-                <div class="card-header text-center">{{ __('Municipalidad Distrital de Yarinacocha - Inicio de Sesión') }}</div>
+                <div class="card-header text-center">{{ __('Municipalidad Distrital de Manantay - Inicio de Sesión') }}</div>
 
                 <div class="card-body">
                     <div class="row justify-content-center">
